@@ -1,0 +1,29 @@
+{%- comment -%}
+    Renders a product card
+
+    Accepts:
+	- section: {Object} section settings
+	- show_heading_always: {Boolean} The option is needed for the "show all" button in some sections with an empty title
+    Usage:
+
+	{%- render "section-heading",
+    			section:section,
+				show_heading_always:show_heading_always -%}
+{%- endcomment -%}
+
+{%- liquid
+  if section.settings.color_subheading != "rgba(0,0,0,0)"
+  assign color_subheading = ' style="--color-subheading:' | append: section.settings.color_subheading | append: ';"'
+  endif
+  if section.settings.color_heading != "rgba(0,0,0,0)"
+  assign color_heading = ' style="color:' | append: section.settings.color_heading | append: ';"'
+  endif
+-%}
+{%- if section.settings.subheading != blank or section.settings.heading != blank or show_heading_always -%}
+<div class="grid{% if section.settings.heading_aligment == "text-center" %} justify-content-center{% endif %} heading--mb">
+  <div class="col-st-12 col-6 mb--last-child-0 {{ section.settings.heading_aligment }}">
+    {%- if section.settings.subheading != blank -%}<div class="subheading h5"{{ color_subheading }}>{{ section.settings.subheading }}</div>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2{{ color_heading }} class="mt0">{{ section.settings.heading }}</h2>{%- endif -%}
+  </div>
+</div>
+{%- endif -%}

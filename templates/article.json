@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "show_featured_image": true,
+        "image_ratio": "auto",
+        "image_height": 440,
+        "showtags": true,
+        "show_date": true,
+        "show_author": true,
+        "description_size": 18,
+        "share_label": "Share"
+      }
+    },
+    "1654079189f00596fe": {
+      "type": "blog-posts",
+      "settings": {
+        "blog": "news",
+        "subheading": "SUBHEADING",
+        "heading": "Blog posts",
+        "heading_aligment": "text-center",
+        "link_name": "Show All",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-6 col-3",
+        "swipe_on_mobile": false,
+        "post_limit": 4,
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "excerpt_size": "normal",
+        "show_image": true,
+        "truncate_post_heading": false,
+        "hover_underline": false,
+        "showtags": true,
+        "show_date": true,
+        "show_author": true,
+        "show_comment_count": true,
+        "excerpt": "hide",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_link": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_author_date_comments": "rgba(0,0,0,0)",
+        "color_heading_post": "rgba(0,0,0,0)",
+        "color_excerpt": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1654079189f00596fe"
+  ]
+}

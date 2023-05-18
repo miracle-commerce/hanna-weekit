@@ -1,0 +1,89 @@
+.show-fadein.accordion-section{
+  opacity: 1;
+}
+.chm-toggle__button{
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+
+*:not(.top-and-bottom-lines)>.chm-toggle:first-child .chm-toggle__button{
+  padding-top: 0px;
+}
+/**:not(.top-and-bottom-lines)>.chm-toggle:last-child .chm-toggle__button{
+  padding-bottom: 0px;
+}*/
+*:not(.top-and-bottom-lines)>.chm-toggle:last-child .chm-toggle__button{
+  padding-bottom: 0px;
+}
+.chm-toggle__button svg:first-child{
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;  
+}
+.chm-toggle__button svg:last-child{
+  margin-left: auto;
+  flex: 0 0 auto;
+  opacity: var(--opacity-icons);
+  transition: opacity var(--duration-medium) var(--animation-bezier);
+  width: 12px;
+  height: 12px;
+}
+@media (max-width: 992px){
+  .chm-toggle__button svg:last-child{
+    opacity: 1;
+  }
+}
+.chm-toggle__button:hover svg{
+  opacity: 1;
+}
+.chm-toggle:nth-child(n+2) summary,
+.top-and-bottom-lines .chm-toggle summary{
+  position: relative;
+}
+.chm-toggle:nth-child(n+2) summary:after,
+.top-and-bottom-lines .chm-toggle summary:after{
+  content:"";
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-base);
+  opacity: 0.3;
+}
+.chm-toggle[open].toggle-opening .chm-toggle__button{
+  margin-bottom:20px;
+}
+.chm-toggle[open] .chm-toggle__button{
+  padding-bottom:0;
+  margin-bottom:0;
+  transition: margin-bottom var(--duration-medium) linear;
+}
+.chm-toggle[open] .chm-toggle__button svg:last-child{
+  transform: scaleY(-1);
+}
+.chm-toggle[open].toggle-opening .chm-toggle__content{
+  --scroll-height: 300px;
+  opacity: 1;
+  max-height: var(--scroll-height);
+}
+.chm-toggle[open] .chm-toggle__content{
+  margin-bottom: 30px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity var(--duration-medium) linear,
+  max-height var(--duration-medium) linear;
+}
+*:not(.top-and-bottom-lines)>.chm-toggle[open]:last-child .chm-toggle__content{
+  margin-bottom: 0;
+}
+.admin-panel--no-js .chm-toggle[open] .chm-toggle__content,
+.no-js .chm-toggle[open] .chm-toggle__content{
+  margin-top: 15px;
+  margin-bottom: 30px;
+  opacity: 1;
+  max-height: unset;
+}

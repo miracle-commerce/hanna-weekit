@@ -1,0 +1,28 @@
+{%- comment -%}
+    Get images separated to variants
+    
+	Accepts:
+    - product: {Object}
+    - option_name: {String} product.option1 or product.option2 or product.option3
+	- image_width: {String} example: 100x, 240x, 300x
+
+	Usage:
+	{%- render 'get_product_images_from_variants_options', product:product, option_name:option_name -%}
+{%- endcomment -%}
+{%- assign opt_imgs = '' -%}
+{%- assign opts1 = '' -%}
+{%- for variant in product.variants -%}
+{%- assign _o1 =  '||' | append: variant[option_name] | append: '||' -%}
+{%- unless opts1 contains _o1 -%}
+{%- assign opts1 = opts1 | append: _o1 -%}
+{%- if variant.image.id == empty? -%}
+{%- assign product_img_url = "" -%}
+{%- else -%}
+{%- assign product_img_url = variant.image.src | product_img_url: image_width -%}
+{%- endif -%}
+{%- assign v1 = variant[option_name] | downcase -%}
+{%- assign opt_imgs = opt_imgs | append: v1 | append:':' | append: product_img_url | append: '_%%_' | append: variant.url | append: ',' -%}
+{%- endunless -%}
+{%- endfor -%}
+{%- assign opt_imgs = ',' | append: opt_imgs | append: '||' | replace: ',||', '' | replace: '||', '' -%}
+{{ opt_imgs }}

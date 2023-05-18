@@ -1,0 +1,11 @@
+<nav class="menu-drawer__navigation">
+  <ul class="unstyle-ul">
+    {%- for link in linklist -%}
+    <li>
+      <a href="{{ link.url }}" class="menu-drawer__menu-item body2{% if link.current %} menu-drawer__menu-item--active{% endif %}">
+        <span>{{ link.title | escape }}</span>
+      </a>
+    </li>
+	{%- endfor -%}
+  </ul>
+</nav>

@@ -1,0 +1,60 @@
+{%- capture content -%}
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+{%- when 'description' -%}
+{%- if product.description != blank -%}
+<div class="chm-toggle__button" {{ block.shopify_attributes }}>
+{%- render 'icons-list' icon_name: block.settings.icon_name -%}
+{%- if block.settings.heading != blank -%}<h2 class="h4 mt0 mb0">{{ block.settings.heading }}</h2>{%- endif -%}
+</div>
+<div class="mt0 mt--first-child-0">
+  {{ product.description }}
+</div>
+{%- endif -%}
+
+{%- when 'additional-feature' -%}
+{%- capture content -%}
+  {%- for i in (1..6) -%}
+  {%- assign icon_name = "icon_" | append: i -%}
+  {%- assign icon_name = block.settings[icon_name] -%}
+  {%- assign text_content = "text_" | append: i -%}
+  {%- assign text_content = block.settings[text_content] -%}
+  {%- if icon_name != blank or text_content != blank -%}
+  <div class="additional-feature">
+    {%- render "icons-list" icon_name: icon_name -%}
+    <span>{{ text_content }}</span>
+  </div>
+  {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if content != blank -%}
+<div class="chm-toggle__button" {{ block.shopify_attributes }}>
+{%- render 'icons-list' icon_name: block.settings.icon_name -%}
+{%- if block.settings.heading != blank -%}<h2 class="h4 mt0 mb0">{{ block.settings.heading }}</h2>{%- endif -%}
+</div>
+<div class="mt0 additional-feature__content">
+{{ content }}
+</div>
+{%- endif -%}
+
+{%- when 'collapsible_tab' -%}
+{%- if block.settings.content != blank or block.settings.page != blank -%}
+<div class="chm-toggle__button" {{ block.shopify_attributes }}>
+{%- render 'icons-list' icon_name: block.settings.icon_name -%}
+{%- if block.settings.heading != blank -%}<h2 class="h4 mt0 mb0">{{ block.settings.heading }}</h2>{%- endif -%}
+</div>
+<div class="mt0 mt--first-child-0">
+  {{ block.settings.content }}
+  {{ block.settings.page.content }}
+</div>
+{%- endif -%}
+
+{%- endcase -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+{%- if content != blank -%}
+<div class="mt40 mt--first-child-0 body2">
+  {{ content }}
+</div>
+{%- endif -%}

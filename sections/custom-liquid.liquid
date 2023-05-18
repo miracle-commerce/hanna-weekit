@@ -1,0 +1,72 @@
+{%- if section.settings.custom_liquid != blank -%}
+<div class="top-spacing-{{ section.settings.top_spacing }} {{ section.settings.width }}">
+  {{ section.settings.custom_liquid }}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.custom-liquid.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+      "info": "t:sections.custom-liquid.settings.custom_liquid.info",
+	  "default": "Put your liquid code here.<br>Ex. Output shop name - {{ shop.name }}<br>This section is helpful for app integrations and developers."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.general.settings.header_layout.content"
+    },
+    {
+      "type": "select",
+      "id": "top_spacing",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.general.settings.top_spacing.options__none.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.general.settings.top_spacing.options__small.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general.settings.top_spacing.options__medium.label"
+        },
+        {
+          "value": "normal",
+          "label": "t:sections.general.settings.top_spacing.options__normal.label"
+        }
+      ],
+      "default": "normal",
+      "label": "t:sections.general.settings.top_spacing.label"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:sections.general.settings.width.options__boxed.label"
+        },
+        {
+          "value": "page-wide",
+          "label": "t:sections.general.settings.width.options__wide.label"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.general.settings.width.label",
+      "info": "t:sections.general.settings.width.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.custom-liquid.presets.name"
+    }
+  ]
+}
+{% endschema %}

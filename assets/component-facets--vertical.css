@@ -1,0 +1,84 @@
+#FacetsWrapperDesktop .chm-toggle[open].toggle-opening .chm-toggle__button {
+  margin-bottom: 20px;
+}
+#FacetsWrapperDesktop .chm-toggle:first-child {
+  padding-top: 1px;
+  position: relative;
+}
+#FacetsWrapperDesktop .chm-toggle:first-child:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-lines-borders);
+}
+#FacetsWrapperDesktop{
+  padding-bottom: 30px;
+  display: block;
+  border-bottom: 1px solid var(--color-lines-borders);
+}
+#FacetsWrapperDesktop .chm-toggle:first-child .chm-toggle__button {
+  padding-top: 30px;
+}
+.facets__header{
+  display: flex;
+  justify-content: space-between;
+}
+.facets__display__content{
+  margin-top: calc(20px - var(--facets-padding));
+}
+.facets__price{
+  padding: 20px 0 0;
+}
+show-all-facets{
+  padding-top: calc(20px - var(--facets-padding));
+  margin-bottom: 2px;
+}
+show-all-facets:after{
+  content: attr(data-show);
+}
+.show-all-items show-all-facets:after{
+  content: attr(data-hide);
+}
+.facets__selected{
+  padding-right: 20px;
+}
+@media (min-width: 993px) and (max-width: 1439px){
+  .facets__price{
+    flex-wrap: wrap;
+  }
+  .facets__price .facets__price__item{
+    width: 100%;
+  }
+  .facets__price .field{
+    width: 100%;
+  }
+}
+@media (min-width: 993px){
+  .facets__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+/*.facets__items--show-first li:nth-child(n+var(--show-first-count)):not(:last-child){*/
+html:not(.no-js) .facets__display__content:not(.show-all-items) .facets__items--hide-latest~*:not(:last-child){
+  display: none;
+}
+.no-js .facets__button-show-all{
+  display: none;
+}
+.facets__disclosure-no-js .btn{
+  margin-top: var(--padding2);
+}
+.no-js .chm-toggle[open] .chm-toggle__content {
+  overflow: unset;
+}
+.no-js .facets__disclosure-no-js__container{
+  padding: 30px 0;
+  display: block;
+  border-top: 1px solid var(--color-lines-borders);
+}

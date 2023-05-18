@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-4 col-2",
+        "enable_filtering": "horizontal",
+        "enable_sorting": false,
+        "enable_products_count": true,
+        "pagination_aligment": "text-left",
+        "product_limit": 6,
+        "image_ratio": "auto",
+        "show_secondary_image": true,
+        "texts_aligment": "text-center",
+        "product_name_size": "body2",
+        "show_vendor": true,
+        "show_type": true,
+        "show_rating": false,
+        "show_price": true,
+        "truncate_product_name": false,
+        "hover_underline": false,
+        "button_type_product": "show",
+        "show_button_quickview": false,
+        "show_badge_on_sale": true,
+        "show_badge_sold_out": true,
+        "show_badge_feature": true,
+        "image_ratio_b": "auto",
+        "texts_aligment_b": "text-center",
+        "show_image": true,
+        "truncate_post_heading": false,
+        "hover_underline_b": false,
+        "show_date": true,
+        "show_author": true
+      }
+    },
+    "06577607-efb6-45a9-aac7-2ef023080490": {
+      "type": "newsletter",
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Newsletter",
+        "text": "A short sentence describing what someone will receive by subscribing",
+        "newsletter_terms": "<p>By clicking the button you agree to the <a href=\"\/\"><strong>Privacy Policy<\/strong><\/a> and <a href=\"\/\"><strong>Terms and Conditions<\/strong><\/a>.<\/p>",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_input_bg": "rgba(0,0,0,0)",
+        "color_input_bg_active": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "06577607-efb6-45a9-aac7-2ef023080490"
+  ]
+}

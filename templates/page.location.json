@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width",
+        "show_heading": true,
+        "heading_aligment": "text-center"
+      }
+    },
+    "1643624234e4f43fc4": {
+      "type": "map",
+      "blocks": {
+        "1643624233e9486f46-0": {
+          "type": "image",
+          "settings": {
+            "api_key": "",
+            "map_address": "",
+            "show_pin": true,
+            "map_zoom_level": 14
+          }
+        }
+      },
+      "block_order": [
+        "1643624233e9486f46-0"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "desktop_content_height": 600,
+        "row_reverse": false,
+        "content_aligment": "align-self-start",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_background": "rgba(0,0,0,0)"
+      }
+    },
+    "165407517925b33a98": {
+      "type": "text",
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Text",
+        "description": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+        "button_name": "Button",
+        "button_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "texts_aligment": "text-center",
+        "heading_tag": "h2",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1643624234e4f43fc4",
+    "165407517925b33a98"
+  ]
+}

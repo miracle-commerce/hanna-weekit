@@ -1,0 +1,53 @@
+.list-menu li{position: relative;}
+.list-menu > ul > li{display: inline;}
+.list-menu__item{
+  display: flex;
+  position: relative;
+  align-items: center;
+  color: var(--color-menu);
+}
+.list-menu__item:before{
+  content: "";
+  position: absolute;
+  left: calc(var(--column-gap) / -2);
+  width: calc(100% + var(--column-gap));
+  height: calc(100% + var(--row-gap));
+}
+nav a,nav a:hover{text-decoration: none;}
+.list-menu--hover:hover > .list-menu__item{
+  color: var(--color-base);
+}
+.list-menu__item svg{
+  opacity: var(--opacity-icons);
+  transition: opacity var(--duration-medium) ease;
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+}
+.list-menu--hover:hover > .list-menu__item svg{
+  opacity: 1;
+}
+.list-menu__item svg path{
+  fill: var(--color-base);
+}
+.list-menu--classic{
+   --header__submenu__top-offset: 10px;
+}
+.menu--animation-underline .list-menu__item > span{position: relative;}
+.menu--animation-underline .list-menu__item > span:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  top: 100%;
+  background: var(--color-base);
+  transition: width var(--duration-medium) ease;
+}
+.menu--animation-underline .list-menu__item.body2 > span:before{
+  height: 1px;
+}
+.menu--animation-underline li:hover > .list-menu__item > span:before,
+.menu--animation-underline li > .list-menu__item.list-menu__item--active > span:before{
+  width: 100%;
+}

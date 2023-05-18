@@ -1,0 +1,12 @@
+{%- assign price_max = settings.free_delivery_price | times:100 -%}
+{%- assign price = price_max | minus: cart.total_price -%}
+<div class="free-delivery-bar__toolbar body2" style="--length:{{ cart.total_price }};--max-length:{{ price_max }};">
+  {%- if price < 0 -%}
+  {%- render "icon-check" -%}
+  <span>{{ "general.free_shipping.free_shipping_html" | t }}</span>
+  {%- else -%}
+  {%- render "icon-box" -%}
+  {%- assign price = price | money -%}
+  <span>{{ "general.free_shipping.normal_html" | t:price:price }}</span>
+  {%- endif -%}
+</div>

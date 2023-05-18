@@ -1,0 +1,60 @@
+<header-drawer>
+{%- assign sections_count = section.settings.sections_count | plus: 0 -%}
+<details class="vertical-menu"
+         {% if sections_count > 0 and template == 'index' %} data-menu-opened="{{ sections_count }}" open{% endif %}
+         >
+  <summary>
+    <div class="h5 link vertical-menu__button btn--secondary">
+      {%- render "icon-hamburger" -%}
+      <span>{{ 'vertical_menu.main_button' | t }}</span>
+    </div>
+  </summary>
+  <vertical-menu class="vertical-menu__container" hide-before-load="true">
+    <nav>
+      <ul class="vertical-menu__items unstyle-ul">
+
+        {%- for link in linklist -%}
+        {%- if link.links != blank -%}
+
+        {%- assign megamenu_item = '|' | append: link.title | append: '%%' -%}
+        {%- if mega_menu_index contains megamenu_item -%}
+        {%- assign megamenu_item = mega_menu_index | split: megamenu_item | last | split: '|' | first | plus: 0 -%}
+        {%- else -%}
+        {%- assign megamenu_item = '' -%}
+        {%- endif -%}
+
+        <li class="submenu-container{% if megamenu_item != '' %} submenu--megamenu{% endif %} vertical-menu--hover">
+          <a href="{{ link.url }}" class="{{ menu_font_weight }} vertical-menu-item">
+            {%- render 'get-menu-icon-code', icons:icons, forloop_index:forloop.index -%}
+            <span>{{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}</span>
+            {%- render "icon-arrow-right-small" -%}
+          </a>
+
+          {%- liquid
+              if megamenu_item == ''
+              render "menu-submenu", link:link
+              else
+              render "menu-megamenu", link:link, megamenu_item:megamenu_item
+              endif
+          -%}
+
+        </li>
+        {%- else -%}
+        <li class="vertical-menu--hover">
+          <a href="{{ link.url }}" class="{{ menu_font_weight }} vertical-menu-item">
+            {%- render 'get-menu-icon-code', icons:icons, forloop_index:forloop.index -%}
+            <span>{{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}</span>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- endfor -%}
+        
+      </ul>
+      <div class="hover-area vertical-menu__show-more hide">
+        <span class="btn-small color-accent-to-base" data-main-text="{{ 'vertical_menu.show_all' | t }}" data-active-text="{{ 'vertical_menu.hide' | t }}"></span>
+      </div>
+
+    </nav>
+  </vertical-menu>
+</details>
+</header-drawer>

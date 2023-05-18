@@ -1,0 +1,84 @@
+{%- capture content -%}
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+{%- when 'description' -%}
+{%- if product.description != blank -%}
+<details class="chm-toggle{% if forloop.first %} toggle-opening{% endif %}"{% if forloop.first %} open{% endif %} {{ block.shopify_attributes }}>
+  <summary>
+    <div class="chm-toggle__button">
+      {%- render 'icons-list' icon_name: block.settings.icon_name -%}
+      <h2 class="h5 mt0 mb0">
+        {{ block.settings.heading }}
+      </h2>
+      {%- render "icon-arrow-down-small" -%}
+    </div>
+  </summary>
+  <div class="mt0 chm-toggle__content mt--first-child-0">
+    {{ product.description }}
+  </div>
+</details>
+{%- endif -%}
+
+{%- when 'additional-feature' -%}
+{%- capture content -%}
+  {%- for i in (1..6) -%}
+  {%- assign icon_name = "icon_" | append: i -%}
+  {%- assign icon_name = block.settings[icon_name] -%}
+  {%- assign text_content = "text_" | append: i -%}
+  {%- assign text_content = block.settings[text_content] -%}
+  {%- if icon_name != blank or text_content != blank -%}
+  <div class="additional-feature">
+    {%- render "icons-list" icon_name: icon_name -%}
+    <span>{{ text_content }}</span>
+  </div>
+  {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if content != blank -%}
+<details class="chm-toggle{% if forloop.first %} toggle-opening{% endif %}"{% if forloop.first %} open{% endif %} {{ block.shopify_attributes }}>
+  <summary>
+    <div class="chm-toggle__button">
+      {%- render 'icons-list' icon_name: block.settings.icon_name -%}
+      <h2 class="h5 mt0 mb0">
+        {{ block.settings.heading }}
+      </h2>
+      {%- render "icon-arrow-down-small" -%}
+    </div>
+  </summary>
+  <div class="mt0 chm-toggle__content">
+    <div class="additional-feature__content">
+      {{ content }}
+    </div>
+  </div>
+</details>
+{%- endif -%}
+
+{%- when 'collapsible_tab' -%}
+{%- if block.settings.content != blank or block.settings.page != blank -%}
+<details class="chm-toggle{% if forloop.first %} toggle-opening{% endif %}"{% if forloop.first %} open{% endif %} {{ block.shopify_attributes }}>
+  <summary>
+    <div class="chm-toggle__button">
+      {%- render 'icons-list' icon_name: block.settings.icon_name -%}
+      <h2 class="h5 mt0 mb0">
+        {{ block.settings.heading }}
+      </h2>
+      {%- render "icon-arrow-down-small" -%}
+    </div>
+  </summary>
+  <div class="mt0 chm-toggle__content mt--first-child-0">
+    {{ block.settings.content }}
+    {{ block.settings.page.content }}
+  </div>
+</details>
+{%- endif -%}
+
+{%- endcase -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+{%- if content != blank -%}
+<toggle-component class="display-block mt40 chm-toggle--accordion top-and-bottom-lines{% if request.design_mode %} admin-panel--no-js{% endif %} body2">
+  {{ content }}
+</toggle-component>
+<div class="line-after-tabs" style="border-top: 1px solid var(--color-base); opacity: .3;"></div>
+{%- endif -%}

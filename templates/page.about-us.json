@@ -1,0 +1,509 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width",
+        "show_heading": true,
+        "heading_aligment": "text-center"
+      }
+    },
+    "16540757411b1ccd93": {
+      "type": "image-with-text-bg",
+      "blocks": {
+        "1654075741a97777c4-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "1654075741a97777c4-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Big banner on color background with variable height"
+          }
+        },
+        "1654075741a97777c4-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This section allows you to highlight the image with a half-height background color. You may adjust the height of the color part at section settings. Best works for the image with transparent background.<\/p>"
+          }
+        },
+        "1654075741a97777c4-3": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "1654075741a97777c4-0",
+        "1654075741a97777c4-1",
+        "1654075741a97777c4-2",
+        "1654075741a97777c4-3"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "column_reverse": true,
+        "texts_aligment": "text-center",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "play_background": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "content_width",
+        "background_spacing": "normal",
+        "background_bp": 70
+      }
+    },
+    "16540759200ff65b94": {
+      "type": "ticker",
+      "settings": {
+        "top_spacing": "normal",
+        "ticker_time": 10,
+        "text_size": "normal",
+        "text": "<p><strong>FOR EXAMPLE <\/strong>— test of the announcement of some news<\/p>",
+        "show_icon": "svg",
+        "icon_name": "advertising_sm",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_spacing": "small",
+        "remove_bottom_spacing": false
+      }
+    },
+    "165443655509fc2f2b": {
+      "type": "image-with-text",
+      "blocks": {
+        "1654436555ddcbb6d6-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "1654436555ddcbb6d6-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Media with text"
+          }
+        },
+        "1654436555ddcbb6d6-2": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "1654436555ddcbb6d6-4": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "1654436555ddcbb6d6-0",
+        "1654436555ddcbb6d6-1",
+        "1654436555ddcbb6d6-2",
+        "1654436555ddcbb6d6-4"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "row_reverse": false,
+        "heading_aligment": "text-center",
+        "content_aligment": "align-self-center",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "1654436593ed86bebc": {
+      "type": "image-with-text",
+      "blocks": {
+        "1654436593de020857-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "1654436593de020857-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Media with text"
+          }
+        },
+        "1654436593de020857-2": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "1654436593de020857-4": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "1654436593de020857-0",
+        "1654436593de020857-1",
+        "1654436593de020857-2",
+        "1654436593de020857-4"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "row_reverse": true,
+        "heading_aligment": "text-center",
+        "content_aligment": "align-self-center",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "165443662014c3d10f": {
+      "type": "image-with-text",
+      "blocks": {
+        "1654436620b226b81b-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "1654436620b226b81b-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Media with text"
+          }
+        },
+        "1654436620b226b81b-2": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "1654436620b226b81b-3": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "1654436620b226b81b-4": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "1654436620b226b81b-0",
+        "1654436620b226b81b-1",
+        "1654436620b226b81b-2",
+        "1654436620b226b81b-3",
+        "1654436620b226b81b-4"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "row_reverse": false,
+        "heading_aligment": "text-center",
+        "content_aligment": "align-self-center",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "165407638219db233c": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "0bd220a6-c853-4914-9603-3dd18c9fcd60": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "1c37d03e-42d4-4a8c-8da0-a431227d3744": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "ae100884-e4c0-490b-89fa-29212a686d8a": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "0bd220a6-c853-4914-9603-3dd18c9fcd60",
+        "1c37d03e-42d4-4a8c-8da0-a431227d3744",
+        "ae100884-e4c0-490b-89fa-29212a686d8a"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Text columns with images",
+        "heading_aligment": "text-center",
+        "button_name": "Button",
+        "button_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-4",
+        "swipe_on_mobile": false,
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_heading_blurb": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "165407640731dd0cec": {
+      "type": "image-with-text-bg",
+      "blocks": {
+        "165407640719229da9-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "165407640719229da9-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Big banner on color background with variable height"
+          }
+        },
+        "165407640719229da9-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This section allows you to highlight the image with a half-height background color. You may adjust the height of the color part at section settings. Best works for the image with transparent background.<\/p>"
+          }
+        },
+        "165407640719229da9-3": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "165407640719229da9-0",
+        "165407640719229da9-1",
+        "165407640719229da9-2",
+        "165407640719229da9-3"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "column_reverse": true,
+        "texts_aligment": "text-center",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "play_background": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "content_width",
+        "background_spacing": "normal",
+        "background_bp": 70
+      }
+    },
+    "16544367585fa41da1": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "16544367586871e38e-0": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "16544367586871e38e-1": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "advertising",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "16544367586871e38e-2": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "phone",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "7bc4f058-d4e7-4fd0-8b31-0db6dd3208a8": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16544367586871e38e-0",
+        "16544367586871e38e-1",
+        "16544367586871e38e-2",
+        "7bc4f058-d4e7-4fd0-8b31-0db6dd3208a8"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Text columns with images",
+        "heading_aligment": "text-center",
+        "button_name": "Button",
+        "button_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-6 col-3",
+        "swipe_on_mobile": false,
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_heading_blurb": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16540757411b1ccd93",
+    "16540759200ff65b94",
+    "165443655509fc2f2b",
+    "1654436593ed86bebc",
+    "165443662014c3d10f",
+    "165407638219db233c",
+    "165407640731dd0cec",
+    "16544367585fa41da1"
+  ]
+}

@@ -1,0 +1,144 @@
+.submenu-container.submenu--megamenu{position: initial;}
+[class*="submenu-design__"]{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + var(--header__submenu__top-offset, 10px) + 10px);
+  left: 0;
+  width: 100%;
+  padding: 2px 0 27px 0;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  z-index: 9;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-button);
+  background: var(--color-simple-dropdown);
+  transition: opacity var(--duration-medium) ease,
+    		  top var(--duration-medium) ease,
+      		  left var(--duration-medium) ease,
+     		  visibility var(--duration-medium) ease;
+}
+[class*="submenu-design__"].submenu--no-radius{
+  border-radius: 0;
+}
+.tiles-menu .submenu--to-left:not(.submenu--megamenu) > [class*="submenu-design__"]{
+  left: -5px;
+}
+.list-menu--classic .submenu--to-left:not(:first-child):not(.submenu--megamenu) > [class*="submenu-design__"]{
+  left: -20px;
+}
+.list-menu--classic .submenu--to-left:first-child:not(.submenu--megamenu) > [class*="submenu-design__"]{
+  left: -20px;
+}
+  
+[class*="submenu-design__"]:after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: var(--header__submenu__top-offset, 10px);
+  position: absolute;
+  top: calc(var(--header__submenu__top-offset, 10px) * -1);
+  left: 0;
+}
+[class*="submenu-design__"] [class*="submenu-design__"]:after{content: unset;}
+[class*="submenu-design__"] li > .submenu__item{padding-top: 7px;}
+[class*="submenu-design__"] li{position: relative;}
+[class*="submenu-design__"] .submenu__item{
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-base);
+}
+[class*="submenu-design__"] .submenu__item svg{opacity: 0.3;}
+[class*="submenu-design__"] li:hover > .submenu__item{
+  text-decoration: underline;
+  color: var(--color-base);
+}
+[class*="submenu-design__"] li:hover > .submenu__item svg{opacity: 1;}
+.submenu-design__simple{
+  width: 232px;
+  padding: 12px 0 17px;
+}
+.submenu-container:hover > [class*="submenu-design__"]{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  top: calc(100% + var(--header__submenu__top-offset, 10px));
+}
+.megamenu-container{
+  position: absolute;
+  top: auto;
+  left:0;
+  width: 100%;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 10;
+}
+.submenu-container.submenu--megamenu .submenu-design__megamenu{
+  position: relative;
+  top: calc(var(--header__submenu__top-offset, 10px) + 10px);
+}
+.submenu-container.submenu--megamenu:hover .megamenu-container{
+  pointer-events: none;
+  visibility: visible;
+}
+.submenu-container.submenu--megamenu:hover .submenu-design__megamenu{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  top: calc(var(--header__submenu__top-offset, 10px));
+}
+.submenu-container .submenu-container [class*="submenu-design__"],
+.submenu-container .submenu-container [class*="submenu-design__"] .submenu-container [class*="submenu-design__"]{
+  top: calc(-20px + 8px);
+  left: 100%;
+}
+.submenu-container .submenu-container:hover [class*="submenu-design__"],
+.submenu-container .submenu-container [class*="submenu-design__"] .submenu-container:hover [class*="submenu-design__"]{
+  left: calc(100% - 10px);
+}
+.submenu-design__megamenu .submenu__item{
+  padding-left: 0;
+  padding-right: 0;
+}
+.submenu-design__megamenu[class*="page-"] .grid{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.submenu-container [class*=col-] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.megamenu-item{
+  margin-top: 18px;
+  color: var(--color-base);
+}
+.submenu-container .submenu__item > span{
+  position: relative;
+}
+.submenu-container .submenu__item > span:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  top: 100%;
+  background: var(--color-base);
+  transition: width var(--duration-medium) ease;
+}
+.submenu-container .submenu__item.body2 > span:before{
+  height: 1px;
+}
+.submenu-container li:hover .submenu__item,
+.submenu-container li .submenu__item.submenu__item--active{
+  text-decoration: none;
+}
+.submenu-container .submenu__item:hover > span:before,
+.submenu-container li:hover > .submenu__item > span:before,
+.submenu-container .submenu__item.submenu__item--active > span:before,
+.submenu-container li > .submenu__item.submenu__item--active > span:before{
+  width: 100%;
+}

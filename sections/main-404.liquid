@@ -1,0 +1,31 @@
+<style>
+  @media (min-width: 993px){
+    .main404{
+      margin-top: 200px;
+      margin-bottom: 200px;
+    }
+  }
+  @media (max-width: 992px){
+    .main404{
+      margin-top: 140px;
+      margin-bottom: 140px;
+    }
+  }
+</style>
+<div class="page-width main404">
+  <div class="grid justify-content-center">
+    <div class="col-st-12 col-6 text-center">
+      <p class="h5 mt0">
+        {{ 'templates.404.subtext' | t }}
+      </p>
+      <h1 class="mt20 mb0">
+        {{ 'templates.404.title' | t }}
+      </h1>
+      <div class="mt30">
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn_zoom">
+          <span>{{ 'general.continue_shopping' | t }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+{%- comment -%}
+    Create variant swatches
+
+    Accepts:
+	- product_card_product: {Object} Product Liquid object (optional)
+    - image_ratio: {String} Image ratio from section settings
+
+    Usage:
+    {% render 'product-card-swatches', product_card_product:product, image_ratio:image_ratio %}
+{%- endcomment -%}
+{%- assign swatches_design = settings.swatches_design -%}
+{%- if swatches_design != 'none' and settings.enable_color_swatches and product_card_product.has_only_default_variant == false -%}
+{%- liquid 
+    	assign variants_names = settings.variants_names
+        assign variants_names = '||' | append:variants_names | strip_newlines | downcase | strip | replace: ', ', ',' | replace: ',', '||' | append: '||'
+		assign css_colors = settings.css_colors
+		assign css_colors = ',' | append:css_colors | strip_newlines | downcase | strip | replace: ': ', ':'
+		assign option_name_index = -1
+
+        for option in product_card_product.options_with_values
+		assign option_name = '||' | append: option.name | append: '||' | downcase
+		if variants_names contains option_name
+        assign option_name = 'option' | append: forloop.index
+        assign option_name_index = forloop.index0
+		break
+		endif
+		endfor
+        if option_name_index > -1
+		capture get_product_images_from_variants_options
+		render 'get_product_images_from_variants_options', product:product_card_product, option_name:option_name, image_width:'240x'
+		endcapture
+        endif
+
+        if swatches_design == 'image'
+        assign grop_options_type = 'image'
+        assign grop_options_limit = 5
+        if settings.mobile_grid == "12"
+        assign mobile_grid = 5
+        else
+        assign mobile_grid = 4
+        endif
+        else
+        assign grop_options_type = 'color'
+        assign grop_options_limit = 6
+        if settings.mobile_grid == "12"
+        assign mobile_grid = 6
+        else
+        assign mobile_grid = 4
+        endif
+		endif
+	-%}
+
+{%- if option_name_index > -1 -%}
+<product-card__variants class="product-card__variants{% if settings.mobile_grid == "12" %} product-card__big{% endif %}"
+                        style="--grid-desktop:{{ grop_options_limit }}; --grid-mobile:{{mobile_grid}};"
+                        >
+  {%- assign values_size = product_card_product.options_with_values[option_name_index].values.size -%}
+  {%- for value in product_card_product.options_with_values[option_name_index].values limit:grop_options_limit -%}
+
+  {%- assign image_src = "" -%}
+  {%- assign variant_url = "" -%}
+
+  {%- if forloop.last == false or values_size <= grop_options_limit -%}
+  {%- assign color_swatch = ',' | append: value | append: ':' | downcase -%}
+  {%- assign image_src = get_product_images_from_variants_options | split: color_swatch | last | split: '_%%_' | first -%}
+  {%- assign image_original_size = image_src | replace: '240x.', '800x.' -%}
+  {%- assign color = css_colors | split: color_swatch | last | split: ',' | first -%}
+  {%- assign variant_url = get_product_images_from_variants_options | split: color_swatch | last | split: ',' | first | split: '_%%_' | last -%}
+  <a href="{{ variant_url }}" class="product-card__variant-item{% if values_size > mobile_grid and forloop.index >= mobile_grid %} hide-on-mobile{% endif %} clear-underline{% if grop_options_type == 'image' and image_src != blank %} product-card__variant-item--image{% endif %}"
+     aria-label="{{ value }}"
+     data-image-src="{{ image_original_size }}"
+     style="--background:{{ color }};">
+    {%- if grop_options_type == 'image' and image_src != blank -%}
+    <img src="{{ image_src }}" loading="lazy" style="--aspect-ratio: {{ image_ratio }};" alt="">
+    {%- elsif color != blank -%}
+    <div class="product-card__variant-item__color{% if settings.color_background == color %} product-card__variant-item__color-background{% endif %}"></div>
+    {%- else -%}
+    <div class="product-card__variant-item__button">{{ value }}</div>
+    {%- endif -%}
+  </a>
+  {%- endif -%}
+
+  {%- if forloop.last -%}
+  {%- assign count = values_size | minus: forloop.index0 -%}
+  {%- assign count_mobile = values_size | minus: mobile_grid | plus: 1 -%}
+  {%- assign count_text = '+' | append: count -%}
+  {%- assign count_mobile_text = '+' | append: count_mobile -%}
+  <a href="{{ product_card_product.url }}"
+     class="product-card__variant-count btn-medium btn-medium--icon btn-medium--type-small color-accent-to-base{% if count <= 1 %} hide-on-desktop{% endif %}{% if count_mobile <= 1 %} hide-on-mobile{% endif %}"
+     aria-label="{{ count_text }}"
+     >
+    <span class="product-card__variant-count__value" data-value="{{ count_text }}" data-value--mobile="{{ count_mobile_text }}" style="--height: 1px;"></span>
+  </a>
+  {%- endif -%}
+
+  {%- endfor -%}
+</product-card__variants>
+{%- endif -%}
+{%- endif -%}

@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "heading": "Collections",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-6 col-3",
+        "mobile_grid": "12",
+        "design_type": "text-below-image",
+        "sort": "alphabetical",
+        "image_ratio": "1",
+        "texts_aligment": "text-center",
+        "hover_underline": false,
+        "show_products_count": true,
+        "texts_aligment_mobile": "text-center-mobile",
+        "color_texts": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_button_hover": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

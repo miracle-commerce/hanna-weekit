@@ -1,0 +1,122 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width",
+        "show_heading": true,
+        "heading_aligment": "text-center"
+      }
+    },
+    "1654075249e69ecc23": {
+      "type": "accordion",
+      "blocks": {
+        "1654075249135de529-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "1654075249135de529-1": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "1654075249135de529-2": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1654075249135de529-0",
+        "1654075249135de529-1",
+        "1654075249135de529-2"
+      ],
+      "settings": {
+        "show_all_text_in_admin": true,
+        "subheading": "SUBHEADING",
+        "heading": "Accordion",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "disable_accordion": false,
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_heading_accordion": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_lines": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "1654075280a8e9ae1d": {
+      "type": "accordion",
+      "blocks": {
+        "16540752801d8c8287-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "16540752801d8c8287-1": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "16540752801d8c8287-2": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16540752801d8c8287-0",
+        "16540752801d8c8287-1",
+        "16540752801d8c8287-2"
+      ],
+      "settings": {
+        "show_all_text_in_admin": true,
+        "subheading": "SUBHEADING",
+        "heading": "Accordion",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "disable_accordion": false,
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_heading_accordion": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_lines": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1654075249e69ecc23",
+    "1654075280a8e9ae1d"
+  ]
+}

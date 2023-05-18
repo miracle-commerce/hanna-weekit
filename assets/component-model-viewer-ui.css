@@ -1,0 +1,65 @@
+.shopify-model-viewer-ui .shopify-model-viewer-ui__controls-area {
+  background: var(--color-body-background);
+  border-color: var(--color-lines-borders);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button {
+  color: var(--color-base);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:hover {
+  color: rgba(var(--color-base-rgb),0.3);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:active,
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--control.focus-visible:focus {
+  color: var(--color-lines-borders);
+  background: var(--color-body-background);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--control:not(:last-child):after {
+  border-color: var(--color-lines-borders);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster {
+  position: relative;
+  border-radius: 50%;
+  color: var(--color-base);
+  background: var(--color-body-background);
+  border-color: var(--color-lines-borders);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--duration-short) ease, color var(--duration-short) ease;
+}
+
+.shopify-model-viewer-ui .shopify-model-viewer-ui__poster-control-icon {
+  display: none;
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:before{
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: var(--color-base);
+  top: 50%
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--duration-short) ease, color var(--duration-short) ease;
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:after{
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 20px;
+  background: var(--color-body-background);
+  top: 50%
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--duration-short) ease, color var(--duration-short) ease;
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:hover:before,
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus:before {
+  transform: translate(-50%, -50%) scale(0.91);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:hover:after,
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus:after {
+  transform: translate(-50%, -50%) scale(0.91);
+}
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:hover,
+.shopify-model-viewer-ui .shopify-model-viewer-ui__button--poster:focus {
+  transform: translate(-50%, -50%) scale(1.1);
+}

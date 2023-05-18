@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "top_spacing": "none",
+        "width": "page-width",
+        "show_heading": true,
+        "heading_aligment": "text-center"
+      }
+    },
+    "1652956484a27730e2": {
+      "type": "slideshow",
+      "blocks": {
+        "91bf4946-4f52-412a-8bb0-cd01a2e4d3c9": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "91bf4946-4f52-412a-8bb0-cd01a2e4d3c9"
+      ],
+      "settings": {
+        "top_spacing": "none",
+        "bottom_spacing": "normal",
+        "width": "page-width",
+        "image_size": "fullscreen",
+        "desktop_image_height": 440,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    },
+    "page-icons": {
+      "type": "page-icons",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1652956484a27730e2",
+    "page-icons"
+  ]
+}

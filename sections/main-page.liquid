@@ -1,0 +1,84 @@
+<div class="top-spacing-{{ section.settings.top_spacing }} {{ section.settings.width }}">
+  <div class="grid justify-content-center">
+    <div class="col-md-12 col-6">
+      {%- if section.settings.show_heading -%}<h1 class="mt0 {% if page.content == blank %}mb0{% endif %} page-section__bottom-pading {{ section.settings.heading_aligment }}">{{ page.title }}</h1>{%- endif -%}
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.main-page.name",
+  	"tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:sections.general.settings.width.options__boxed.label"
+          },
+          {
+            "value": "page-wide",
+            "label": "t:sections.general.settings.width.options__wide.label"
+          }
+        ],
+        "default": "page-width",
+        "label": "t:sections.general.settings.width.label",
+		"info": "t:sections.general.settings.width.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_heading",
+        "default": true,
+        "label": "t:sections.main-page.settings.show_heading.label"
+      },
+	  {
+		"type": "select",
+		"id": "heading_aligment",
+		"options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+		],
+		"default": "text-center",
+		"label": "t:sections.general.settings.heading_aligment.label"
+	  }
+    ]
+  }
+{% endschema %}

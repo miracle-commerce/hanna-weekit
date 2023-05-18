@@ -1,0 +1,20 @@
+{%- comment -%}
+    Renders a product card
+
+    Accepts:
+	- aligment: {String} Css alignment class style
+	- length: {Integer} Slider count
+    Usage:
+
+    {%- render "slider-buttons",
+    			alignment:alignment,
+				length:length -%}
+{%- endcomment -%}
+<div class="slider__buttons__container {{ alignment }}">
+  {%- for i in (1..length) -%}
+  <button type="button"
+          class="slider__button{% if forloop.index == 1 %} slider__button--current{% endif %}"
+          aria-label="{{ 'general.aria_label.slide' | t }} {{ forloop.index }}"
+          ></button>
+  {%- endfor -%}
+</div>

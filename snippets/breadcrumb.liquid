@@ -1,0 +1,41 @@
+{%- comment -%}
+A Breadcrumb navigation, also known as breadcrumbs, can reduce the number of actions a visitor needs to take in order to navigate to a higher-level page,
+and improve the discoverability of a website’s sections and pages. Like all Shopify based navigations, it uses the linklist object.
+{%- endcomment -%}
+
+{%- if template != 'index' and settings.enable_breadcrumb -%}
+<div class="breadcrumb">
+  <div class="{% if header contains 'data-header-wide' %}page-wide{% else %}page-width{% endif %} body3">
+    <ul class="unstyle-ul">
+      <li><a href="{{ routes.root_url }}" class="clear-underline color-base animation-underline animation-underline--thin">{{ 'general.breadcrumb.main_page_name' | t }}</a>{% render "icon-arrow-right-small" %}</li>
+      {%- if template contains 'product' -%}
+      {%- if collection -%}
+      {%- if collection.handle -%}
+      {%- capture url -%}/collections/{{ collection.handle }}{%- endcapture -%}
+      <li>{{ collection.title | link_to: url | replace:'<a','<a class="clear-underline color-base animation-underline animation-underline--thin"' }}{% render "icon-arrow-right-small" %}</li>
+      {%- endif -%}
+      {%- endif -%}
+
+      <li><span>{{ product.title }}</span></li>
+
+      {%- elsif template contains 'collection' and collection.handle -%}
+      {%- if current_tags -%}
+      {%- capture url -%}/collections/{{ collection.handle }}{%- endcapture -%}
+      <li>{{ collection.title | link_to: url | replace:'<a','<a class="clear-underline color-base animation-underline animation-underline--thin"' }}{% render "icon-arrow-right-small" %}</li>
+      {%- else -%}
+      <li>{{ collection.title | capitalize }}</li>
+      {%- endif -%}
+
+      {%- elsif template == 'article' -%}
+      <li><a href="{{ blog.url }}" class="clear-underline color-base animation-underline animation-underline--thin">{{ blog.title }}</a>{% render "icon-arrow-right-small" %}</li>
+      <li>{{ article.title }}</li>
+
+      {%- elsif template contains 'page' -%}
+      <li>{{ page.title }}</li>
+      {%- else -%}
+      <li>{{ page_title }}</li>
+      {%- endif -%}
+    </ul>
+  </div>
+</div>
+{%- endif -%}

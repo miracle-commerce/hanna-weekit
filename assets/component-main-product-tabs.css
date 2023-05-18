@@ -1,0 +1,18 @@
+.product-page-section .chm-toggle__button{
+  display: flex;
+  align-items: center;
+  margin-top: var(--padding4);
+  margin-bottom: var(--padding2);
+  padding: 0;
+}
+.chm-toggle__button ~ .chm-toggle__button:empty + *{
+  margin-top: var(--padding4);
+}
+.chm-toggle__button:empty{
+  display: none;
+}
+.chm-toggle__button svg{
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}

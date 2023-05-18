@@ -1,0 +1,14 @@
+<nav class="list-menu {{ animation }}">
+  <ul class="unstyle-ul list-menu--inline">
+
+    {%- for link in linklist -%}
+
+    <li class="list-menu--hover">
+      <a href="{{ link.url }}" class="body2 list-menu__item{% if link.current %} list-menu__item--active{% endif %}">
+        <span>{{ link.title | escape }}</span>
+      </a>
+    </li>
+
+    {%- endfor -%}
+  </ul>
+</nav>

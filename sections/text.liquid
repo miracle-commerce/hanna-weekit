@@ -1,0 +1,336 @@
+{%- capture section_styles -%}
+{%- if section.settings.background != 'hide' -%}
+{%- liquid
+	capture color
+	if section.settings.background == 'color'
+    echo section.settings.color_background
+    else
+    echo section.settings.gradient
+    endif
+    endcapture
+-%}
+{%- if color != "rgba(0,0,0,0)" and color != blank -%}
+#text-{{ section.id }}{
+  --color-section-background: {{ color }};
+}
+{%- endif -%}
+{%- if section.settings.remove_bottom_spacing -%}
+#text-{{ section.id }}.section-background,
+#text-{{ section.id }} .section-background{
+  padding-bottom: 0;
+}
+{%- endif -%}
+{%- endif -%}
+
+{%- if section.settings.color_description != "rgba(0,0,0,0)" -%}
+#text-{{ section.id }} .text__description{
+  color:{{section.settings.color_description}};
+}
+{%- endif -%}
+{%- if section.settings.color_button != "rgba(0,0,0,0)" -%}
+{%- assign accent_brightness = section.settings.color_button | color_extract: 'lightness' -%}
+#text-{{ section.id }} .btn{
+  --background: {{ section.settings.color_button }};
+  {%- if accent_brightness < 50 -%}
+  --color: var(--auto-text-color-button-light);
+  {%- else -%}
+  --color: var(--auto-text-color-button-dark);
+  {%- endif -%}
+}
+{%- endif -%}
+{%- endcapture -%}
+{%- if section_styles != blank -%}
+<style>{{ section_styles }}</style>
+{%- endif -%}
+
+<div id="text-{{ section.id }}" class="top-spacing-{{ section.settings.top_spacing }}{% if section.settings.background != 'hide' and section.settings.background_width == "fullwidth" %} section-background section-background--{{ section.settings.background_spacing }}{% endif %}"
+     data-section-name="text">
+  <div class="{{ section.settings.width }}">
+    {% if section.settings.background != 'hide' and section.settings.background_width == "content_width" %}<div class="section-background section-background--{{ section.settings.background_spacing }} border__radius">{%- endif -%}
+    
+    {%- liquid
+      if section.settings.color_subheading != "rgba(0,0,0,0)"
+      assign color_subheading = ' style="--color-subheading:' | append: section.settings.color_subheading | append: ';"'
+      endif
+      if section.settings.color_heading != "rgba(0,0,0,0)"
+      assign color_heading = ' style="color:' | append: section.settings.color_heading | append: ';"'
+      endif
+    -%}
+    <div class="grid justify-content-center">
+      <div class="col-st-12 col-6 mt--first-child-0 mb--last-child-0 {{ section.settings.texts_aligment }}">
+        {%- if section.settings.subheading != blank -%}<div class="subheading h5"{{ color_subheading }}>{{ section.settings.subheading }}</div>{%- endif -%}
+        {%- if section.settings.heading != blank -%}
+        {{ '<' | append: section.settings.heading_tag }} class="mt0 mb15"{{ color_heading }}>
+        {{ section.settings.heading }}
+        {{ '</' | append: section.settings.heading_tag }}>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+        <div class="mt0 text__description mt--first-child-0{% if section.settings.description_size != "normal" %} {{ section.settings.description_size }}{% endif %}">
+          {{ section.settings.description }}
+        </div>
+        {%- endif -%}
+        {%- if section.settings.button_name != blank -%}
+        <div class="mt30">
+          <a{% if section.settings.button_url != blank %} href="{{ section.settings.button_url }}"{% endif %}
+             class="btn btn_zoom btn--secondary w-full-sp"
+             {% if section.settings.button_url == blank %} aria-disabled="true"{% endif %}>
+            <span>{{ section.settings.button_name }}</span>
+          </a>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+    
+    {% if section.settings.background != 'hide' and section.settings.background_width == "content_width" %}</div>{%- endif -%}
+    
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text",
+  	"tag": "section",
+    "settings": [
+	  {
+		"type": "text",
+		"id": "subheading",
+		"default": "SUBHEADING",
+		"label": "t:sections.general.settings.subheading.label"
+	  },
+	  {
+		"type": "text",
+		"id": "heading",
+		"default": "Text",
+		"label": "t:sections.general.settings.heading.label"
+	  },
+      {
+        "type": "richtext",
+        "id": "description",
+        "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "label": "t:sections.general.settings.description.label"
+      },
+      {
+        "type": "header",
+		"content": "t:sections.text.settings.header_button.content"
+      },
+	  {
+		"type": "text",
+		"id": "button_name",
+		"default": "Button",
+		"label": "t:sections.text.settings.button_name.label"
+	  },
+      {
+        "type": "url",
+        "id": "button_url",
+		"label": "t:sections.text.settings.button_url.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:sections.general.settings.width.options__boxed.label"
+          },
+          {
+            "value": "page-wide",
+            "label": "t:sections.general.settings.width.options__wide.label"
+          }
+        ],
+        "default": "page-width",
+        "label": "t:sections.general.settings.width.label",
+		"info": "t:sections.general.settings.width.info"
+      },
+      {
+        "type": "select",
+        "id": "texts_aligment",
+        "options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+        ],
+        "default": "text-center",
+        "label": "t:sections.general.settings.texts_aligment.label"
+      },
+	  {
+		"type": "select",
+		"id": "heading_tag",
+		"options": [
+		  {
+			"value": "h1",
+			"label": "t:sections.general.settings.heading_tag.options__h1.label"
+		  },
+		  {
+			"value": "h2",
+			"label": "t:sections.general.settings.heading_tag.options__small.label"
+		  }
+		],
+		"default": "h2",
+		"label": "t:sections.general.settings.heading_tag.label"
+	  },
+	  {
+		"type": "select",
+		"id": "description_size",
+		"options": [
+		  {
+			"value": "normal",
+			"label": "t:sections.general.settings.description_size.options__normal.label"
+		  },
+		  {
+			"value": "body2",
+			"label": "t:sections.general.settings.description_size.options__small.label"
+		  }
+		],
+		"default": "normal",
+		"label": "t:sections.general.settings.description_size.label"
+	  },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_colors.content"
+      },
+      {
+        "type": "color",
+        "id": "color_subheading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.subheading.label"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.heading.label"
+      },
+	  {
+		"type": "color",
+		"id": "color_description",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.description.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_button",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.text.settings.header_button.content"
+	  },
+      {
+        "type": "header",
+		"content": "t:sections.general.settings.header_background.content"
+      },
+	  {
+		"type": "select",
+		"id": "background",
+		"options": [
+		  {
+			"value": "hide",
+			"label": "t:sections.general.settings.background.options__hide.label"
+		  },
+		  {
+			"value": "color",
+			"label": "t:sections.general.settings.background.options__color.label"
+		  },
+		  {
+			"value": "gradient",
+			"label": "t:sections.general.settings.background.options__gradient.label"
+		  }
+		],
+		"default": "hide",
+		"label": "t:sections.general.settings.background.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_background",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.color_background.label"
+	  },
+      {
+		"type": "color_background",
+        "id": "gradient",
+		"label": "t:sections.general.settings.gradient.label"
+      },
+	  {
+		"type": "select",
+		"id": "background_width",
+		"options": [
+		  {
+			"value": "fullwidth",
+			"label": "t:sections.general.settings.background_width.options__1.label"
+		  },
+		  {
+			"value": "content_width",
+			"label": "t:sections.general.settings.background_width.options__2.label"
+		  }
+		],
+		"default": "fullwidth",
+		"label": "t:sections.general.settings.background_width.label"
+	  },
+	  {
+		"type": "select",
+		"id": "background_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.background_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.background_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.background_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.background_spacing.options__normal.label"
+          }
+        ],
+		"default": "normal",
+		"label": "t:sections.general.settings.background_spacing.label"
+	  },
+      {
+        "type": "checkbox",
+        "id": "remove_bottom_spacing",
+        "default": false,
+		"label": "t:sections.general.settings.remove_bottom_spacing.label"
+      }
+	],
+    "presets": [
+      {
+      	"name": "Text"
+      }
+    ]
+  }
+{% endschema %}

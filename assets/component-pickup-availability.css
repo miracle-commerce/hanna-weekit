@@ -1,0 +1,47 @@
+.product__pickup-availabilities{
+  display: block;
+  margin-top: var(--padding2);
+}
+
+.pickup-availability-preview{
+  align-items: flex-start;
+  display: flex;
+  gap: 10px;
+  padding: 20px 20px 28px;
+  background: var(--color-secondary-background);
+  border-radius: var(--radius);
+}
+.pickup-availability-preview p{
+  margin-top: 6px;
+}
+.pickup-availability-preview p:first-child{
+  margin-top: 2px;
+}
+.pickup-availability-button{
+  margin-top: 10px;
+  text-align: left;
+}
+.pickup-availability-preview-modal{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: var(--font-body-bold-weight);
+}
+.pickup-availability-preview-modal svg{
+  flex: 0 0 auto;
+}
+.pickup-availability-preview-modal span{
+  margin-top: 2px;
+}
+.pickup-availability-list{
+  margin-top: var(--padding2);
+}
+.pickup-availability-list__item{
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--padding2);
+  border-top: 1px solid var(--color-lines-borders);
+}
+.pickup-availability-list__item:not(:first-child){
+  margin-top: var(--padding2);
+}

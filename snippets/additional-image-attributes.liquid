@@ -1,0 +1,10 @@
+{%- comment -%}
+    Additional image attributes
+	Show image after image upload
+
+    Usage:
+    <img 
+         {% render "additional-image-attributes" %}
+         >
+{%- endcomment -%}
+{% if settings.animate_image_show %}class="image-show--fadein" onload="this.classList.add('image-loaded');"{% endif %}

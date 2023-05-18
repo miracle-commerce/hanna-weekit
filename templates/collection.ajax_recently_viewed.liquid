@@ -1,0 +1,102 @@
+{% comment %}
+options[0] - texts_aligment: text-left, text-center
+options[1] - swipe_on_mobile: true / false
+options[2] - page_width: page-width / page-wide
+options[3] - grid: string
+options[4] - mobile_grid: 12 / 6
+options[5] - image_ratio: string
+options[6] - show_button_quickview: true / false
+options[7] - show_badge_sold_out: true / false
+options[8] - show_badge_on_sale: true / false
+options[9] - show_badge_feature: true / false
+options[10] - show_secondary_image: true / false
+options[11] - show_vendor: true / false
+options[12] - product_name_size: body2 / normal
+options[13] - hover_underline: true / false
+options[14] - truncate_product_name: true / false
+options[15] - show_price: true / false
+options[16] - section_id: section.id
+options[17] - heading_aligment: text-left, text-center
+options[18] - product_limit: Number
+{% endcomment %}
+
+{% layout none %}
+
+{%- assign _options = current_tags | first | split: '||' | last -%}
+{%- assign options = _options | split: "___" -%}
+{%- assign handles = current_tags | first | replace: _options, "" | remove_last: '||' | split: '||' -%}
+
+{%- assign handles_size = handles.size -%}
+
+{%- assign page_grid = options[3] | replace: "--", " " -%}
+{%- assign image_ratio = options[5] | replace: "--", ", " -%}
+{%- assign product_limit = options[18] | plus: "0" -%}
+{%- if options[1] == "true" -%}{%- assign swipe_on_mobile = true -%}{%- else -%}{%- assign swipe_on_mobile = false -%}{%- endif -%}
+{%- if options[6] == "true" -%}{%- assign show_button_quickview = true -%}{%- else -%}{%- assign show_button_quickview = false -%}{%- endif -%}
+{%- if options[7] == "true" -%}{%- assign show_badge_sold_out = true -%}{%- else -%}{%- assign show_badge_sold_out = false -%}{%- endif -%}
+{%- if options[8] == "true" -%}{%- assign show_badge_on_sale = true -%}{%- else -%}{%- assign show_badge_on_sale = false -%}{%- endif -%}
+{%- if options[9] == "true" -%}{%- assign show_badge_feature = true -%}{%- else -%}{%- assign show_badge_feature = false -%}{%- endif -%}
+{%- if options[10] == "true" -%}{%- assign show_secondary_image = true -%}{%- else -%}{%- assign show_secondary_image = false -%}{%- endif -%}
+{%- if options[11] == "true" -%}{%- assign show_vendor = true -%}{%- else -%}{%- assign show_vendor = false -%}{%- endif -%}
+{%- if options[13] == "true" -%}{%- assign hover_underline = true -%}{%- else -%}{%- assign hover_underline = false -%}{%- endif -%}
+{%- if options[14] == "true" -%}{%- assign truncate_product_name = true -%}{%- else -%}{%- assign truncate_product_name = false -%}{%- endif -%}
+{%- if options[15] == "true" -%}{%- assign show_price = true -%}{%- else -%}{%- assign show_price = false -%}{%- endif -%}
+
+<slider-component class="grid el_mt_40 {{ options[0] }}{% if swipe_on_mobile %} slider slider--phone{% endif %}{% if options[17] == "text-center" %} justify-content-center--no-phone{% endif %}">
+  {%- for handle in handles limit: product_limit -%}
+  {%- assign product = all_products[handle] -%}
+  <div class="col-sp-{{ options[4] }} {{ page_grid }}{% if swipe_on_mobile %} slider__slide{% endif %}">
+    {%- liquid
+        if options[2] == "page-wide"
+        assign page_is_wide = true
+        else
+        assign page_is_wide = false
+        endif
+    -%}
+    {%- render "product-card",
+        product_card_product: product,
+        settings_image_ratio: image_ratio,
+        show_button_quickview: show_button_quickview,
+        show_badge_sold_out: show_badge_sold_out,
+        show_badge_on_sale: show_badge_on_sale,
+        show_badge_feature: show_badge_feature,
+        show_secondary_image: show_secondary_image,
+        show_vendor: show_vendor,
+        show_type: false,
+        product_name_size: options[12],
+        hover_underline: hover_underline,
+        truncate_product_name: truncate_product_name,
+        show_rating: false,
+        show_price: show_price,
+        button_type_product: "hide",
+        page_is_wide: page_is_wide,
+        section_id: options[16]
+    -%}
+  </div>
+  {%- endfor -%}
+</slider-component>
+
+{%- assign at_most = handles_size | at_most: product_limit -%}
+{%- liquid
+    if options[4] == "6"
+    assign devider = 2.0
+    else
+    assign devider = 1.0
+    endif
+-%}
+{%- assign length = at_most | divided_by: devider | ceil -%}
+{%- if swipe_on_mobile and length > 1 -%}
+<div class="mt40 grid slider__buttons slider--phone">
+  <div class="col-12">
+    {%- liquid
+        capture alignment
+        if options[17] == "text-center"
+        echo "justify-content-center"
+        endif
+        endcapture
+        render "slider-buttons", alignment:alignment, length:length
+    -%}
+  </div>
+</div>
+{%- endif -%}
+

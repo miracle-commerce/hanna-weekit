@@ -1,0 +1,40 @@
+{%- assign badges = section.blocks | where: "type", "badges" -%}
+{%- for block in badges -%}
+{%- if fixed -%}
+<div class="badge__menu__fixed">
+{%- endif -%}
+{%- assign menu_item_name = ',' | append:item_name | append:',' | downcase -%}
+{%- for i in (1..5) -%}
+{%- assign names = 'badge_items_' | append: i -%}
+{%- assign names = ',' | append: block.settings[names] | append:',' | downcase | strip_newlines | replace:', ',',' | replace:' ,',',' -%}
+{%- if names contains menu_item_name -%}
+{%- assign text = 'badge_text_' | append: i -%}
+{%- assign text = block.settings[text] -%}
+{%- assign color = 'badge_color_' | append: i -%}
+{%- assign color = block.settings[color] -%}
+{%- liquid
+  assign style = ''
+  if color != "rgba(0,0,0,0)"
+  assign accent_brightness = color | color_extract: 'lightness'
+  if accent_brightness < 50
+  assign text_color = "--color-badge-1-text: #ffffff"
+  else
+  
+  assign accent_brightness = settings.color_base | color_extract: 'lightness'
+  if accent_brightness < 50
+  assign text_color = "--color-badge-1-text:" | append:settings.color_base | append: ";"
+  else
+  assign text_color = "--color-badge-1-text: #000000;"
+  endif
+  
+  endif
+  assign style = 'style="--color-badge-1:' | append: color | append: ';' | append: text_color | append: '"'
+  endif
+-%}
+<div class="badge badge--small badge__menu"{% if color != 'rgba(0,0,0,0)' %} {{ style }}{% endif %}>{{ text }}</div>
+{%- endif -%}
+{%- endfor -%}
+{%- if fixed -%}
+</div>
+{%- endif -%}
+{%- endfor -%}

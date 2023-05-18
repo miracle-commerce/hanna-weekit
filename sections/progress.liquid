@@ -1,0 +1,430 @@
+{%- if settings.animate_content_show -%}
+<link rel="stylesheet" href="{{ 'section-progress.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'section-progress.css' | asset_url | stylesheet_tag }}</noscript>
+{%- else -%}
+{{ 'section-progress.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- capture section_styles -%}
+{%- if section.settings.background != 'hide' -%}
+{%- liquid
+	capture color
+	if section.settings.background == 'color'
+    echo section.settings.color_background
+    else
+    echo section.settings.gradient
+    endif
+    endcapture
+-%}
+{%- if color != "rgba(0,0,0,0)" and color != blank -%}
+#progress-{{ section.id }}{
+  --color-section-background: {{ color }};
+}
+{%- endif -%}
+{%- if section.settings.remove_bottom_spacing -%}
+#progress-{{ section.id }}.section-background,
+#progress-{{ section.id }} .section-background{
+  padding-bottom: 0;
+}
+{%- endif -%}
+{%- endif -%}
+{%- if section.settings.color_circle_bar != "rgba(0,0,0,0)" -%}
+#progress-{{ section.id }} .progress{
+--color-accent:{{ section.settings.color_circle_bar }};
+}
+{%- endif -%}
+{%- if section.settings.color_description != "rgba(0,0,0,0)" -%}
+#progress-{{ section.id }} .progress__text{
+color:{{ section.settings.color_description }};
+}
+{%- endif -%}
+{%- endcapture -%}
+{%- if section_styles != blank -%}
+<style>{{ section_styles }}</style>
+{%- endif -%}
+
+<div id="progress-{{ section.id }}" class="top-spacing-{{ section.settings.top_spacing }}{% if section.settings.background != 'hide' and section.settings.background_width == "fullwidth" %} section-background section-background--{{ section.settings.background_spacing }}{% endif %}"
+     data-section-name="progress">
+  <div class="{{ section.settings.width }} mb--last-child-0">
+    {% if section.settings.background != 'hide' and section.settings.background_width == "content_width" %}<div class="section-background section-background--{{ section.settings.background_spacing }} border__radius mb--last-child-0">{%- endif -%}
+    
+    {%- render "section-heading" section:section -%}
+    
+    {%- if section.blocks.size > 0 -%}
+    <div class="grid el_mt_60 {{ section.settings.texts_aligment }}">
+      
+      {%- for block in section.blocks -%}
+      <div class="col-sp-6 {{ section.settings.grid }}" {{ block.shopify_attributes }}>
+        <div class="progress mb--last-child-0 {{ section.settings.texts_aligment }} hover-area">
+          {%- assign duration_full = 1300 -%}
+          {%- liquid
+            assign percent = block.settings.progress
+            assign deg = 3.6 | times: percent | round
+            if deg > 180
+            assign left = deg
+            assign right = 180
+            assign scale_time = deg | divided_by: 180.00
+            assign duration_right = duration_full | divided_by: scale_time | round
+            assign duration_left = duration_full | minus: duration_right
+            else
+            assign right = deg
+            assign duration_right = duration_full
+            assign duration_left = 0
+            endif
+          -%}
+          <noscript>
+            <div class="progress-circle progress--animated" data-duration="{{ duration_full }}">
+              <div class="progress__container"
+                   {% if deg > 180 %} data-anim="base container"{% endif %}
+                   style="--animation-first-delay:{{ duration_right }}ms;--animation-second-delay:{{ duration_left }}ms;">
+                {%- if deg > 180 -%}
+                <div class="progress__circle" data-anim="base left" style="--deg-left:{{ left }}deg;"></div>
+                {%- endif -%}
+                <div class="progress__circle" data-anim="base right" style="--deg-right:{{ right }}deg;"></div>
+              </div>
+              <span>{{ block.settings.progress }}%</span>
+            </div>
+          </noscript>
+          <progress-circle data-duration="{{ duration_full }}">
+            <div class="progress__container"
+                 {% if deg > 180 %} data-anim="base container"{% endif %}
+                 style="--animation-first-delay:{{ duration_right }}ms;--animation-second-delay:{{ duration_left }}ms;">
+              {%- if deg > 180 -%}
+              <div class="progress__circle" data-anim="base left" style="--deg-left:{{ left }}deg;"></div>
+              {%- endif -%}
+              <div class="progress__circle" data-anim="base right" style="--deg-right:{{ right }}deg;"></div>
+            </div>
+            <span class="progress__percent" data-percent="{{ block.settings.progress }}">0</span><span>%</span>
+          </progress-circle>
+          {%- if block.settings.text != blank -%}
+          <div class="mt20 progress__text{% if section.settings.description_size != "normal" %} {{ section.settings.description_size }}{% endif %}">
+            {{ block.settings.text }}
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- endfor -%}
+
+    </div>
+    {%- endif -%}
+    {% if section.settings.background != 'hide' and section.settings.background_width == "content_width" %}</div>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.progress.name",
+  	"tag": "section",
+    "settings": [
+	  {
+		"type": "text",
+		"id": "subheading",
+		"default": "SUBHEADING",
+		"label": "t:sections.general.settings.subheading.label"
+	  },
+	  {
+		"type": "text",
+		"id": "heading",
+		"default": "Progress circle columns",
+		"label": "t:sections.general.settings.heading.label"
+	  },
+	  {
+		"type": "select",
+		"id": "heading_aligment",
+		"options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+		],
+		"default": "text-center",
+		"label": "t:sections.general.settings.heading_aligment.label"
+	  },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:sections.general.settings.width.options__boxed.label"
+          },
+          {
+            "value": "page-wide",
+            "label": "t:sections.general.settings.width.options__wide.label"
+          }
+        ],
+        "default": "page-width",
+        "label": "t:sections.general.settings.width.label",
+		"info": "t:sections.general.settings.width.info"
+      },
+      {
+        "type": "select",
+        "id": "grid",
+        "options": [
+          {
+            "value": "col-6",
+            "label": "t:sections.general.settings.grid.options__2.label"
+          },
+          {
+            "value": "col-4",
+            "label": "t:sections.general.settings.grid.options__3.label"
+          },
+          {
+            "value": "col-md-6 col-3",
+            "label": "t:sections.general.settings.grid.options__4.label"
+          },
+          {
+            "value": "col-md-4 col-one_fifth",
+            "label": "t:sections.general.settings.grid.options__5.label"
+          },
+          {
+            "value": "col-md-4 col-2",
+            "label": "t:sections.general.settings.grid.options__6.label"
+          }
+        ],
+        "default": "col-md-6 col-3",
+        "label": "t:sections.general.settings.grid.label"
+      },
+      {
+        "type": "header",
+		"content": "t:sections.progress.settings.header_circle_bar.content"
+      },
+      {
+        "type": "select",
+        "id": "texts_aligment",
+        "options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+		],
+		"default": "text-center",
+		"label": "t:sections.general.settings.texts_aligment.label"
+      },
+	  {
+		"type": "select",
+		"id": "description_size",
+		"options": [
+		  {
+			"value": "normal",
+			"label": "t:sections.general.settings.description_size.options__normal.label"
+		  },
+		  {
+			"value": "body2",
+			"label": "t:sections.general.settings.description_size.options__small.label"
+		  }
+		],
+		"default": "normal",
+		"label": "t:sections.progress.settings.description_size.label"		
+	  },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_colors.content"
+      },
+      {
+        "type": "color",
+        "id": "color_subheading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.subheading.label"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.heading.label"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:sections.progress.settings.paragraph_circle_bar.content"
+      },
+	  {
+		"type": "color",
+		"id": "color_circle_bar",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.progress.settings.color_circle_bar.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_description",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.progress.settings.color_description.label"
+	  },
+      {
+        "type": "header",
+		"content": "t:sections.general.settings.header_background.content"
+      },
+	  {
+		"type": "select",
+		"id": "background",
+		"options": [
+		  {
+			"value": "hide",
+			"label": "t:sections.general.settings.background.options__hide.label"
+		  },
+		  {
+			"value": "color",
+			"label": "t:sections.general.settings.background.options__color.label"
+		  },
+		  {
+			"value": "gradient",
+			"label": "t:sections.general.settings.background.options__gradient.label"
+		  }
+		],
+		"default": "hide",
+		"label": "t:sections.general.settings.background.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_background",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.color_background.label"
+	  },
+      {
+		"type": "color_background",
+        "id": "gradient",
+		"label": "t:sections.general.settings.gradient.label"
+      },
+	  {
+		"type": "select",
+		"id": "background_width",
+		"options": [
+		  {
+			"value": "fullwidth",
+			"label": "t:sections.general.settings.background_width.options__1.label"
+		  },
+		  {
+			"value": "content_width",
+			"label": "t:sections.general.settings.background_width.options__2.label"
+		  }
+		],
+		"default": "fullwidth",
+		"label": "t:sections.general.settings.background_width.label"
+	  },
+	  {
+		"type": "select",
+		"id": "background_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.background_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.background_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.background_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.background_spacing.options__normal.label"
+          }
+        ],
+		"default": "normal",
+		"label": "t:sections.general.settings.background_spacing.label"
+	  },
+      {
+        "type": "checkbox",
+        "id": "remove_bottom_spacing",
+        "default": false,
+		"label": "t:sections.general.settings.remove_bottom_spacing.label"
+      }
+	],
+    "blocks": [
+      {
+        "type": "item",
+        "name": "t:sections.progress.blocks.item.name",
+        "settings": [
+          {
+            "type": "range",
+            "id": "progress",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "t:sections.progress.blocks.item.settings.progress.label",
+            "default": 70
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+			"default": "<p>Give customers details about the circle bar<\/p>",
+            "label": "t:sections.progress.blocks.item.settings.text.label"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+      	"name": "t:sections.progress.presets.name",
+        "blocks": [
+          {
+            "type": "item",
+            "settings": {
+              "progress": 40,
+              "text": "<p>Give customers details about the circle bar<\/p>"
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "progress": 76,
+              "text": "<p>Give customers details about the circle bar<\/p>"
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "progress": 70,
+              "text": "<p>Give customers details about the circle bar<\/p>"
+            }
+          },
+          {
+            "type": "item",
+            "settings": {
+              "progress": 91,
+              "text": "<p>Give customers details about the circle bar<\/p>"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

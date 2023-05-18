@@ -1,0 +1,391 @@
+{%- if settings.animate_content_show -%}
+<link rel="stylesheet" href="{{ 'component-toggle.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-toggle.css' | asset_url | stylesheet_tag }}</noscript>
+{%- else -%}
+{{ 'component-toggle.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- capture section_styles -%}
+{%- if section.settings.background != 'hide' -%}
+{%- if section.settings.background_width == "content_width" -%}
+@media (min-width: 993px){
+ #accordion-{{ section.id }} .section-background{
+   padding-left: 0;
+   padding-right: 0;
+  }
+}
+{%- endif -%}
+{%- liquid
+	capture color
+	if section.settings.background == 'color'
+    echo section.settings.color_background
+    else
+    echo section.settings.gradient
+    endif
+    endcapture
+-%}
+{%- if color != "rgba(0,0,0,0)" and color != blank -%}
+#accordion-{{ section.id }}{
+  --color-section-background: {{ color }};
+}
+{%- endif -%}
+{%- if section.settings.remove_bottom_spacing -%}
+#accordion-{{ section.id }}.section-background,
+#accordion-{{ section.id }} .section-background{
+  padding-bottom: 0;
+}
+{%- endif -%}
+{%- endif -%}
+
+{%- if section.settings.color_heading_accordion != "rgba(0,0,0,0)" -%}
+#accordion-{{ section.id }} .chm-toggle__button{
+  --color-base:{{section.settings.color_heading_accordion}};
+}
+{%- endif -%}
+{%- if section.settings.color_text != "rgba(0,0,0,0)" -%}
+#accordion-{{ section.id }} .chm-toggle__content{
+  color:{{section.settings.color_text}};
+}
+{%- endif -%}
+{%- if section.settings.color_lines != "rgba(0,0,0,0)" -%}
+#accordion-{{ section.id }} .chm-toggle:nth-child(n+2):before{
+  --color-base:{{section.settings.color_lines}};
+  opacity: 1;
+}
+{%- endif -%}
+{%- endcapture -%}
+{%- if section_styles != blank -%}
+<style>{{ section_styles }}</style>
+{%- endif -%}
+
+<div id="accordion-{{ section.id }}" class="top-spacing-{{ section.settings.top_spacing }}{% if section.settings.background != 'hide' and section.settings.background_width == "fullwidth" %} section-background section-background--{{ section.settings.background_spacing }}{% endif %}" data-section-name="accordion">
+  <div class="{{ section.settings.width }} mb--last-child-0">
+    {% if section.settings.background != 'hide' and section.settings.background_width == "content_width" %}<div class="section-background section-background--{{ section.settings.background_spacing }} border__radius mb--last-child-0">{%- endif -%}
+
+    {%- liquid
+      if section.settings.color_subheading != "rgba(0,0,0,0)"
+      assign color_subheading = ' style="--color-subheading:' | append: section.settings.color_subheading | append: ';"'
+      endif
+      if section.settings.color_heading != "rgba(0,0,0,0)"
+      assign color_heading = ' style="color:' | append: section.settings.color_heading | append: ';"'
+      endif
+    -%}
+    {%- if section.settings.subheading != blank or section.settings.heading != blank or show_heading_always -%}
+    <div class="grid justify-content-center heading--mb">
+      <div class="col-st-12 col-6 mb--last-child-0 {{ section.settings.heading_aligment }}">
+        {%- if section.settings.subheading != blank -%}<div class="subheading h5"{{ color_subheading }}>{{ section.settings.subheading }}</div>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2{{ color_heading }} class="mt0">{{ section.settings.heading }}</h2>{%- endif -%}
+      </div>
+    </div>
+    {%- endif -%}
+    
+    {%- if section.blocks.size > 0 -%}
+    <toggle-component class="grid justify-content-center{% unless section.settings.disable_accordion %} chm-toggle--accordion{% endunless %}{% if request.design_mode and section.settings.show_all_text_in_admin %} admin-panel--no-js{% endif %}">
+      <div class="col-st-12 col-6">
+      {%- for block in section.blocks -%}
+        <details class="chm-toggle"{% if request.design_mode and section.settings.show_all_text_in_admin %} open{% endif %} {{ block.shopify_attributes }}>
+          <summary>
+            <div class="chm-toggle__button">
+              {{ '<' | append: section.settings.heading_tag }} class="mt0 mb0">
+              {{ block.settings.heading }}
+              {{ '</' | append: section.settings.heading_tag }}>
+              {%- render "icon-arrow-down-small" -%}
+            </div>
+          </summary>
+          <div class="mt0 chm-toggle__content mt--first-child-0{% if section.settings.description_size != "normal" %} {{ section.settings.description_size }}{% endif %}">
+            {{ block.settings.description }}
+          </div>
+        </details>
+      {%- endfor -%}
+      </div>
+    </toggle-component>
+    {%- endif -%}
+    {% if section.settings.background != 'hide' and section.settings.background_width == "content_width" %}</div>{%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.accordion.name",
+  	"tag": "section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_all_text_in_admin",
+        "default": true,
+        "label": "t:sections.accordion.settings.show_all_text_in_admin.label",
+		"info": "t:sections.accordion.settings.show_all_text_in_admin.info"
+      },
+	  {
+		"type": "text",
+		"id": "subheading",
+		"default": "SUBHEADING",
+		"label": "t:sections.general.settings.subheading.label"
+	  },
+	  {
+		"type": "text",
+		"id": "heading",
+		"default": "Accordion",
+		"label": "t:sections.general.settings.heading.label"
+	  },
+	  {
+		"type": "select",
+		"id": "heading_aligment",
+		"options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+		],
+		"default": "text-center",
+		"label": "t:sections.general.settings.heading_aligment.label"
+	  },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:sections.general.settings.width.options__boxed.label"
+          },
+          {
+            "value": "page-wide",
+            "label": "t:sections.general.settings.width.options__wide.label"
+          }
+        ],
+        "default": "page-width",
+        "label": "t:sections.general.settings.width.label",
+		"info": "t:sections.general.settings.width.info"
+      },
+      {
+        "type": "header",
+		"content": "t:sections.accordion.settings.header_name.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "disable_accordion",
+        "default": false,
+		"label": "t:sections.accordion.settings.disable_accordion.label"
+      },
+	  {
+		"type": "select",
+		"id": "heading_tag",
+		"options": [
+		  {
+			"value": "h4",
+			"label": "t:sections.general.settings.heading_tag.options__normal.label"
+		  },
+		  {
+			"value": "h5",
+			"label": "t:sections.general.settings.heading_tag.options__small.label"
+		  }
+		],
+		"default": "h4",
+		"label": "t:sections.general.settings.heading_tag.label"
+	  },
+	  {
+		"type": "select",
+		"id": "description_size",
+		"options": [
+		  {
+			"value": "normal",
+			"label": "t:sections.general.settings.description_size.options__normal.label"
+		  },
+		  {
+			"value": "body2",
+			"label": "t:sections.general.settings.description_size.options__small.label"
+		  }
+		],
+		"default": "normal",
+		"label": "t:sections.general.settings.description_size.label"
+	  },
+      {
+        "type": "header",
+		"content": "t:sections.general.settings.header_colors.content"
+      },
+      {
+        "type": "color",
+        "id": "color_subheading",
+        "default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.subheading.label"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.heading.label"
+      },
+      {
+        "type": "paragraph",
+		"content": "t:sections.accordion.settings.paragraph.content"
+      },
+      {
+        "type": "color",
+        "id": "color_heading_accordion",
+        "default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.heading.label"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "default": "rgba(0,0,0,0)",
+		"label": "t:sections.accordion.settings.color_text.label"
+      },
+      {
+        "type": "color",
+        "id": "color_lines",
+        "default": "rgba(0,0,0,0)",
+		"label": "t:sections.accordion.settings.color_lines.label"
+      },
+      {
+        "type": "header",
+		"content": "t:sections.general.settings.header_background.content"
+      },
+	  {
+		"type": "select",
+		"id": "background",
+		"options": [
+		  {
+			"value": "hide",
+			"label": "t:sections.general.settings.background.options__hide.label"
+		  },
+		  {
+			"value": "color",
+			"label": "t:sections.general.settings.background.options__color.label"
+		  },
+		  {
+			"value": "gradient",
+			"label": "t:sections.general.settings.background.options__gradient.label"
+		  }
+		],
+		"default": "hide",
+		"label": "t:sections.general.settings.background.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_background",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.color_background.label"
+	  },
+      {
+		"type": "color_background",
+        "id": "gradient",
+		"label": "t:sections.general.settings.gradient.label"
+      },
+	  {
+		"type": "select",
+		"id": "background_width",
+		"options": [
+		  {
+			"value": "fullwidth",
+			"label": "t:sections.general.settings.background_width.options__1.label"
+		  },
+		  {
+			"value": "content_width",
+			"label": "t:sections.general.settings.background_width.options__2.label"
+		  }
+		],
+		"default": "fullwidth",
+		"label": "t:sections.general.settings.background_width.label"
+	  },
+	  {
+		"type": "select",
+		"id": "background_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.background_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.background_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.background_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.background_spacing.options__normal.label"
+          }
+        ],
+		"default": "normal",
+		"label": "t:sections.general.settings.background_spacing.label"
+	  },
+      {
+        "type": "checkbox",
+        "id": "remove_bottom_spacing",
+        "default": false,
+		"label": "t:sections.general.settings.remove_bottom_spacing.label"
+      }
+	],
+    "blocks": [
+      {
+        "type": "text",
+		"name": "t:sections.accordion.blocks.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "default": "Frequently asked question",
+            "label": "t:sections.general.settings.heading.label"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "default": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+			"label": "t:sections.general.settings.description.label"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+      	"name": "t:sections.accordion.presets.name",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

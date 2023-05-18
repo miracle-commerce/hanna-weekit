@@ -1,0 +1,61 @@
+<nav class="list-menu {{ animation }}"
+     style="--items-grid-count:{{ visible_items_count | at_most: linklist.size }};
+            --items-grid-count--mobile:{{ linklist.size | at_most: 5 }};
+            ">
+  <ul class="unstyle-ul tiles-menu">
+    {%- for link in linklist -%}
+    
+    {%- liquid
+        capture icon_code
+        render 'get-menu-icon-code', icons:icons, forloop_index:forloop.index, icons_size: section.settings.icons_size
+        endcapture
+        if icon_code contains '<svg '
+        assign width = icon_code | split: 'width="' | last | split: '"' | first | times: 1.0
+        assign height = icon_code | split: 'height="' | last | split: '"' | first | plus: 0
+        assign aspect_ratio = height | divided_by: width
+        assign svgwidth = '--max-width:' | append:section.settings.icons_size | append:'px;'
+        assign svgheight = section.settings.icons_size | times: aspect_ratio
+        assign svgheight = '--max-height:' | append:svgheight | append:'px;'
+        endif
+    -%}
+    
+    {%- capture menu_item -%}
+    <a href="{{ link.url }}"
+       class="{{ menu_font_weight }} tiles-menu-item{% if link.current or link.child_active %} tiles-menu-item--active{% endif %}"
+       style="{{ svgwidth }}{{ svgheight }}">
+      {{ icon_code }}
+      <span>{{ link.title | escape }}</span>
+      {%- render "menu-badge" item_name:link.title fixed:true -%}
+    </a>
+    {%- endcapture -%}
+    
+    {%- if link.links != blank -%}
+    
+    {%- liquid
+    	assign megamenu_item = '|' | append: link.title | append: '%%'
+        if mega_menu_index contains megamenu_item
+        assign megamenu_item = mega_menu_index | split: megamenu_item | last | split: '|' | first | plus: 0
+        else
+        assign megamenu_item = ''
+        endif
+    -%}
+    
+    <li class="submenu-container{% if megamenu_item != '' %} submenu--megamenu{% else %} submenu-position-js{% endif %} submenu--to-left">
+      {%- liquid
+      	  echo menu_item
+          if megamenu_item == ''
+          render "menu-submenu", link:link
+          else
+          render "menu-megamenu", link:link, megamenu_item:megamenu_item
+          endif
+      -%}
+    </li>
+    {%- else -%}
+    <li>
+      {{ menu_item }}
+    </li>
+    {%- endif -%}
+    {%- endfor -%}
+
+  </ul>
+</nav>

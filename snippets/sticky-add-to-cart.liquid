@@ -1,0 +1,104 @@
+{% comment %}
+    Sticky add to cart modal
+
+    Accepts:
+    - section: {Object} Section object
+    - product: {Object} Product main Object.
+    - current_variant: {Object} Selected or first availabled product variant
+    - enable_sticky_addtocart: {Boolean} Enable/disable this snippent
+
+    Usage:
+	{%- render "sticky-add-to-cart",
+    			section: section,
+				product: product,
+				current_variant: current_variant,
+				enable_sticky_addtocart: enable_sticky_addtocart -%}
+{% endcomment %}
+
+{%- if enable_sticky_addtocart -%}
+
+{%- if settings.animate_content_show -%}
+<link rel="stylesheet" href="{{ 'component-sticky-addtocart.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-sticky-addtocart.css' | asset_url | stylesheet_tag }}</noscript>
+{%- else -%}
+{{ 'component-sticky-addtocart.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- case section.settings.media_size -%}
+{%- when 'small' -%}
+{%- assign right_column = "cart-right-large" -%}
+{%- when 'medium' -%}
+{%- assign right_column = "cart-right-medium" -%}
+{%- when 'large' -%}
+{%- assign right_column = "cart-right-small" -%}
+{%- endcase -%}
+
+<sticky-cart-modal class="sticky-cart-modal" id="sticky-cart-{{ section.id }}" data-section="{{ section.id }}">
+  <div class="{{ section.settings.width }} sticky-cart">
+    <p class="mt0 h5 sticky-cart__heading">{{ product.title | escape }}</p>
+    
+    <div class="sticky-cart-right {{ right_column }}">
+      <product-form class="product-form sticky-cart-button__container">       
+        {%- unless product.has_only_default_variant -%}
+        <variant-selects id="sticky-cart-select-{{ section.id }}"
+                         class="field sticky-cart-select"
+                         data-section="{{ section.id }}"
+                         data-url="{{ product.url }}"
+                         >
+          <select class="field__input field__input--no-label"
+                  name="id-sticky"
+                  >
+            {%- for variant in product.variants -%}
+            <option
+                    {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                    {% if variant.available == false %}disabled{% endif %}
+                    value="{{ variant.id }}"
+                    >
+              {{ variant.title }}
+              {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                              - {{ variant.price | money | strip_html }}
+            </option>
+            {%- endfor -%}
+          </select>
+          <div class="field__icon field__icon--select">
+            {% render 'icon-arrow-down-small' %}
+          </div>
+
+          <script type="application/json">
+          {{ product.variants | json }}
+          </script>
+        </variant-selects>
+        {%- else -%}
+        {%- render 'main-product-price', product: product, use_variant: false -%}
+        {%- endunless -%}
+        <div class="product-form__error-message-wrapper" role="alert" hidden>
+          {%- render "icon-attention" -%}
+          <span class="product-form__error-message"></span>
+        </div>
+        
+        {%- form 'product', product, id: product_form_id, class: 'form sticky-cart-button__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" disabled>
+
+        <button type="submit"
+                name="add"
+                class="sticky-cart-button product-form__submit btn btn_zoom product-form__submit__hide-text"
+                {% if current_variant.available == false %}disabled{% endif %}
+                >
+          {%- render "icon-cart" -%}
+          <span>
+            {%- unless current_variant.available -%}{{ 'products.product.sold_out' | t }}{%- endunless -%}
+          </span>
+
+          <div class="loading-overlay__spinner hidden">
+            <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+
+        </button>
+        {%- endform -%}
+      </product-form>
+    </div>
+  </div>
+</sticky-cart-modal>
+{%- endif -%}

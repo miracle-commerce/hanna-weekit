@@ -1,0 +1,95 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+      <div class="announcement-bar display-flex align-items-center"
+           style="--color-announcement-bar:{% if block.settings.color_background != 'rgba(0,0,0,0)' %}{{ block.settings.color_background }}{% else %}{{ settings.color_secondary_background }}{% endif %};
+				  --color-announcement-bar-text:{% if block.settings.color_text != 'rgba(0,0,0,0)' %}{{ block.settings.color_text }}{% else %}{{ settings.color_base }}{% endif %};"
+           data-section-name="announcement-bar"
+           {{ block.shopify_attributes }}>
+        <div class="page-width">
+          <div class="grid justify-content-center text-center">
+            <div class="col-12 announcement-bar__item align-items-center">
+              <p class="nomargin">{{ block.settings.text | escape }}
+              {%- if block.settings.text != blank -%}
+                &nbsp;&nbsp;
+              {%- endif -%}
+              {%- if block.settings.link_name != blank -%}
+              {%- if block.settings.color_link != "rgba(0,0,0,0)" -%}
+              {%- assign color_link = ' style="--color-accent:' | append: block.settings.color_link | append: ';"' -%}
+              {%- endif -%}
+              <a{% if block.settings.link_url != blank %} href="{{ block.settings.link_url }}"{% endif %} class="btn-small strong"
+                 {% if block.settings.link_url == blank %} aria-disabled="true"{% endif %}{{ color_link }}
+                 >{{ block.settings.link_name }}</a>
+              {%- endif -%}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "ANNOUNCE something here",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.general.settings.name_link.label"
+        },
+        {
+          "type": "text",
+          "id": "link_name",
+          "default": "Learn more",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link_name.label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link_url.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.general.settings.header_colors.content"
+        },
+        {
+          "type": "color",
+          "id": "color_background",
+          "default": "rgba(0,0,0,0)",
+		  "label": "t:sections.announcement-bar.blocks.announcement.settings.color_background.label"
+        },
+        {
+          "type": "color",
+          "id": "color_text",
+          "default": "rgba(0,0,0,0)",
+		  "label": "t:sections.announcement-bar.blocks.announcement.settings.color_text.label"
+        },
+        {
+          "type": "color",
+          "id": "color_link",
+          "default": "rgba(0,0,0,0)",
+		  "label": "t:sections.announcement-bar.blocks.announcement.settings.color_link.label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{% endschema %}

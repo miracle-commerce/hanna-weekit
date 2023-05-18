@@ -1,0 +1,560 @@
+{
+  "sections": {
+    "1662640935ca798dff": {
+      "type": "slideshow",
+      "blocks": {
+        "166264093577412f3d-0": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image": "shopify:\/\/shop_images\/02.jpg",
+            "image_overlay_opacity": 0,
+            "subheading": "TAKE A NAP, CALL A FRIEND, SNUGGLE YOUR BABY  - WE'LL TAKE CARE OF THE GEAR",
+            "heading": "KITS",
+            "description": "We've curated these kits to take the thinking out of shopping",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "shopify:\/\/collections",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        },
+        "69cbccf2-3651-4207-afeb-d5def55ce1c3": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "166264093577412f3d-0",
+        "69cbccf2-3651-4207-afeb-d5def55ce1c3"
+      ],
+      "settings": {
+        "top_spacing": "none",
+        "bottom_spacing": "normal",
+        "width": "page-fullwidth",
+        "image_size": "fixed",
+        "desktop_image_height": 590,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    },
+    "1654072995afca1996": {
+      "type": "ticker",
+      "settings": {
+        "top_spacing": "normal",
+        "ticker_time": 10,
+        "text_size": "normal",
+        "text": "<p>\"No one told me I would be coming home in diapers too!\" - Chrissy Teigen<\/p>",
+        "show_icon": "svg",
+        "icon_name": "advertising_sm",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_spacing": "small",
+        "remove_bottom_spacing": false
+      }
+    },
+    "165407356523eee2bb": {
+      "type": "collection-list",
+      "blocks": {
+        "1654073565bebd9f10-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "postpartum",
+            "image": "shopify:\/\/shop_images\/01.jpg",
+            "collection_name": "",
+            "custom_link": ""
+          }
+        },
+        "1654073565bebd9f10-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nursing",
+            "image": "shopify:\/\/shop_images\/01.jpg",
+            "collection_name": "",
+            "custom_link": ""
+          }
+        },
+        "1654073565bebd9f10-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bottle-feeding",
+            "image": "shopify:\/\/shop_images\/01.jpg",
+            "collection_name": "",
+            "custom_link": ""
+          }
+        },
+        "1654073565bebd9f10-3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "collection_name": "",
+            "custom_link": ""
+          }
+        },
+        "1654073565bebd9f10-4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "collection_name": "",
+            "custom_link": ""
+          }
+        },
+        "1654073565bebd9f10-5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "collection_name": "",
+            "custom_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1654073565bebd9f10-0",
+        "1654073565bebd9f10-1",
+        "1654073565bebd9f10-2",
+        "1654073565bebd9f10-3",
+        "1654073565bebd9f10-4",
+        "1654073565bebd9f10-5"
+      ],
+      "settings": {
+        "subheading": "Shop our carefully curated kits",
+        "heading": "Kits",
+        "heading_aligment": "text-center",
+        "link_name": "Shop all",
+        "link_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-4 col-2",
+        "mobile_grid": "6",
+        "swipe_on_mobile": true,
+        "design_type": "text-over-image",
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "hover_underline": false,
+        "show_products_count": true,
+        "texts_aligment_mobile": "text-center-mobile",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_link": "rgba(0,0,0,0)",
+        "color_texts": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_button_hover": "rgba(0,0,0,0)"
+      }
+    },
+    "1654074087c407e2b5": {
+      "type": "brands",
+      "blocks": {
+        "1654074087617b461f-0": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "heading": "Optional heading"
+          }
+        },
+        "1654074087617b461f-1": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "heading": "Optional heading"
+          }
+        },
+        "1654074087617b461f-2": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "heading": "Optional heading"
+          }
+        },
+        "1654074087617b461f-3": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "heading": "Optional heading"
+          }
+        },
+        "1654074087617b461f-4": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "heading": "Optional heading"
+          }
+        },
+        "1654074087617b461f-5": {
+          "type": "image",
+          "settings": {
+            "url": "",
+            "heading": "Optional heading"
+          }
+        }
+      },
+      "block_order": [
+        "1654074087617b461f-0",
+        "1654074087617b461f-1",
+        "1654074087617b461f-2",
+        "1654074087617b461f-3",
+        "1654074087617b461f-4",
+        "1654074087617b461f-5"
+      ],
+      "settings": {
+        "subheading": "We only feature trusted, reputable brands who have been carefully vetted by industry veterans",
+        "heading": "Wee Kits",
+        "heading_aligment": "text-center",
+        "link_name": "Show All",
+        "link_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-st-4 col-2",
+        "mobile_grid": "6",
+        "swipe_on_mobile": true,
+        "text_aligment": "text-center",
+        "hide_text": true,
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_link": "rgba(0,0,0,0)"
+      }
+    },
+    "16540743022dac448e": {
+      "type": "ticker",
+      "settings": {
+        "top_spacing": "normal",
+        "ticker_time": 10,
+        "text_size": "normal",
+        "text": "<p><strong>ANNOUNCEMENT <\/strong>— Use this section to include scrolling announcement text<\/p>",
+        "show_icon": "svg",
+        "icon_name": "advertising_sm",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_spacing": "small",
+        "remove_bottom_spacing": false
+      }
+    },
+    "16544355349cd01ef0": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "subheading": "SUBHEADING",
+        "heading": "Featured collection",
+        "heading_aligment": "text-center",
+        "button_name": "Show All",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-4 col-one_fifth",
+        "mobile_grid": "6",
+        "swipe_on_mobile": false,
+        "product_limit": 10,
+        "image_ratio": "auto",
+        "show_secondary_image": true,
+        "texts_aligment": "text-center",
+        "product_name_size": "normal",
+        "show_vendor": false,
+        "show_type": false,
+        "show_rating": false,
+        "show_price": true,
+        "truncate_product_name": false,
+        "hover_underline": false,
+        "button_type_product": "show",
+        "show_button_quickview": true,
+        "show_badge_on_sale": true,
+        "show_badge_sold_out": true,
+        "show_badge_feature": true,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_meta": "rgba(0,0,0,0)",
+        "color_button_product": "rgba(0,0,0,0)"
+      }
+    },
+    "1654074104e778457c": {
+      "type": "banners",
+      "blocks": {
+        "165407410481d0fd49-0": {
+          "type": "banner",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Banner",
+            "description": "Tell more about your product, collection...",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "texts_aligment_mobile": "text-center-mobile",
+            "heading_tag": "h2",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        },
+        "165407410481d0fd49-1": {
+          "type": "banner",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Banner",
+            "description": "Tell more about your product, collection...",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "texts_aligment_mobile": "text-center-mobile",
+            "heading_tag": "h2",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "165407410481d0fd49-0",
+        "165407410481d0fd49-1"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Banners",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-6",
+        "image_ratio": "auto",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)"
+      }
+    },
+    "1654074363acd98555": {
+      "type": "icon-banners",
+      "blocks": {
+        "16540743638e1279ef-0": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "delivery",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "16540743638e1279ef-1": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "chat",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "16540743638e1279ef-2": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "money_back",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "16540743638e1279ef-0",
+        "16540743638e1279ef-1",
+        "16540743638e1279ef-2"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Icon banners",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "grid-columns-3",
+        "swipe_on_mobile": false,
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_heading_banner": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)"
+      }
+    },
+    "16540744335e46fbd0": {
+      "type": "map",
+      "blocks": {
+        "165407443367993ce7-0": {
+          "type": "image",
+          "settings": {
+            "api_key": "",
+            "map_address": "",
+            "show_pin": true,
+            "map_zoom_level": 14
+          }
+        },
+        "165407443367993ce7-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Map"
+          }
+        },
+        "165407443367993ce7-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>301 Central Street<br\/>City, Country<\/p><p>Mon - Fri, 8:30am - 10:30pm<br\/>Saturday, 8:30am - 10:30pm<br\/>Sunday, 8:30am - 10:30pm<\/p>"
+          }
+        },
+        "165407443367993ce7-3": {
+          "type": "button",
+          "settings": {
+            "button_name": "Get direction"
+          }
+        }
+      },
+      "block_order": [
+        "165407443367993ce7-0",
+        "165407443367993ce7-1",
+        "165407443367993ce7-2",
+        "165407443367993ce7-3"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "desktop_content_height": 500,
+        "row_reverse": false,
+        "content_aligment": "align-self-start",
+        "texts_aligment": "text-center",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_background": "rgba(0,0,0,0)"
+      }
+    },
+    "16540746330397160e": {
+      "type": "blog-posts",
+      "settings": {
+        "blog": "news",
+        "subheading": "SUBHEADING",
+        "heading": "Blog posts",
+        "heading_aligment": "text-center",
+        "link_name": "Show All",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-4",
+        "swipe_on_mobile": false,
+        "post_limit": 3,
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "excerpt_size": "normal",
+        "show_image": true,
+        "truncate_post_heading": false,
+        "hover_underline": false,
+        "showtags": true,
+        "show_date": true,
+        "show_author": true,
+        "show_comment_count": true,
+        "excerpt": "show",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_link": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_author_date_comments": "rgba(0,0,0,0)",
+        "color_heading_post": "rgba(0,0,0,0)",
+        "color_excerpt": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "1662640935ca798dff",
+    "1654072995afca1996",
+    "165407356523eee2bb",
+    "1654074087c407e2b5",
+    "16540743022dac448e",
+    "16544355349cd01ef0",
+    "1654074104e778457c",
+    "1654074363acd98555",
+    "16540744335e46fbd0",
+    "16540746330397160e"
+  ]
+}

@@ -1,0 +1,29 @@
+{%- if icons != blank -%}
+{%- assign image = 'icon_image' | append: forloop_index -%}
+{%- assign image = icons.settings[image] -%}
+{%- if image != blank -%}
+
+{%- liquid
+	if icons_size != blank
+    assign image_size = 'x' | append: icons_size
+    else
+    assign image_size = 'x20'
+    endif
+-%}
+
+<img srcset="{{ image | img_url: image_size }} 1x, {{ image | img_url: image_size, scale: 2 }} 2x"
+     src="{{ image | img_url: image_size }}"
+     loading="lazy"
+     class="menu-icon-image"
+     width="{{ image.width }}"
+     height="{% if icons_size != blank %}{{ icons_size }}{% else %}20{% endif %}"
+     alt="{{ image.alt }}"
+     >
+{%- else -%}
+{%- assign icon_name = 'icon' | append: forloop_index -%}
+{%- assign icon_name = icons.settings[icon_name] -%}
+{%- if icon_name != blank -%}
+{%- render 'icons-list' icon_name: icon_name -%}
+{%- endif -%}
+{%- endif -%}
+{%- endif -%}

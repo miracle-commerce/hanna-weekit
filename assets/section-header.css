@@ -1,0 +1,192 @@
+header{
+  opacity: 1;
+  background: var(--color-body-background);
+}
+.header__secondary-menu{
+  padding: 16px 0;
+  background: var(--color-secondary-background);
+}
+.header__icons{
+  justify-content: flex-end;
+  gap: 20px;
+}
+.header__icons__customer{
+  display: flex;
+  align-items: center;
+}
+.header__button{
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.header__button+.header__button{
+  margin-left: 41px;
+}
+.header__button+.header__button:before{
+  content: "";
+  position: absolute;
+  left: -21px;
+  width: 1px;
+  height: 30px;
+  background: var(--color-lines-borders);
+  z-index: 1;
+}
+.header__button:after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+.header__button svg{
+  width: 20px;
+  height: 20px;
+  transition: opacity var(--duration-medium) var(--animation-bezier);
+}
+.header__heading-link{
+  display: flex;
+  --scale-image: 1.05;
+  transition: transform var(--duration-medium) var(--zoom-animation-bezier);
+  transform: scale(1);
+}
+.header__heading-logo--svg{
+  display: flex;
+}
+.header__heading-logo--svg svg{
+  width: var(--max-width);
+  height: var(--max-height);
+}
+@media (min-width: 993px){
+  .header__button:hover svg{
+    opacity: var(--opacity-icons);
+  }
+  .header__heading-link:hover{
+    backface-visibility: hidden;
+    transform: scale(var(--scale-image));
+  }
+  .header__desktop{
+    position: relative;
+    z-index: 1;
+  }
+  header-menu-tiles{
+    display: block;
+  }
+}
+.header__heading,
+*:not(.header__heading)>.header__heading-link{
+  text-align: center;
+  justify-self: center;
+  grid-column: 2;
+}
+.logo-to-left .header__heading{
+  grid-column: unset;
+}
+.logo-to-left nav{
+  grid-column: unset;
+}
+.logo-to-left.menu-to-right nav{
+  justify-self: flex-end;
+}
+.logo-to-left.menu-to-right nav .list-menu--inline{
+  justify-content: flex-end;
+}
+.js .vertical-menu[data-menu-opened] vertical-menu[hide-before-load]{
+  opacity: 0;
+}
+#shopify-section-header {
+  z-index: 5;
+}
+.shopify-section-header-sticky,
+.overflow-hidden-tablet #shopify-section-header{
+  position: sticky;
+}
+@media (max-width:992px){
+  .fixed-position{
+    position: fixed!important;
+    top: 0;
+    width: 100%;
+  }
+}
+.shopify-section-header-sticky:not(.shopify-section-first-hide){
+  top: 0;
+}
+.shopify-section-header-sticky:not(.shopify-section-header-hidden){
+  box-shadow:var(--shadow);
+}
+.shopify-section-header-hidden {
+  transform: translateY(-100%);
+}
+.shopify-section-header-hidden.menu-open {
+  transform: translateY(0);
+}
+#shopify-section-header.animate {
+  transition: transform 0.15s ease-out;
+}
+.shopify-section-header-sticky vertical-menu{
+  height: auto!important;
+  min-height: unset!important;
+}
+@media (max-width: 992px){
+  .header__button:hover:after{
+    background: var(--mobile-focus-color);
+  }
+}
+.logo-to-left--mobile header-drawer{
+  order:3;
+}
+.logo-to-left--mobile .drawer__icon-menu {
+  margin-left: 0;
+  padding: 12px 0px 12px 10px;
+}
+.header.logo-to-left--mobile{
+  grid-template-columns: 1fr auto auto;
+}
+.header.logo-to-left--mobile.logo-to-left--catalog{
+  grid-template-columns: 1fr auto;
+}
+.logo-to-left--mobile .header__heading,
+.logo-to-left--mobile *:not(.header__heading)>.header__heading-link {
+  text-align: left;
+  justify-self: flex-start;
+}
+.logo-to-left--mobile .menu-drawer {
+  transform: translate(100%);
+  left: unset;
+  right: 0;
+}
+.logo-to-left--mobile .menu-drawer__close-button{
+  justify-content: flex-end;
+}
+.logo-to-left--mobile .menu-drawer__close-button:hover:before{
+  left: unset;
+  right: -12px;
+}
+.logo-to-left--mobile .menu-drawer__close-button.link:not(.link-only-svg) svg:first-child{
+  margin-right: 0;
+}
+.logo-to-left--mobile .main-menu-button .drawer__icon-menu{
+  position:relative;
+}
+.logo-to-left--mobile .main-menu-button .drawer__icon-menu:hover{
+  background: unset;
+}
+.logo-to-left--mobile .main-menu-button .drawer__icon-menu:hover:before{
+  content:"";
+  position:absolute;
+  top: 0;
+  left: -2px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--mobile-focus-color);
+}
+.opened-search{
+  padding-top: 2px;
+  padding-bottom: 30px;
+}
+.shopify-section-header-sticky:not(.shopify-section-header-hidden) .opened-search{
+  padding-bottom: 20px;
+}

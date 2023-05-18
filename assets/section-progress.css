@@ -1,0 +1,89 @@
+progress-circle,
+.progress-circle{
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-accent);
+  font-size: 36px;
+  line-height: 47px;
+  width: 130px;
+  height: 130px;
+  user-select: none;
+}
+.no-js progress-circle{
+  display: none;
+}
+.progress__container {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  clip: rect(0px, 130px, 130px, 65px);
+}
+.progress__circle {
+  width: 120px;
+  height: 120px;
+  border: 5px solid var(--color-accent);
+  border-radius: 50%;
+  position: absolute;
+  clip: rect(0px, 64.9999px, 130px, 0px);
+}
+div[data-anim~=base] {
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-timing-function:linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function:linear;
+
+}
+.progress--animated .progress__container[data-anim~=container] {
+  -webkit-animation-duration: 0.01s;
+  -webkit-animation-delay: var(--animation-first-delay, 3000ms);
+  -webkit-animation-name: close-container;
+  animation-duration: 0.01s;
+  animation-delay: var(--animation-first-delay, 3000ms);
+  animation-name: close-container;
+}
+.progress--animated .progress__circle[data-anim~=left] {
+  -webkit-animation-delay: var(--animation-first-delay, 3000ms);
+  -webkit-animation-duration: var(--animation-second-delay, 3000ms);
+  -webkit-animation-name: left-spin;
+  animation-delay: var(--animation-first-delay, 3000ms);
+  animation-duration: var(--animation-second-delay, 3000ms);
+  animation-name: left-spin;
+}
+.progress--animated .progress__circle[data-anim~=right] {
+  -webkit-animation-duration: var(--animation-first-delay, 3000ms);
+  -webkit-animation-name: right-spin;
+  animation-duration: var(--animation-first-delay, 3000ms);
+  animation-name: right-spin;
+}
+@-webkit-keyframes right-spin {
+  from {
+	transform: rotate(0deg);
+  }
+  to {
+	transform: rotate(var(--deg-right, 180deg));
+  }
+}
+@-webkit-keyframes left-spin {
+  from {
+	transform: rotate(180deg);
+  }
+  to {
+	transform: rotate(var(--deg-left, 360deg));
+  }
+}
+@-webkit-keyframes close-container {
+  to {
+	clip: rect(auto, auto, auto, auto);
+  }
+}
+.progress__container, .progress__container *{
+  box-sizing: unset;
+}

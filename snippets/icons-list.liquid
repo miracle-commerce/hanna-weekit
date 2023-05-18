@@ -1,0 +1,36 @@
+{%- liquid
+capture icon
+if icon_name contains "_sm"
+capture icon_code
+render "icons-list-small", icon_name:icon_name
+endcapture
+if icon_code == blank
+capture icon_code
+render "icons-list-pets-small", icon_name:icon_name
+endcapture
+endif
+if icon_code == blank
+capture icon_code
+render "icons-list-electronics-small", icon_name:icon_name
+endcapture
+endif
+else
+capture icon_code
+render "icons-list-big", icon_name:icon_name
+endcapture
+if icon_code == blank
+capture icon_code
+render "icons-list-pets-big", icon_name:icon_name
+endcapture
+endif
+if icon_code == blank
+capture icon_code
+render "icons-list-electronics-big", icon_name:icon_name
+endcapture
+endif
+endif
+echo icon_code
+endcapture
+assign icon = icon | replace: '<svg', '<svg class="theme-icon"'
+echo icon
+-%}

@@ -1,0 +1,123 @@
+{%- assign megamenu_block = section.blocks[megamenu_item] -%}
+
+{%- capture megamenu_content -%}
+<div class="grid">
+  {%- for childlink in link.links -%}
+  {%- if childlink.links != blank -%}
+  <div class="{{ megamenu_block.settings.grid }}">
+    <a href="{{ childlink.url }}" class="submenu__item megamenu-item h5 text-uppercase{% if childlink.current or childlink.child_active %} submenu__item--active{% endif %}">
+      <span>{{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}</span>
+    </a>
+    <ul class="unstyle-ul megamenu-childs">
+      {%- for grandchildlink in childlink.links -%}
+      <li>
+        <a href="{{ grandchildlink.url }}" class="submenu__item body2{% if grandchildlink.current %} submenu__item--active{% endif %}">
+          <span>{{ grandchildlink.title | escape }}{%- render "menu-badge" item_name:grandchildlink.title -%}</span>
+        </a>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  {%- else -%}
+  <div class="{{ megamenu_block.settings.grid }}">
+    <a href="{{ childlink.url }}" class="submenu__item megamenu-item h5 text-uppercase{% if childlink.current or childlink.child_active %} submenu__item--active{% endif %}">
+      <span>{{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}</span>
+    </a>
+  </div>
+  {%- endif -%}
+  {%- endfor -%}
+</div>
+{%- endcapture -%}
+{%- if megamenu_block.settings.show_banner -%}
+{%- capture megamenu_banner -%}
+<div class="mb--last-child-0 mt--first-child-0 mt18 mb3">
+  
+  {%- capture image -%}
+  {%- if megamenu_block.settings.image != blank -%}
+  <div class="image-hover-scaling__image">
+    <div class="border__radius" style="--aspect-ratio: {{megamenu_block.settings.image.aspect_ratio}};">
+      {% assign imagesize = megamenu_block.settings.image.width | append: 'x' %}
+      <img srcset="{{ megamenu_block.settings.image | img_url: imagesize }} 1x, {{ megamenu_block.settings.image | img_url: imagesize, scale: 2 }} 2x"
+           src="{{ megamenu_block.settings.image | img_url: imagesize }}"
+           loading="lazy"
+           width="{{ megamenu_block.settings.image.width }}"
+           height="{{ megamenu_block.settings.image.height }}"
+           alt="{{ megamenu_block.settings.image.alt | escape }}"
+           >
+    </div>
+  </div>
+  {%- endif -%}
+  {%- endcapture -%}
+  
+  {%- if megamenu_block.settings.image != blank -%}
+  {%- if megamenu_block.settings.banner_link != blank -%}
+  <a href="{{ megamenu_block.settings.banner_link }}" class="display-block{% if settings.enable_zoom_animation %} image-hover-scaling-up{% endif %}">
+	{{ image }}
+  </a>
+  {%- else -%}
+  <div class="mb15{% if settings.enable_zoom_animation %} image-hover-scaling-up{% endif %}">
+	{{ image }}
+  </div>
+  {%- endif -%}
+  {%- endif -%}
+
+  {%- if megamenu_block.settings.heading != blank -%}
+  <h4 class="mt15 mb0">
+    {%- if megamenu_block.settings.banner_link != blank -%}
+    <a href="{{ megamenu_block.settings.banner_link }}" class="animation-underline">{{ megamenu_block.settings.heading }}</a>
+    {%- else -%}
+    {{ megamenu_block.settings.heading }}
+    {%- endif -%}
+  </h4>
+  {%- endif -%}
+
+  {%- if megamenu_block.settings.text != blank -%}
+  <p class="mt5">{{ megamenu_block.settings.text }}</p>
+  {%- endif -%}
+
+  {%- if megamenu_block.settings.button_label != blank -%}
+  <a{% if megamenu_block.settings.banner_link != blank %} href="{{ megamenu_block.settings.banner_link }}"{% endif %} class="btn btn_zoom mt15"{% if megamenu_block.settings.banner_link == blank %} aria-disabled="true"{% endif %}><span>{{ megamenu_block.settings.button_label | escape }}</span></a>
+  {%- endif -%}
+
+</div>
+<!--
+<div class="rect-static-megamenu">Banner</div>
+-->
+{%- endcapture -%}
+{%- endif -%}
+
+<div class="megamenu-container" {{ megamenu_block.shopify_attributes }}>
+  {%- if fullwidth_menu -%}
+  <div class="submenu-design__megamenu submenu--no-radius">
+    <div class="{{ section.settings.width }}">
+      {%- if megamenu_block.settings.show_banner -%}
+      <div class="grid megamenu_show_banner">
+        <div class="col-four_fifth">
+          {{ megamenu_content }}
+        </div>
+        <div class="col-one_fifth">
+          {{ megamenu_banner }}
+        </div>
+      </div>
+      {%- else -%}
+      {{ megamenu_content }}
+      {%- endif -%}
+    </div>
+  </div>
+  {%- else -%}
+  <div class="submenu-design__megamenu {{ section.settings.width }}">
+    {%- if megamenu_block.settings.show_banner -%}
+    <div class="grid megamenu_show_banner">
+      <div class="col-four_fifth">
+        {{ megamenu_content }}
+      </div>
+      <div class="col-one_fifth">
+        {{ megamenu_banner }}
+      </div>
+    </div>
+    {%- else -%}
+    {{ megamenu_content }}
+    {%- endif -%}
+  </div>
+  {%- endif -%}
+</div>

@@ -1,0 +1,59 @@
+<style>
+  .buttons-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 992px){
+    #age-verification-popup.popup-modal {
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+    #age-verification-popup.popup-modal .popup-modal__content{
+      width: 100%;
+      max-width: unset;
+      min-height: unset;
+      left: 0;
+    }
+  }
+  @media (max-width:576px){
+    .buttons-grid{
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>
+<modal-dialog id="age-verification-popup" class="popup-modal">
+  <div class="popup-modal__content" aria-modal="true" role="dialog" tabindex="-1">
+    <div class="mt--first-child-0 text-center">
+      <h2 class="mt0 mb0">{{ "age_verification_popup.heading" | t }}</h2>
+      <p class="body2 mt20">{{ "age_verification_popup.description" | t }}</p>
+      <div class="buttons-grid mt30">
+          <button id="ModalClose-message" type="button" class="btn btn_zoom w-full" aria-label="{{ 'accessibility.close' | t }}">
+            <span>{{ "age_verification_popup.button_1_name" | t }}</span>
+          </button>
+          <a href="{{ settings.age_verification_popup_redirect_link }}"
+             class="btn btn_zoom btn--secondary w-full"
+             ><span>{{ "age_verification_popup.button_2_name" | t }}</span></a>
+      </div>
+    </div>
+  </div>
+</modal-dialog>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    try {
+      if("euydb8273ebisdufn9238en92dni" != getCookie("age_confirmed")){
+        var age_verification_popup = document.getElementById("age-verification-popup");
+        document.body.style.paddingRight = (window.innerWidth - document.documentElement.clientWidth) + 'px';
+        document.body.classList.add('overflow-hidden');
+        age_verification_popup.setAttribute('open', '');
+        document.body.addEventListener('modalClosed', (event) => {
+          try {
+            setCookie("age_confirmed", "euydb8273ebisdufn9238en92dni", 1);
+          }
+          catch (c) {}
+        });
+      }
+    } catch (c) {}
+  });
+</script>

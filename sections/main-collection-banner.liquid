@@ -1,0 +1,350 @@
+{%- if settings.animate_content_show -%}
+<link rel="stylesheet" href="{{ 'section-main-collection-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'section-main-collection-banner.css' | asset_url | stylesheet_tag }}</noscript>
+{%- else -%}
+{{ 'section-main-collection-banner.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- capture section_styles -%}
+{%- if section.blocks.size > 0 and collection.image != blank -%}
+{%- for block in section.blocks limit: 1 -%}
+{%- if block.settings.image_size == "fixed" -%}
+  #big-image-with-text-{{ section.id }} .big-image-with-text{
+    height: {{block.settings.desktop_image_height}}px;
+  }
+  #big-image-with-text-{{ section.id }} .image-hover-scaling__image{
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+{%- elsif block.settings.image_size == 'fullscreen' -%}
+  #big-image-with-text-{{ section.id }} .image-hover-scaling__image{
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+{%- endif -%}
+{%- if block.settings.color_heading != "rgba(0,0,0,0)" -%}
+  #big-image-with-text-{{ section.id }} .big-image-with-text__heading{
+    --color-base: {{ block.settings.color_heading }};
+  }
+{%- endif -%}
+{%- if block.settings.image_overlay_opacity > 0 -%}
+  #big-image-with-text-{{ section.id }} .image-hover-scaling__image:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: {{ settings.image_overlay_color }};
+    border-radius: var(--radius);
+    opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.00 }};
+  }
+{%- endif -%}
+{%- if block.settings.show_background and block.settings.color_background != "rgba(0,0,0,0)" -%}
+  #big-image-with-text-{{ section.id }} .big-image-with-text__content--bg>*:before{
+    background: {{ block.settings.color_background }};
+  }
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endcapture -%}
+{%- if section_styles != blank -%}
+<style>
+  @media (min-width: 993px){
+    {{ section_styles }}
+  }
+</style>
+{%- endif -%}
+
+<div id="big-image-with-text-{{ section.id }}" class="loading--fadein top-spacing-{{ section.settings.top_spacing }}">
+  <div class="{{ section.settings.width }}">
+   
+    {%- if section.blocks.size == 0 or collection.image == blank -%}
+    <div class="grid{% if section.settings.texts_aligment == "text-center" %} justify-content-center{% endif %}">
+      <div class="col-st-12 col-6 {{ section.settings.texts_aligment }}">
+        <h1 class="mt0 mb0">{{ collection.title }}</h1>
+      </div>
+    </div>
+    {%- else -%}
+
+    {%- for block in section.blocks limit: 1 -%}
+   
+    {%- if section.settings.width != "page-fullwidth" -%}
+    <div class="grid">
+      <div class="col-12">
+    {%- endif -%}
+        
+        {% if block.settings.image_size == 'fullscreen' %}<fullscreen-object class="big-image-with-text--fullscreen"{% if section.settings.width != "page-fullwidth" %} data-bottom-padding="70"{% endif %}>{% endif %}
+        
+        <div class="big-image-with-text">
+          
+          {%- liquid
+              assign image_ratio = collection.image.aspect_ratio
+              -%}
+
+          <div class="image-hover-scaling__image border__radius" style="--aspect-ratio: {{image_ratio}};">
+            {% assign image = collection.image %}
+            <img srcset="{%- if image.width >= 360 -%}{{ image | image_url: width: 360 }} 360w,{%- endif -%}
+                         {%- if image.width >= 533 -%}{{ image | image_url: width: 533 }} 533w,{%- endif -%}
+                         {%- if image.width >= 720 -%}{{ image | image_url: width: 720 }} 720w,{%- endif -%}
+                         {%- if image.width >= 940 -%}{{ image | image_url: width: 940 }} 940w,{%- endif -%}
+                         {%- if image.width >= 1066 -%}{{ image | image_url: width: 1066 }} 1066w,{%- endif -%}
+                         {%- if image.width >= 1500 -%}{{ image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                         {{ image | image_url }} {{ image.width }}w"
+                 src="{{ image | image_url: width: settings.page_width }}"
+                 sizes="(min-width: {{ settings.page_width }}px) {% if section.settings.width == "page-fullwidth" %}100vw{% else %}{{ settings.page_width | minus: 20 }}{% endif %}, (min-width: 992px) calc(100vw - 140px), calc(100vw - 40px)"
+                 width="{{ image.width }}"
+                 height="{{ image.height }}"
+                 loading="lazy"
+                 alt="{{ image.alt | escape }}"
+                 {% render "additional-image-attributes" %}
+                 >
+          </div>
+
+          <div class="big-image-with-text__content {{ block.settings.content_aligment }}{% if block.settings.show_background %} big-image-with-text__content--bg{% endif %}">
+            <div class="mt--first-child-0 {{ block.settings.texts_aligment }} {{ block.settings.texts_aligment_mobile }}">
+              <h1 class="big-image-with-text__heading mt0 mb0">{{ collection.title }}</h1>
+            </div>
+          </div>
+        </div>
+        
+        {% if block.settings.image_size == 'fullscreen' %}</fullscreen-object>{% endif %}
+
+	{%- if section.settings.width != "page-fullwidth" -%}
+      </div>
+    </div>
+    {%- endif -%}
+    
+    {%- endfor -%}
+
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+  {
+	"name": "t:sections.main-collection-banner.name",
+  	"tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:sections.general.settings.width.options__boxed.label"
+          },
+          {
+            "value": "page-wide",
+            "label": "t:sections.general.settings.width.options__wide.label"
+          },
+          {
+            "value": "page-fullwidth",
+            "label": "t:sections.general.settings.width.options__fullwidth.label"
+          }
+        ],
+        "default": "page-width",
+        "label": "t:sections.general.settings.width.label",
+		"info": "t:sections.general.settings.width.info"
+      },
+	  {
+		"type": "select",
+		"id": "texts_aligment",
+		"options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+		],
+		"default": "text-center",
+		"label": "t:sections.main-collection-banner.settings.texts_aligment.label",
+		"info": "t:sections.main-collection-banner.settings.texts_aligment.info"
+	  }
+	],
+    "blocks": [
+      {
+        "type": "featured_image",
+		"limit": 1,
+        "name": "Featured image",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "t:sections.main-collection-banner.settings.paragraph.content"
+          },
+          {
+            "type": "select",
+            "id": "image_size",
+            "options": [
+              {
+                "value": "auto",
+                "label": "t:sections.big-image-with-text.settings.image_size.options__auto.label"
+              },
+              {
+                "value": "fixed",
+                "label": "t:sections.big-image-with-text.settings.image_size.options__fixed.label"
+              },
+              {
+                "value": "fullscreen",
+                "label": "t:sections.big-image-with-text.settings.image_size.options__fullscreen.label"
+              }
+            ],
+            "default": "auto",
+            "label": "t:sections.big-image-with-text.settings.image_size.label"
+          },
+          {
+            "type": "range",
+            "id": "desktop_image_height",
+            "min": 200,
+            "max": 1000,
+            "step": 20,
+            "unit": "px",
+            "label": "t:sections.big-image-with-text.settings.desktop_image_height.label",
+            "default": 440
+          },
+          {
+            "type": "header",
+            "content": "t:sections.big-image-with-text.settings.header_name.content"
+          },
+          {
+            "type": "range",
+            "id": "image_overlay_opacity",
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "%",
+            "label": "t:sections.big-image-with-text.settings.image_overlay_opacity.label",
+            "default": 0
+          },
+          {
+            "type": "header",
+            "content": "t:sections.big-image-with-text.settings.header_texts_settings.content"
+          },
+          {
+            "type": "select",
+            "id": "texts_aligment",
+            "options": [
+              {
+                "value": "text-left",
+                "label": "t:sections.general.settings.texts_aligment.options__left.label"
+              },
+              {
+                "value": "text-center",
+                "label": "t:sections.general.settings.texts_aligment.options__center.label"
+              }
+            ],
+            "default": "text-center",
+            "label": "t:sections.big-image-with-text.settings.texts_aligment.label"
+          },
+          {
+            "type": "select",
+            "id": "texts_aligment_mobile",
+            "options": [
+              {
+                "value": "text-left-mobile",
+                "label": "t:sections.general.settings.texts_aligment.options__left.label"
+              },
+              {
+                "value": "text-center-mobile",
+                "label": "t:sections.general.settings.texts_aligment.options__center.label"
+              }
+            ],
+            "default": "text-center-mobile",
+            "label": "t:sections.big-image-with-text.settings.texts_aligment_mobile.label"
+          },
+          {
+            "type": "select",
+            "id": "content_aligment",
+            "options": [
+              {
+                "value": "align-items-start",
+                "label": "t:sections.big-image-with-text.settings.content_aligment.options__top_left.label"
+              },
+              {
+                "value": "align-items-start justify-content-center",
+                "label": "t:sections.big-image-with-text.settings.content_aligment.options__top_center.label"
+              },
+              {
+                "value": "align-items-center",
+                "label": "t:sections.big-image-with-text.settings.content_aligment.options__center_left.label"
+              },
+              {
+                "value": "align-items-center justify-content-center",
+                "label": "t:sections.big-image-with-text.settings.content_aligment.options__center.label"
+              },
+              {
+                "value": "align-items-end",
+                "label": "t:sections.big-image-with-text.settings.content_aligment.options__bottom_left.label"
+              },
+              {
+                "value": "align-items-end justify-content-center",
+                "label": "t:sections.big-image-with-text.settings.content_aligment.options__bottom_center.label"
+              }
+            ],
+            "default": "align-items-center justify-content-center",
+            "label": "t:sections.big-image-with-text.settings.content_aligment.label"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_background",
+            "default": false,
+            "label": "t:sections.big-image-with-text.settings.show_background.label"
+          },
+          {
+            "type": "header",
+            "content": "t:sections.general.settings.header_colors.content"
+          },
+          {
+            "type": "color",
+            "id": "color_heading",
+            "default": "rgba(0,0,0,0)",
+            "label": "t:sections.general.settings.heading.label"
+          },
+          {
+            "type": "color",
+            "id": "color_background",
+            "default": "rgba(0,0,0,0)",
+            "label": "t:sections.big-image-with-text.settings.color_background.label"
+          }
+        ]
+      }
+    ],
+	"max_blocks": 1
+  }
+{% endschema %}

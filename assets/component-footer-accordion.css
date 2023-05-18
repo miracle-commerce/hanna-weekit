@@ -1,0 +1,92 @@
+@media (min-width: 577px){
+  .footer__accordion__heading svg{
+    display: none;
+  }
+}
+@media (max-width: 576px){
+  footer .footer__accordion{
+    padding-bottom: 0;
+  }
+  footer .footer__accordion > *,
+  footer .footer__accordion .footer-social{
+    margin-top: 0;
+  }
+  .footer__accordion__heading{
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 30px 0;
+    cursor: pointer;
+  }
+  .footer__accordion__heading>*{
+    pointer-events:none;
+  }
+  *:not(:first-child)>.footer__accordion__heading:first-child:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--color-lines-borders);
+  }
+  .footer__accordion__content{
+    display: none;
+  }
+  .footer__accordion__heading[open].footer__accordion-opening+.footer__accordion__content {
+    --scroll-height: 300px;
+    opacity: 1;
+    max-height: var(--scroll-height);
+  }  
+  .footer__accordion__heading[open]+.footer__accordion__content {
+    display: block;
+    margin-bottom: 30px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity var(--duration-medium) linear,max-height var(--duration-medium) linear, margin-top var(--duration-medium) linear;
+  }
+  .footer__accordion__heading[open]{
+    padding-bottom: 0;
+  }
+  .footer-social__heading+.footer-social__container,
+  .footer__accordion__content.footer-block__mt{
+    margin-top: 0;
+  }
+  [open].footer__accordion-opening.footer-social__heading+.footer-social__container,
+  [open].footer__accordion-opening+.footer__accordion__content.footer-block__mt{
+    margin-top: 26px;
+  }
+  .footer__accordion__no-line .footer__content-line{
+    margin-bottom: 0;
+  }
+  .footer__accordion .footer__menu li a:hover:after{
+    content: none!important;
+  }
+  .footer__accordion__heading svg:last-child {
+    margin-left: auto;
+    flex: 0 0 auto;
+    transition: opacity var(--duration-medium) var(--animation-bezier);
+    width: 12px;
+    height: 12px;
+  }  
+  .footer__accordion__heading[open] svg:last-child {
+    transform: scaleY(-1);
+  }
+  .footer__content-line{
+    margin-bottom: 30px;
+  }
+  .admin-panel--no-js .footer__accordion__heading,
+  .no-js .footer__accordion__content{
+    padding-bottom: 0;
+  }
+  .admin-panel--no-js .footer__accordion__content,
+  .no-js .footer__accordion__content{
+    display: block;
+    margin-top: 26px;
+    margin-bottom: 30px;
+    opacity: 1;
+    max-height: unset;
+  }
+}

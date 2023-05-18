@@ -1,0 +1,458 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "c334dc4d-89dc-4e31-8960-5ff0586700f3": {
+          "type": "information",
+          "settings": {
+            "show_sku": true,
+            "show_barcode": false,
+            "show_vendor": true,
+            "show_type": false
+          }
+        },
+        "1f5e6d17-7cef-4e03-b13d-b19240ced047": {
+          "type": "title",
+          "settings": {
+            "text_size": "h2"
+          }
+        },
+        "4f8b197f-142b-4618-96c7-abd9de7cc0c4": {
+          "type": "rating",
+          "settings": {
+          }
+        },
+        "36032345-aea2-4f92-821a-d5ca441bfc03": {
+          "type": "price",
+          "settings": {
+            "show_tax": true,
+            "show_shipping": true
+          }
+        },
+        "ae34e2b1-9301-41fa-90ba-334a896aea64": {
+          "type": "inventory",
+          "settings": {
+            "inventory": 6
+          }
+        },
+        "a593bf72-1978-43ec-9d69-7b6cf499eb6c": {
+          "type": "text",
+          "settings": {
+            "text_size": "small",
+            "icon_name_1": "check_sm",
+            "content_1": "<p>Short content about your product.<\/p>",
+            "icon_name_2": "check_sm",
+            "content_2": "<p>Short content about your product.<\/p>",
+            "icon_name_3": "",
+            "content_3": "<p>Icons are optional<\/p>",
+            "icon_name_4": "check",
+            "content_4": "<p><strong>USE RICH TEXT EDITOR<br\/><\/strong>And big icons to highlight the product sale point<\/p>",
+            "icon_name_5": "",
+            "content_5": ""
+          }
+        },
+        "22f92dfa-de40-4d8a-b823-e2ce09e7b494": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "variant_name_1": "Size",
+            "content_1": "Add an additional description to your product option. Ex: Size guides, and other common questions.",
+            "page_1": "",
+            "variant_name_2": "Color",
+            "content_2": "Add an additional description to your product option. Ex: Size guides, and other common questions.",
+            "page_2": "",
+            "variant_name_3": "",
+            "content_3": "",
+            "page_3": "",
+            "variant_name_4": "",
+            "content_4": "",
+            "page_4": "",
+            "variant_name_5": "",
+            "content_5": "",
+            "page_5": "",
+            "variant_name_6": "",
+            "content_6": "",
+            "page_6": ""
+          }
+        },
+        "1b8b6108-97d1-4af6-bfc4-13bdc10f6046": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity": true,
+            "button_type_product": "show",
+            "enable_sticky_addtocart": true,
+            "show_dynamic_checkout": true
+          }
+        },
+        "1a749470-1b54-4c8f-a333-5b8486e63386": {
+          "type": "message",
+          "settings": {
+            "show_icon": true,
+            "text": "Ask a question"
+          }
+        },
+        "03273730-7345-42ca-900c-d5d4b561aa65": {
+          "type": "share",
+          "settings": {
+            "show_icon": true,
+            "share_label": "Share"
+          }
+        },
+        "d386a495-8de6-4101-a186-33bc8771e993": {
+          "type": "link",
+          "settings": {
+            "icon_name": "",
+            "text": "Link text",
+            "url": ""
+          }
+        },
+        "891d0f6f-5a37-4358-a93f-d49c92004bef": {
+          "type": "description",
+          "settings": {
+            "heading": "Product description",
+            "icon_name": "Info_sm"
+          }
+        },
+        "64bcad80-f315-441e-b1a9-67c6bcc66a4b": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon_name": "new_sm",
+            "content": "<p>Add an additional description to your products. You may set the same content for all products. <\/p><p>Ex: Shipping and return policies, size guides, and other common questions.<\/p><p>Or you may link a dynamic source to show product fields like vendor or custom product meta fields.<\/p><p>Ex: Ingredients, nutritional info, additional features and other unique per-product data.<\/p>",
+            "page": ""
+          }
+        },
+        "de9b7b68-7c6a-4e8a-a64b-a11978a6ad82": {
+          "type": "additional-feature",
+          "settings": {
+            "heading": "Additional features",
+            "icon_name": "certified_sm",
+            "icon_1": "check",
+            "text_1": "Add product sale point",
+            "icon_2": "check",
+            "text_2": "Add product sale point",
+            "icon_3": "",
+            "text_3": "",
+            "icon_4": "",
+            "text_4": "",
+            "icon_5": "",
+            "text_5": "",
+            "icon_6": "",
+            "text_6": ""
+          }
+        },
+        "6d434407-5ff9-4345-9c2b-9e5f78283589": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Complementary products",
+            "icon_name": "union_sm",
+            "product_list_limit": 5,
+            "image_ratio": "auto",
+            "show_price": true,
+            "truncate_product_name": false,
+            "hover_underline": false,
+            "button_type_product": "hide"
+          }
+        }
+      },
+      "block_order": [
+        "c334dc4d-89dc-4e31-8960-5ff0586700f3",
+        "1f5e6d17-7cef-4e03-b13d-b19240ced047",
+        "4f8b197f-142b-4618-96c7-abd9de7cc0c4",
+        "36032345-aea2-4f92-821a-d5ca441bfc03",
+        "ae34e2b1-9301-41fa-90ba-334a896aea64",
+        "a593bf72-1978-43ec-9d69-7b6cf499eb6c",
+        "22f92dfa-de40-4d8a-b823-e2ce09e7b494",
+        "1b8b6108-97d1-4af6-bfc4-13bdc10f6046",
+        "1a749470-1b54-4c8f-a333-5b8486e63386",
+        "03273730-7345-42ca-900c-d5d4b561aa65",
+        "d386a495-8de6-4101-a186-33bc8771e993",
+        "891d0f6f-5a37-4358-a93f-d49c92004bef",
+        "64bcad80-f315-441e-b1a9-67c6bcc66a4b",
+        "de9b7b68-7c6a-4e8a-a64b-a11978a6ad82",
+        "6d434407-5ff9-4345-9c2b-9e5f78283589"
+      ],
+      "settings": {
+        "top_spacing": "medium",
+        "width": "page-width",
+        "media_size": "large",
+        "heading_aligment": "mobile-text-center",
+        "use_accordion": true,
+        "mobile_thumbnails": "thumbnails_images",
+        "mobile_thumbnails_aligment": "justify-content-center",
+        "enable_sticky_info": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true
+      }
+    },
+    "1648018242bd6448c3": {
+      "type": "apps",
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width"
+      }
+    },
+    "16540789797a179ca9": {
+      "type": "image-with-text-type2",
+      "blocks": {
+        "16540789797fa73dd3-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "video",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "16540789797fa73dd3-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Text with colored background and side image"
+          }
+        },
+        "16540789797fa73dd3-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This section allows you to set a text box background.<\/p>"
+          }
+        },
+        "16540789797fa73dd3-3": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "16540789797fa73dd3-0",
+        "16540789797fa73dd3-1",
+        "16540789797fa73dd3-2",
+        "16540789797fa73dd3-3"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "content_size": "auto",
+        "desktop_content_height": 440,
+        "row_reverse": true,
+        "content_aligment": "align-self-center",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "play_background": "rgba(0,0,0,0)",
+        "color_background": "rgba(0,0,0,0)"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "subheading": "BEST SELLING PRODUCTS",
+        "heading": "Product recommendations",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-4 col-one_fifth",
+        "mobile_grid": "6",
+        "product_limit": 5,
+        "image_ratio": "1",
+        "show_secondary_image": true,
+        "texts_aligment": "text-center",
+        "product_name_size": "normal",
+        "show_vendor": false,
+        "show_type": false,
+        "show_rating": false,
+        "show_price": true,
+        "truncate_product_name": false,
+        "hover_underline": false,
+        "button_type_product": "hide",
+        "show_button_quickview": false,
+        "show_badge_on_sale": true,
+        "show_badge_sold_out": true,
+        "show_badge_feature": true,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_meta": "rgba(0,0,0,0)",
+        "color_button_product": "rgba(0,0,0,0)"
+      }
+    },
+    "d9e76fef-44b1-4d90-8089-0ec23f11533b": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Recently viewed products",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-4 col-one_fifth",
+        "mobile_grid": "6",
+        "swipe_on_mobile": true,
+        "image_ratio": "1",
+        "show_secondary_image": true,
+        "texts_aligment": "text-center",
+        "product_name_size": "normal",
+        "show_vendor": false,
+        "show_price": true,
+        "truncate_product_name": false,
+        "hover_underline": false,
+        "show_button_quickview": true,
+        "show_badge_on_sale": true,
+        "show_badge_sold_out": true,
+        "show_badge_feature": true,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_meta": "rgba(0,0,0,0)"
+      }
+    },
+    "16540791187138409c": {
+      "type": "icon-banners",
+      "blocks": {
+        "165407911824ee5498-0": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "delivery",
+            "url": "",
+            "heading": "Free delivery",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "165407911824ee5498-1": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "chat",
+            "url": "",
+            "heading": "Top-notch support",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "165407911824ee5498-2": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "money_back",
+            "url": "",
+            "heading": "Satisfied or refunded",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "165407911824ee5498-0",
+        "165407911824ee5498-1",
+        "165407911824ee5498-2"
+      ],
+      "settings": {
+        "subheading": "YOUR SUBHEADING GOES HERE",
+        "heading": "Icon banners",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "grid-columns-3",
+        "swipe_on_mobile": false,
+        "texts_aligment": "text-left",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_heading_banner": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)"
+      }
+    },
+    "1654079122d668a8e2": {
+      "type": "banners",
+      "blocks": {
+        "16540791227c6814a2-0": {
+          "type": "banner",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Banner",
+            "description": "Tell more about your product, collection...",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "texts_aligment_mobile": "text-center-mobile",
+            "heading_tag": "h2",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        },
+        "16540791227c6814a2-1": {
+          "type": "banner",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Banner",
+            "description": "Tell more about your product, collection...",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "texts_aligment_mobile": "text-center-mobile",
+            "heading_tag": "h2",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "16540791227c6814a2-0",
+        "16540791227c6814a2-1"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Banners",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-6",
+        "image_ratio": "auto",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1648018242bd6448c3",
+    "16540789797a179ca9",
+    "product-recommendations",
+    "d9e76fef-44b1-4d90-8089-0ec23f11533b",
+    "16540791187138409c",
+    "1654079122d668a8e2"
+  ]
+}

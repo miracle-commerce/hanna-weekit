@@ -1,0 +1,277 @@
+{{ 'section-ticker.css' | asset_url | stylesheet_tag }}
+
+{%- capture section_styles -%}
+{%- if section.settings.background != 'hide' -%}
+{%- liquid
+	capture color
+	if section.settings.background == 'color'
+    echo section.settings.color_background
+    else
+    echo section.settings.gradient
+    endif
+    endcapture
+-%}
+{%- if color != "rgba(0,0,0,0)" and color != blank -%}
+#ticker-{{ section.id }}{
+  --color-section-background: {{ color }};
+}
+{%- endif -%}
+{%- if section.settings.remove_bottom_spacing -%}
+#ticker-{{ section.id }}.section-background,
+#ticker-{{ section.id }} .section-background{
+  padding-bottom: 0;
+}
+{%- endif -%}
+{%- endif -%}
+{%- if section.settings.color_svg != "rgba(0,0,0,0)" -%}
+#ticker-{{ section.id }} .ticker__icon svg path{
+  fill: {{ section.settings.color_svg }};
+}
+{%- endif -%}
+{%- if section.settings.color_text != "rgba(0,0,0,0)" -%}
+#ticker-{{ section.id }} p{
+  color:{{section.settings.color_text}};
+}
+{%- endif -%}
+{%- endcapture -%}
+{%- if section_styles != blank -%}
+<style>{{ section_styles }}</style>
+{%- endif -%}
+
+<div id="ticker-{{ section.id }}" class="top-spacing-{{ section.settings.top_spacing }}{% if section.settings.background != 'hide' %} section-background section-background--{{ section.settings.background_spacing }}{% endif %}"
+     data-section-name="ticker">  
+  {%- capture content -%}
+  {%- if section.settings.show_icon == 'image' and section.settings.image != blank -%}
+  <div class="ticker__icon">
+    {%- assign image = section.settings.image -%}
+    {%- assign imagesize = section.settings.image.width | append: 'x' -%}
+    {%- capture srcset -%}{{ section.settings.image | img_url: imagesize }} 1x, {{ section.settings.image | img_url: imagesize, scale: 2 }} 2x{%- endcapture -%}
+    {{
+      image
+      | image_url: width: image.width
+      | image_tag:
+        loading: 'lazy',
+        width: image.width,
+        height: image.height,
+        srcset: srcset
+    }}
+  </div>
+  {%- elsif section.settings.show_icon == 'svg' and section.settings.icon_name != blank -%}
+  <div class="ticker__icon svg-icon--small">
+    {%- render 'icons-list' icon_name: section.settings.icon_name -%}
+  </div>
+  {%- endif -%}
+  <p>{{- section.settings.text | replace:'<p>', '' | replace:'</p>', '' -}}</p>
+  {%- endcapture -%}
+  
+  <ticker-section class="ticker{% if section.settings.text_size != "normal" %} {{ section.settings.text_size }}{% endif %}" style="--ticker-delay:{{ section.settings.ticker_time }}s">
+    <div class="ticker__container">
+      {{ content }}
+    </div>
+  </ticker-section>
+
+  <noscript>
+    <div class="ticker{% if section.settings.text_size != "normal" %} {{ section.settings.text_size }}{% endif %}" style="--ticker-delay:{{ section.settings.ticker_time }}s">
+      {%- for i in (1..9) -%}
+      <div class="ticker__container ticker--animation">
+        {{ content }}
+      </div>
+      {%- endfor -%}
+    </div>
+  </noscript>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.ticker.name",
+  	"tag": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "range",
+        "id": "ticker_time",
+        "min": 3,
+        "max": 30,
+        "step": 1,
+        "unit": "s",
+		"label": "t:sections.ticker.settings.ticker_time.label",
+        "default": 10
+      },
+      {
+        "type": "header",
+        "content": "t:sections.ticker.settings.text.label"
+      },
+	  {
+		"type": "select",
+		"id": "text_size",
+		"options": [
+		  {
+			"value": "ticker-large-text",
+			"label": "t:sections.general.settings.description_size.options__large.label"
+		  },
+		  {
+			"value": "normal",
+			"label": "t:sections.general.settings.description_size.options__normal.label"
+		  },
+		  {
+			"value": "body2",
+			"label": "t:sections.general.settings.description_size.options__small.label"
+		  }
+		],
+		"default": "normal",
+		"label": "t:sections.ticker.settings.text_size.label"
+	  },
+      {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p><strong>ANNOUNCEMENT <\/strong>— Use this section to include scrolling announcement text<\/p>",
+		"label": "t:sections.ticker.settings.text.label"
+      },
+	  {
+		"type": "select",
+		"id": "show_icon",
+		"options": [
+		  {
+			"value": "none",
+			"label": "t:sections.general.settings.show_icon.options__hide.label"
+		  },
+		  {
+			"value": "image",
+			"label": "t:sections.general.settings.show_icon.options__image.label"
+		  },
+		  {
+			"value": "svg",
+			"label": "t:sections.general.settings.show_icon.options__svg.label"
+		  }
+		],
+		"default": "svg",
+		"label": "t:sections.general.settings.show_icon.label"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "image",
+		"label": "t:sections.general.settings.image.label",
+		"info": "t:sections.general.settings.show_icon.image_info"
+	  },
+	  {
+		"type": "text",
+		"id": "icon_name",
+		"default": "advertising_sm",
+		"label": "t:sections.general.settings.preset_icon.label"
+	  },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_colors.content"
+      },
+	  {
+		"type": "color",
+		"id": "color_svg",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.ticker.settings.color_svg.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_text",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.ticker.settings.text.label"
+	  },
+      {
+        "type": "header",
+		"content": "t:sections.general.settings.header_background.content"
+      },
+	  {
+		"type": "select",
+		"id": "background",
+		"options": [
+		  {
+			"value": "hide",
+			"label": "t:sections.general.settings.background.options__hide.label"
+		  },
+		  {
+			"value": "color",
+			"label": "t:sections.general.settings.background.options__color.label"
+		  },
+		  {
+			"value": "gradient",
+			"label": "t:sections.general.settings.background.options__gradient.label"
+		  }
+		],
+		"default": "color",
+		"label": "t:sections.general.settings.background.label"
+	  },
+	  {
+		"type": "color",
+		"id": "color_background",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.color_background.label"
+	  },
+      {
+		"type": "color_background",
+        "id": "gradient",
+		"label": "t:sections.general.settings.gradient.label"
+      },
+	  {
+		"type": "select",
+		"id": "background_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.background_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.background_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.background_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.background_spacing.options__normal.label"
+          }
+        ],
+		"default": "small",
+		"label": "t:sections.general.settings.background_spacing.label"
+	  },
+      {
+        "type": "checkbox",
+        "id": "remove_bottom_spacing",
+        "default": false,
+		"label": "t:sections.general.settings.remove_bottom_spacing.label"
+      }
+	],
+    "presets": [
+      {
+      	"name": "t:sections.ticker.presets.name"
+      }
+    ]
+  }
+{% endschema %}

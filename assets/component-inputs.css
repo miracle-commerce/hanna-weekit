@@ -1,0 +1,340 @@
+.field{
+  --component-color-lines-borders: var(--color-lines-borders);
+  --component-color-input-text: var(--color-input-text);
+  --component-color-input-text-active: var(--color-input-text);
+  display: flex;
+  width: 100%;
+  height: var(--form_field-height);
+  position: relative;
+}
+select{
+  cursor: pointer;
+}
+input, textarea, select{
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-bold-weight);
+  font-size: var(--font-body2-size);
+  line-height: var(--font-body2-line-height);
+}
+.field__input{
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-left: 15px;
+  border: none;
+  width: 100%;
+  height: var(--form_field-height);
+  background: var(--color-input-background);
+  border-radius: var(--radius-input);
+  backface-visibility: hidden;
+  color: var(--component-color-input-text, var(--color-input-text));
+  box-shadow: inset 0 0 0 0 var(--component-color-lines-borders, var(--color-lines-borders));
+  transition: box-shadow var(--duration-medium) ease, background var(--duration-medium) ease;
+}
+button.field__input{
+  font-weight: var(--font-body-bold-weight);
+}
+.field__input[type="number"]{
+  padding-right: 15px;
+}
+@media (max-width: 1024px){
+  .field__input{
+    font-size: 16px;
+  }
+}
+.field .field__input::placeholder{opacity: 0;}
+.field__input::-webkit-search-cancel-button{display: none;}
+.field__button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 15px 0;
+  height: var(--form_field-height);
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--duration-medium) ease;
+}
+.field__button svg path{
+  fill:var(--component-color-input-text-active, var(--color-input-text));
+}
+.field__icon{
+  position: absolute;
+  display: flex;
+  top: calc(50%);
+  transform: translate(0,-50%);
+  left: 15px;
+  pointer-events: none;
+  opacity: var(--opacity-icons);
+  transition: opacity var(--duration-medium) ease;
+  z-index: 1;
+}
+.field__button svg,
+.field__icon svg{
+  width: 20px;
+  height: 20px;
+}
+.field__icon svg path{
+  fill: var(--component-color-input-text, var(--color-input-text));
+  transition: fill var(--duration-medium) ease, background var(--duration-medium) ease;
+}
+.field__label{
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  left: 15px;
+  pointer-events: none;
+  color: var(--component-color-input-text, var(--color-input-text));
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+  font-size: var(--font-body2-size);
+  line-height: var(--font-body2-line-height);
+  transition: color var(--duration-medium) ease, top .1s ease,font-size .1s ease, transform .1s ease;
+  z-index: 1;
+}
+.search--small{width: 224px;}
+.field-with-icon .field__input{padding-left: 45px;}
+.field-with-icon .field__label{left: 45px;}
+.field__input:hover ~ .field__label,
+.field:hover .field__label{
+  color: var(--component-color-input-text-active, var(--color-input-text));
+}
+.field.active .field__label,
+.field__input:focus ~ .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label,
+.field__input:-webkit-autofill ~ .field__label{
+  top: 8px;
+  font-size: 10px;
+  line-height: 13px;
+  transform: translate(0,0);
+}
+.field .field__input:focus,
+.field .field__input:not(:placeholder-shown),
+.field .field__input:-webkit-autofill{
+  padding-top: 16px;
+}
+.field .field__input.text-area:focus,
+.field .field__input.text-area:not(:placeholder-shown),
+.field .field__input.text-area:-webkit-autofill{
+  padding-top: 24px;
+}
+.field .field__input.field__input--no-label{
+  padding-top: 0px;
+}
+.field__input:focus ~ .field__label,
+.field__input:-webkit-autofill ~ .field__label{
+  color: var(--component-color-input-text-active, var(--color-input-text));
+}
+  
+.field__input:active,
+.field__input:focus,
+.field:hover .field__input,
+.field__input:not(:focus):hover{
+  color: var(--component-color-input-text-active, var(--color-input-text));
+  box-shadow: inset 0 0 0 2px var(--component-color-lines-borders, var(--color-lines-borders));
+  background: var(--color-input-background-active);
+}
+.field__input:-webkit-autofill:focus ~ .field__icon,
+.field__input:-webkit-autofill:hover ~ .field__icon,
+.field__input:-webkit-autofill ~ .field__icon,
+.field__input:active ~ .field__icon,
+.field__input:focus ~ .field__icon,
+.field:hover .field__icon{
+  opacity: 1;
+}
+.field__input:-webkit-autofill:focus ~ .field__icon svg path,
+.field__input:-webkit-autofill:hover ~ .field__icon svg path,
+.field__input:-webkit-autofill ~ .field__icon svg path,
+.field__input:active ~ .field__icon svg path,
+.field__input:focus ~ .field__icon svg path,
+.field:hover .field__icon svg path{
+  fill: var(--component-color-input-text-active, var(--color-input-text));
+}
+  
+.field__input:-webkit-autofill:focus ~ .field__button,
+.field__input:-webkit-autofill:hover ~ .field__button,
+.field__input:-webkit-autofill ~ .field__button,
+.field__input:active ~ .field__button,
+.field__input:focus ~ .field__button,
+.field:hover .field__button{opacity: var(--opacity-icons);}
+.field:hover .field__button:hover{opacity: 1;}
+.field__button__type2{left: 0; right: auto; padding-right:0; opacity: var(--opacity-icons);}
+.field:hover .field__button__type2{opacity: 1;}
+
+.field--text-area{
+  height: auto;
+  overflow: visible;
+}
+.field--text-area .field__label{
+  top: 16px;
+  transform: unset;
+}
+.field__input.text-area{
+  padding-top: 24px;
+  resize: vertical;
+  min-height: 150px;
+  height: 150px;
+}
+.field__label--error{
+  color: var(--color-error);
+}
+.field__icon--select{
+  left: unset;
+  right: 15px;
+}
+.field__icon--select svg{
+  width: 12px;
+  height: 12px;
+}
+.quantity{
+  width: 140px;
+}
+.quantity .field__input{
+  padding: 0 !important;
+  text-align: center;
+}
+.quantity__input::-webkit-outer-spin-button,
+.quantity__input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.quantity__button{
+  position: absolute;
+  top: 0;
+  padding: 2px 13px 0;
+  border: 0;
+  outline: unset;
+  border: 0;
+  outline: unset;
+  background: transparent;
+  cursor: pointer;
+  height: 100%;
+  z-index: 1;
+}
+.quantity__button svg{
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+.quantity__button[name="minus"]{
+  padding-left: 15px;
+  left: 0;
+  border-top-left-radius: var(--radius-button);
+  border-bottom-left-radius: var(--radius-button);
+}
+.quantity__button[name="plus"]{
+  padding-right: 15px;
+  right: 0;
+  border-top-right-radius: var(--radius-button);
+  border-bottom-right-radius: var(--radius-button);
+}
+@media (min-width: 993px){
+  .quantity__button svg{
+    opacity: var(--opacity-icons);
+    transition: opacity var(--duration-medium) var(--animation-bezier);
+  }
+  .quantity__button:hover svg{
+    opacity: 1;
+  }
+}
+.checkbox-input{
+  position: relative;
+  cursor: pointer;
+}
+.checkbox-input{
+  display: flex;
+  align-items: flex-start;
+}
+.checkbox-input > span{
+  margin-top: 1px;
+}
+.checkbox-input input[type=checkbox] {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  z-index: -1;
+  margin: 0;
+  background: var(--color-secondary-background);
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: var(--radius-checkbox);
+  border: 2px solid var(--color-lines-borders);
+  transition: border .2s ease;
+}
+.checkbox-input:hover{
+  font-weight: var(--font-body-bold-weight);
+}
+.checkbox-input:hover input[type=checkbox]{
+  border: 2px solid var(--color-base);
+}  
+.checkbox-input > input[type='checkbox']:checked ~ span {
+  font-weight: var(--font-body-bold-weight);
+}
+.checkbox-input__checkmark{
+  -webkit-perspective: 20;
+  perspective: 20;
+}
+.checkbox-input__flip{
+  display: block;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+}
+.checkbox-input input:checked + .checkbox-input__checkmark .checkbox-input__flip{
+  transform: rotateY(180deg);
+}
+.checkbox-input__front,
+.checkbox-input__back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-checkbox);
+}
+.checkbox-input__front {
+  background: var(--color-secondary-background);
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+}
+.checkbox-input__back {
+  transform: rotateY(180deg);
+  background: var(--background);
+  text-align: center;
+  color: #fff;
+  line-height: 20px;
+}
+.checkbox-input__back svg {
+  margin-top: 3px;
+  fill: none;
+}
+.checkbox-input__back svg path {
+  fill: var(--fill);
+}
+@media (max-width: 992px){
+  .quantity__button:hover{
+    background: var(--mobile-focus-color);
+  }
+}
+.newsletter-terms{
+  margin-top: 10px;
+}
+@media (max-width: 992px){
+  .newsletter-terms{
+    margin-top: 15px;
+  }
+}

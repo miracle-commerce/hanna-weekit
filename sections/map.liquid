@@ -1,0 +1,491 @@
+{%- if settings.animate_content_show -%}
+<link rel="stylesheet" href="{{ 'section-map.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'section-map.css' | asset_url | stylesheet_tag }}</noscript>
+{%- else -%}
+{{ 'section-map.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{%- capture section_styles -%}
+@media (min-width:993px){
+  #chm-map-{{ section.id }} .grid-container-map{
+    height: {{section.settings.desktop_content_height}}px;
+  }
+}
+@media (min-width:577px) and (max-width:992px){
+  #chm-map-{{ section.id }} .grid-container-map{
+	height: auto;
+	min-height: {{section.settings.desktop_content_height}}px;
+  }
+}
+{%- if section.settings.color_subheading != "rgba(0,0,0,0)" -%}
+#chm-map-{{ section.id }} .subheading{
+  color:{{ section.settings.color_subheading }};
+}
+{%- endif -%}
+{%- if section.settings.color_heading != "rgba(0,0,0,0)" -%}
+#chm-map-{{ section.id }} .heading{
+  --color-base:{{ section.settings.color_heading }};
+}
+{%- endif -%}
+{%- if section.settings.color_text != "rgba(0,0,0,0)" -%}
+#chm-map-{{ section.id }} .chm-map__texts{
+  color:{{ section.settings.color_text }};
+}
+{%- endif -%}
+{%- if section.settings.color_background != "rgba(0,0,0,0)" -%}
+#chm-map-{{ section.id }}.chm-map{
+  --color-background:{{ section.settings.color_background }};
+}
+{%- if settings.color_background == section.settings.color_background -%}
+{%- if section.settings.width != "page-fullwidth" -%}
+#chm-map-{{ section.id }} .grid-container-map .chm-map__image{
+  border-radius: var(--radius);
+}
+{%- endif -%}
+@media (max-width: 576px){
+  #chm-map-{{ section.id }} [class*="page-"]:not([class*="fullwidth"]) .chm-map__container{
+	padding-right: 0;
+	padding-left: 0;
+  }
+  #chm-map-{{ section.id }} .chm-map__container{
+    padding-bottom: 0;
+  }
+}
+{%- endif -%}
+{%- endif -%}
+{%- if section.settings.color_button != "rgba(0,0,0,0)" -%}
+{%- assign accent_brightness = section.settings.color_button | color_extract: 'lightness' -%}
+#chm-map-{{ section.id }} .btn{
+  --background: {{ section.settings.color_button }};
+  {%- if accent_brightness < 50 -%}
+  --color: var(--auto-text-color-button-light);
+  {%- else -%}
+  --color: var(--auto-text-color-button-dark);
+  {%- endif -%}
+}
+{%- endif -%}
+{%- endcapture -%}
+{%- if section_styles != blank -%}
+<style>{{ section_styles }}</style>
+{%- endif -%}
+
+<div id="chm-map-{{ section.id }}" class="chm-map top-spacing-{{ section.settings.top_spacing }}"
+     data-section-name="map">
+  <div class="{{ section.settings.width }} hover-area">
+
+    {%- capture map_content -%}
+    {%- for block in section.blocks -%}
+    {%- if block.type == 'image' -%}
+    {%- if block.settings.api_key == blank -%}
+    {%- if section.settings.url != blank -%}
+    {%- assign html_tag_open = '<a' | append: ' href="' | append: section.settings.url | append:'"' -%}
+    {%- assign html_tag_close = '</a>' -%}
+    {%- else -%}
+    {%- assign html_tag_open = '<div' -%}
+    {%- assign html_tag_close = '</div>' -%}
+    {%- endif -%}
+    <div class="chm-map__image-container{% if settings.enable_zoom_animation and section.settings.url != blank %} image-hover-scaling-up{% endif %}" {{ block.shopify_attributes }}>
+      {{ html_tag_open }} class="image-hover-scaling__image"{% if section.settings.url != blank %} aria-label="{{ 'general.aria_label.link' | t }}"{% endif %}>
+      {%- if block.settings.image == blank -%}
+      <div style="--aspect-ratio: 1.33333;">
+        <img srcset="{{ 'placeholder-map.png' | asset_url }} 1x, {{ 'placeholder-map.png' | asset_url }} 2x"
+             src="{{ 'placeholder-map.png' | asset_url }}"
+             loading="lazy"
+             alt="Map placeholder"
+             >
+      </div>
+      {%- else -%}
+      {%- liquid assign image_ratio = block.settings.image.aspect_ratio -%}
+      <div style="--aspect-ratio: {{image_ratio}};">
+        {%- assign image = block.settings.image -%}
+        {%- capture image_class -%}{% if settings.animate_image_show %}image-show--fadein{% endif %}{%- endcapture -%}            
+        {%- capture animate_image_show -%}{% if settings.animate_image_show %}this.classList.add('image-loaded');{% endif %}{%- endcapture -%}
+        {{
+          image
+          | image_url: width: image.width
+          | image_tag:
+            loading: 'lazy',
+            width: image.width,
+            height: image.height,
+            sizes: '100vw',
+            widths: '400, 580, 1240, 1920',
+            class: image_class,
+            onload: animate_image_show
+        }}
+      </div>
+      {%- endif -%}
+      {{ html_tag_close }}
+    </div>
+	{%- else -%}
+    <map-section id="map-{{ section.id }}" 
+         class="chm-google-map" 
+         data-api-key="{{ block.settings.api_key }}" 
+         data-zoom-level="{{ block.settings.map_zoom_level }}" 
+         data-map-address="{{ block.settings.map_address }}" 
+         data-show-pin="{{ block.settings.show_pin }}" 
+         {{ block.shopify_attributes }}
+         ></map-section>
+    {%- endif -%}
+    {%- break -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- capture content -%}
+    {%- for block in section.blocks -%}
+    {%- if block.type == 'heading' -%}
+    <div class="mb--last-child-0" {{ block.shopify_attributes }}>
+      {%- if block.settings.subheading != blank -%}<p class="subheading h5 mb20">{{ block.settings.subheading }}</p>{%- endif -%}
+      {%- if block.settings.heading != blank -%}
+      {{ '<' | append: section.settings.heading_tag }} class="heading mt0 mb0{% if section.settings.hover_underline and section.settings.url != blank %} animation-underline{% endif %}">
+      {%- if section.settings.url != blank -%}<a href="{{ section.settings.url }}" class="clear-underline" aria-label="{{ 'general.aria_label.link' | t }}">{%- endif -%}
+      {{ block.settings.heading }}
+      {%- if section.settings.url != blank -%}</a>{%- endif -%}
+      {{ '</' | append: section.settings.heading_tag }}>
+      {%- endif -%}
+    </div>
+    {%- break -%}
+    {%- endif -%}
+    {%- endfor -%}
+
+    {%- for block in section.blocks -%}
+    {%- if block.type == 'text' -%}
+    {%- if block.settings.text != blank -%}
+    <div class="chm-map__texts mt15 mt--first-child-0{% if section.settings.text_size != "normal" %} {{ section.settings.text_size }}{% endif %}" {{ block.shopify_attributes }}>
+      {{ block.settings.text }}
+    </div>
+    {%- endif -%}
+    {%- endif -%}
+    {%- endfor -%}
+
+    {%- for block in section.blocks -%}
+    {%- if block.type == 'button' -%}
+    {%- if block.settings.button_name != blank -%}
+    <div class="mt30 chm-map__btn-container" {{ block.shopify_attributes }}>
+      <a{% if section.settings.url != blank %} href="{{ section.settings.url }}"{% endif %}
+         class="btn btn_zoom btn--secondary w-full-sp"
+         {% if section.settings.url == blank %} aria-disabled="true"{% else %} aria-label="{{ 'general.aria_label.link' | t }}"{% endif %}>
+        <span>{{ block.settings.button_name }}</span>
+      </a>
+    </div>
+    {%- break -%}
+    {%- endif -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endcapture -%}
+    
+	<div class="grid-container-map{% if section.settings.row_reverse %} chm-map--reverse{% endif %}{% if map_content == blank or content == blank %} grid-container--one{% endif %}">
+      {%- if map_content != blank -%}
+      <div class="chm-map__image">
+        {{- map_content -}}
+      </div>
+      {%- endif -%}
+      {%- if content != blank -%}
+      <div class="chm-map__container {{ section.settings.texts_aligment }}">
+        <div class="mt--first-child-0 {{ section.settings.content_aligment }}">
+          {{- content -}}
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.map.name",
+  	"tag": "section",
+    "settings": [
+      {
+        "type": "url",
+        "id": "url",
+        "label": "t:sections.general.settings.name_link.label",
+		"info": "t:sections.image-with--general.settings.url.info"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_layout.content"
+      },
+      {
+        "type": "select",
+        "id": "top_spacing",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.general.settings.top_spacing.options__none.label"
+          },
+          {
+            "value": "small",
+            "label": "t:sections.general.settings.top_spacing.options__small.label"
+          },
+          {
+            "value": "medium",
+            "label": "t:sections.general.settings.top_spacing.options__medium.label"
+          },
+          {
+            "value": "normal",
+            "label": "t:sections.general.settings.top_spacing.options__normal.label"
+          }
+        ],
+        "default": "normal",
+		"label": "t:sections.general.settings.top_spacing.label"
+      },
+      {
+        "type": "select",
+        "id": "width",
+        "options": [
+          {
+            "value": "page-width",
+            "label": "t:sections.general.settings.width.options__boxed.label"
+          },
+          {
+            "value": "page-wide",
+            "label": "t:sections.general.settings.width.options__wide.label"
+          },
+          {
+            "value": "page-fullwidth",
+            "label": "t:sections.general.settings.width.options__fullwidth.label"
+          }
+        ],
+        "default": "page-width",
+        "label": "t:sections.general.settings.width.label",
+		"info": "t:sections.general.settings.width.info"
+      },
+	  {
+		"type": "range",
+		"id": "desktop_content_height",
+		"min": 400,
+		"max": 700,
+		"step": 20,
+		"unit": "px",
+		"label": "t:sections.map.settings.desktop_content_height.label",
+		"default": 500
+	  },
+      {
+        "type": "header",
+        "content": "t:sections.image-with--general.settings.header_name.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "row_reverse",
+        "default": false,
+        "label": "t:sections.general.settings.row_reverse.label"
+      },
+	  {
+		"type": "select",
+		"id": "content_aligment",
+		"options": [
+		  {
+			"value": "align-self-start",
+			"label": "t:sections.image-with--general.settings.content_aligment.options__top.label"
+		  },
+		  {
+			"value": "align-self-center",
+			"label": "t:sections.image-with--general.settings.content_aligment.options__center.label"
+		  },
+		  {
+			"value": "align-self-end",
+			"label": "t:sections.image-with--general.settings.content_aligment.options__bottom.label"
+		  }
+		],
+		"default": "align-self-start",
+		"label": "t:sections.image-with--general.settings.content_aligment.label"
+	  },
+      {
+        "type": "select",
+        "id": "texts_aligment",
+        "options": [
+		  {
+			"value": "text-left",
+			"label": "t:sections.general.settings.texts_aligment.options__left.label"
+		  },
+		  {
+			"value": "text-center",
+			"label": "t:sections.general.settings.texts_aligment.options__center.label"
+		  }
+		],
+		"default": "text-left",
+		"label": "t:sections.general.settings.texts_aligment.label"
+	  },
+	  {
+		"type": "select",
+		"id": "heading_tag",
+		"options": [
+		  {
+			"value": "h1",
+			"label": "t:sections.general.settings.heading_tag.options__h1.label"
+		  },
+		  {
+			"value": "h2",
+			"label": "t:sections.general.settings.heading_tag.options__small.label"
+		  }
+		],
+		"default": "h2",
+		"label": "t:sections.general.settings.heading_tag.label"
+	  },
+	  {
+		"type": "select",
+		"id": "text_size",
+		"options": [
+		  {
+			"value": "normal",
+			"label": "t:sections.general.settings.description_size.options__normal.label"
+		  },
+		  {
+			"value": "body2",
+			"label": "t:sections.general.settings.description_size.options__small.label"
+		  }
+		],
+		"default": "normal",
+		"label": "t:sections.general.settings.description_size.label"
+	  },
+      {
+        "type": "checkbox",
+        "id": "hover_underline",
+        "default": false,
+        "label": "t:sections.general.settings.hover_underline.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.general.settings.header_colors.content"
+      },
+      {
+        "type": "color",
+        "id": "color_subheading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.subheading.label"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.heading.label"
+      },
+	  {
+		"type": "color",
+		"id": "color_text",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.description.label"
+	  },
+      {
+        "type": "color",
+        "id": "color_button",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.image-with--general.settings.color_button.label"
+      },
+	  {
+		"type": "color",
+		"id": "color_background",
+		"default": "rgba(0,0,0,0)",
+		"label": "t:sections.general.settings.background.label"
+	  }
+	],
+    "blocks": [
+      {
+        "type": "image",
+		"limit": 1,
+        "name": "t:sections.map.blocks.image.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "api_key",
+            "label": "t:sections.map.blocks.image.settings.api_key.label",
+			"info": "t:sections.map.blocks.image.settings.api_key.info"
+          },
+          {
+			"type": "text",
+            "id": "map_address",
+            "label": "t:sections.map.blocks.image.settings.map_address.label",
+			"info": "t:sections.map.blocks.image.settings.map_address.info"
+		  },
+          {
+			"type": "checkbox",
+            "id": "show_pin",
+            "label": "t:sections.map.blocks.image.settings.show_pin.label",
+            "default": true
+          },
+          {
+            "type": "range",
+            "id": "map_zoom_level",
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "unit": "x",
+            "label": "t:sections.map.blocks.image.settings.map_zoom_level.label",
+            "default": 14
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.map.blocks.image.settings.image.label",
+			"info": "t:sections.map.blocks.image.settings.image.info"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+		"limit": 1,
+        "name": "t:sections.image-with--general.blocks.heading.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "subheading",
+            "default": "SUBHEADING",
+            "label": "t:sections.general.settings.subheading.label"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "default": "Map",
+            "label": "t:sections.general.settings.heading.label"
+          }
+        ]
+      },
+      {
+        "type": "text",
+		"limit": 1,
+        "name": "t:sections.image-with--general.blocks.text.name",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+			"default": "<p>301 Central Street<br\/>City, Country<\/p><p>Mon - Fri, 8:30am - 10:30pm<br\/>Saturday, 8:30am - 10:30pm<br\/>Sunday, 8:30am - 10:30pm<\/p>",
+            "label": "t:sections.general.settings.description.label"
+          }
+        ]
+      },
+      {
+        "type": "button",
+		"limit": 1,
+        "name": "t:sections.image-with--general.blocks.button.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_name",
+            "default": "Get direction",
+            "label": "t:sections.image-with--general.blocks.button.settings.button_name.label"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+      	"name": "t:sections.map.presets.name",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "heading"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

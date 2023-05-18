@@ -1,0 +1,78 @@
+.slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.slider::-webkit-scrollbar {
+  display: none;
+}
+.slider__slide {
+  scroll-snap-align: start;
+}
+.no-js .slider {
+  -ms-overflow-style: auto;
+  scrollbar-width: auto;
+}
+.no-js .slider::-webkit-scrollbar {
+  display: initial;
+}
+.slider__buttons__container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: -23px;
+  margin-left: -12px;
+  margin-right: -11px;
+}
+.justify-content-center.slider__buttons__container{
+  margin-left: auto;
+  margin-right: auto;
+}
+.slider__button{
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+  margin-top: 23px;
+  margin-left: 12px;
+  margin-right: 11px;
+  border-radius: 50%;
+  background: var(--color-base);
+  opacity: 0.3;
+  transition: opacity var(--duration-medium) var(--animation-bezier);
+}
+.slider__button--current{
+  opacity: 1;
+}
+.slider__button:before{
+  content:"";
+  position: absolute;
+  top:-8px;
+  left:-8px;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+}
+.slider__buttons{
+  display: none;
+}
+@media (max-width: 576px) {
+  .slider-mobile-product .slider.slider--phone{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .slider__overflow-hidden--phone{
+    overflow:hidden;
+  }
+  .slider__buttons.slider--phone{
+    display: flex;
+  }
+  .slider.slider--phone {
+    position: relative;
+    flex-wrap: inherit;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -1,0 +1,102 @@
+{% comment %}
+    Sticky add to cart modal
+
+    Accepts:
+    - section: {Object} Section object
+    - enable_filtering: {Boolean} Enabled filtering for the button name
+    - enable_sorting: {Boolean} Enabled sorting for the button name
+
+    Usage:
+	{%- render "sticky-filter-button",
+    			section: section,
+				enable_filtering: enable_filtering,
+				enable_sorting: enable_sorting
+				-%}
+{% endcomment %}
+
+{%- if section.settings.enable_sticky_filter_button -%}
+{%- if enable_filtering or enable_sorting -%}
+<sticky-filter-modal class="page-width">
+  <button class="link btn btn--secondary w-full-sp">
+    {%- render "icon-filter" -%}
+    <span>
+      {%- if enable_filtering and enable_sorting -%}
+      {{ 'products.facets.filter_and_sort' | t }}
+      {%- elsif enable_filtering -%}
+      {{ 'products.facets.filter_button' | t }}
+      {%- elsif enable_sorting -%}
+      {{ 'products.facets.sort_button' | t }}
+      {%- endif -%}
+    </span>
+  </button>
+</sticky-filter-modal>
+<style>
+  sticky-filter-modal{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background: var(--color-simple-dropdown);
+    box-shadow: var(--shadow);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 8;
+    visibility: hidden;
+    transition: transform var(--duration-large) var(--animation-bezier),
+      			visibility var(--duration-large) var(--animation-bezier);
+  }
+  sticky-filter-modal .btn{
+    height: 40px;
+  }
+  @media (min-width: 993px){
+    display: none;
+  }
+  @media (max-width: 992px){
+    sticky-filter-modal{
+      top: 0;
+      transform: translateY(calc(-100% - 30px));
+    }
+    sticky-filter-modal.show-modal{
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+</style>
+
+<script>
+class stickyFilterModal extends HTMLElement {
+  constructor() {
+    super();
+    this.mainButton = document.getElementById(`mobile-facets`);
+    window.addEventListener('scroll', this.update.bind(this));
+    this.querySelector('button').addEventListener('click', this.click.bind(this), false);
+    this.update();
+  }
+  click(e){
+    e.preventDefault();
+    document.body.setAttribute('data-top', window.pageYOffset);
+	document.body.style.top = `-${window.pageYOffset}px`;
+	document.body.classList.add(`fixed-position`);
+    document.body.classList.add('overflow-hidden-tablet');
+    this.mainButton.querySelector('[tabindex]').setAttribute('tabindex', '');
+    this.mainButton.classList.add('menu-opening');
+    this.mainButton.setAttribute('open', 'true');
+  }
+  update(){
+    if(window.innerWidth > 992 ) return;
+    const rangeToShowModal = this.getTop(this.mainButton) + this.mainButton.clientHeight;
+    if(window.scrollY >= rangeToShowModal && !this.classList.contains('show-modal')){
+      this.classList.add('show-modal');
+    }
+    if(window.scrollY < rangeToShowModal && this.classList.contains('show-modal')){
+      if (document.body.classList.contains('fixed-position')) return;
+      this.classList.remove('show-modal');
+    }
+  }
+  getTop(el) {
+    return el.offsetTop + (el.offsetParent && this.getTop(el.offsetParent));
+  }
+}
+customElements.define('sticky-filter-modal', stickyFilterModal);
+</script>
+{%- endif -%}
+{%- endif -%}

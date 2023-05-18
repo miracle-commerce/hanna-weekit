@@ -1,0 +1,602 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "top_spacing": "none",
+        "width": "page-width",
+        "show_heading": true,
+        "heading_aligment": "text-center"
+      }
+    },
+    "1654077004c2bcb5de": {
+      "type": "slideshow",
+      "blocks": {
+        "9c7c49f2-ecd4-46cd-b640-510dd52f6725": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "9c7c49f2-ecd4-46cd-b640-510dd52f6725"
+      ],
+      "settings": {
+        "top_spacing": "none",
+        "bottom_spacing": "normal",
+        "width": "page-width",
+        "image_size": "fullscreen",
+        "desktop_image_height": 440,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    },
+    "1654436293aa2e89de": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "996a1120-d8c6-48d5-acd5-595d0f8a5c58": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "ee865063-15c5-48d5-b01b-4114ab9fb5c8": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "37efa4cf-18cd-4cb7-80ca-e7c3f36fb01c": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "ca67285c-a60b-4247-9ff2-dd36bcc93b64": {
+          "type": "blurb_image",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "996a1120-d8c6-48d5-acd5-595d0f8a5c58",
+        "ee865063-15c5-48d5-b01b-4114ab9fb5c8",
+        "37efa4cf-18cd-4cb7-80ca-e7c3f36fb01c",
+        "ca67285c-a60b-4247-9ff2-dd36bcc93b64"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Text columns with images",
+        "heading_aligment": "text-center",
+        "button_name": "Button",
+        "button_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-6 col-3",
+        "swipe_on_mobile": false,
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_heading_blurb": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "1654088893a1b032eb": {
+      "type": "icon-banners",
+      "blocks": {
+        "16540888935746bdcf-0": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "number_1",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "16540888935746bdcf-1": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "number_2",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "16540888935746bdcf-2": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "number_3",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "16540888935746bdcf-0",
+        "16540888935746bdcf-1",
+        "16540888935746bdcf-2"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Icon banners",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "grid-columns-3",
+        "swipe_on_mobile": false,
+        "texts_aligment": "text-left",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_heading_banner": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)"
+      }
+    },
+    "1654436425ac77d937": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "16544364250375052a-0": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "16544364250375052a-1": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "advertising",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "16544364250375052a-2": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "phone",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "858d173f-2284-4a43-8f07-218d72f776e2": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "93bb9ed5-d3b2-4423-952d-edcd95f505ae": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        },
+        "deb1909c-dc4d-41c1-9038-bc2fe680873e": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Give customers details about the banner image(s) or content on the template.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16544364250375052a-0",
+        "16544364250375052a-1",
+        "16544364250375052a-2",
+        "858d173f-2284-4a43-8f07-218d72f776e2",
+        "93bb9ed5-d3b2-4423-952d-edcd95f505ae",
+        "deb1909c-dc4d-41c1-9038-bc2fe680873e"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Text columns with images",
+        "heading_aligment": "text-center",
+        "button_name": "Button",
+        "button_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-4",
+        "swipe_on_mobile": false,
+        "image_ratio": "auto",
+        "texts_aligment": "text-left",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_heading_blurb": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "content_width",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "16540772012510beeb": {
+      "type": "reviews",
+      "blocks": {
+        "16540772014f45ec1b-0": {
+          "type": "review",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "— Author Name"
+          }
+        },
+        "16540772014f45ec1b-1": {
+          "type": "review",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "— Author Name"
+          }
+        },
+        "16540772014f45ec1b-2": {
+          "type": "review",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "— Author Name"
+          }
+        },
+        "16540772014f45ec1b-3": {
+          "type": "review",
+          "settings": {
+            "show_image": "show",
+            "url": "",
+            "heading": "Heading",
+            "description": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "— Author Name"
+          }
+        }
+      },
+      "block_order": [
+        "16540772014f45ec1b-0",
+        "16540772014f45ec1b-1",
+        "16540772014f45ec1b-2",
+        "16540772014f45ec1b-3"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Reviews",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-md-6 col-3",
+        "swipe_on_mobile": false,
+        "image_ratio": "1, round-image",
+        "texts_aligment": "text-center",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_heading_blurb": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_author": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "165407720454aae122": {
+      "type": "slideshow",
+      "blocks": {
+        "c2920e07-0fae-48a8-928e-575fb7cec32d": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "c2920e07-0fae-48a8-928e-575fb7cec32d"
+      ],
+      "settings": {
+        "top_spacing": "normal",
+        "bottom_spacing": "normal",
+        "width": "page-width",
+        "image_size": "fullscreen",
+        "desktop_image_height": 440,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    },
+    "1654077254868d72ee": {
+      "type": "blog-posts",
+      "settings": {
+        "blog": "news",
+        "subheading": "SUBHEADING",
+        "heading": "Blog posts",
+        "heading_aligment": "text-center",
+        "link_name": "Show All",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "col-4",
+        "swipe_on_mobile": false,
+        "post_limit": 3,
+        "image_ratio": "auto",
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "excerpt_size": "normal",
+        "show_image": true,
+        "truncate_post_heading": false,
+        "hover_underline": false,
+        "showtags": true,
+        "show_date": true,
+        "show_author": true,
+        "show_comment_count": true,
+        "excerpt": "show",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_link": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_author_date_comments": "rgba(0,0,0,0)",
+        "color_heading_post": "rgba(0,0,0,0)",
+        "color_excerpt": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "16540772937ce41e00": {
+      "type": "accordion",
+      "blocks": {
+        "16540772931b5d6ac3-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "16540772931b5d6ac3-1": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "16540772931b5d6ac3-2": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "76c2358f-cdb8-491d-a5ca-8d9ad4f91194": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "51719aaa-afbe-48b6-a566-88f03aff523e": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16540772931b5d6ac3-0",
+        "16540772931b5d6ac3-1",
+        "16540772931b5d6ac3-2",
+        "76c2358f-cdb8-491d-a5ca-8d9ad4f91194",
+        "51719aaa-afbe-48b6-a566-88f03aff523e"
+      ],
+      "settings": {
+        "show_all_text_in_admin": false,
+        "subheading": "SUBHEADING",
+        "heading": "Accordion",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "disable_accordion": false,
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_heading_accordion": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_lines": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "1654078257e5b34f80": {
+      "type": "slideshow",
+      "blocks": {
+        "c1b8b87c-afc7-4d33-8459-76c5b2bb23f4": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "c1b8b87c-afc7-4d33-8459-76c5b2bb23f4"
+      ],
+      "settings": {
+        "top_spacing": "normal",
+        "bottom_spacing": "none",
+        "width": "page-width",
+        "image_size": "fullscreen",
+        "desktop_image_height": 440,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1654077004c2bcb5de",
+    "1654436293aa2e89de",
+    "1654088893a1b032eb",
+    "1654436425ac77d937",
+    "16540772012510beeb",
+    "165407720454aae122",
+    "1654077254868d72ee",
+    "16540772937ce41e00",
+    "1654078257e5b34f80"
+  ]
+}

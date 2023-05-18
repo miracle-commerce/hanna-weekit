@@ -1,0 +1,30 @@
+.blog-posts{
+  position: relative;
+}
+.blog-posts__meta{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: var(--color-base);
+}
+.blog-posts .blog-posts__meta{
+  margin-top: -10px !important;
+}
+.blog-posts__meta > li {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+}
+.blog-posts__meta > li:not(:first-child):before{
+  content:'';
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: var(--color-base);
+  opacity: 0.3;
+  margin: 0 15px;
+}
+.text-center .blog-posts__meta{
+  justify-content: center;
+}

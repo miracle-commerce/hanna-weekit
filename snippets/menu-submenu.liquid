@@ -1,0 +1,32 @@
+<div class="submenu-design__simple">
+  <ul class="unstyle-ul">
+    {%- for childlink in link.links -%}
+    {%- if childlink.links != blank -%}
+    <li class="submenu-container">
+      <a href="{{ childlink.url }}" class="submenu__item body2{% if childlink.current or childlink.child_active %} submenu__item--active{% endif %}">
+        <span>{{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}</span>
+        {%- render "icon-arrow-right-small" -%}
+      </a>
+
+      <div class="submenu-design__simple">
+        <ul class="unstyle-ul">
+          {%- for grandchildlink in childlink.links -%}
+          <li>
+            <a href="{{ grandchildlink.url }}" class="submenu__item body2{% if grandchildlink.current %} submenu__item--active{% endif %}">
+              <span>{{ grandchildlink.title | escape }}{%- render "menu-badge" item_name:grandchildlink.title -%}</span>
+            </a>
+          </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </li>
+    {%- else -%}
+    <li>
+      <a href="{{ childlink.url }}" class="submenu__item body2{% if childlink.current or childlink.child_active %} submenu__item--active{% endif %}">
+        <span>{{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}</span>
+      </a>
+    </li>
+    {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>

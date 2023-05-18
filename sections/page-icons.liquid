@@ -1,0 +1,126 @@
+<style>
+  .icons__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .icons__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 121px;
+    height: 101px;
+    background: rgba(0,0,0,0);
+    flex: 0 0 auto;
+    border-radius: var(--radius);
+    cursor: copy;
+    transition: background var(--duration-medium) var(--animation-bezier);
+    word-break: break-word;
+  }
+  .icons__item--progress{
+    cursor: progress;
+  }
+  .icons__item *{
+    pointer-events: none;
+  }
+  .icons__item:hover{
+    background:var(--color-secondary-background);
+  }
+  .icons__item__icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  .icons__item span{
+    margin-top: 5px;
+  }
+</style>
+<div class="page-width top-spacing-medium">
+  <h2 class="mt0 mb60 text-center">General</h2>
+  <div class="icons__container">
+    {% assign icon_list = "advertising,arrow_down,arrow_left,arrow_right,arrow_up,back,bag,basket,box,brand,calendar,cart,certified,chat,check,clock,delivery,exchange,free,info,location,mail,money_back,new,number_1,number_2,number_3,number_4,number_5,number_6,nutritional,parking,partners,phone,question,sale,search,service,share,smile,truck" %}
+    {% assign icon_list = icon_list | split: ',' %}
+    {%- for icon_name in icon_list -%}
+    {%- assign icon_name_small = icon_name | append: '_sm' -%}  
+    <div class="icons__item" title="copy">
+      <div class="icons__item__icon">
+        {%- render "icons-list" icon_name:icon_name -%}
+      </div>
+      <span class="body2">{{ icon_name }}</span>
+    </div>
+    <div class="icons__item" title="copy">
+      <div class="icons__item__icon">
+        {%- render "icons-list" icon_name:icon_name_small -%}
+      </div>
+      <span class="body2">{{ icon_name_small }}</span>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+<div class="page-width top-spacing-medium">
+  <h2 class="mt0 mb60 text-center">Pets</h2>
+  <div class="icons__container">
+    {% assign icon_list = "bird,box_cat,cat,cat_care,cat_fur,cat_toy,chicken,coat,de-shedding,dental,dog,dog_fur,eco,fish,flea,food,grooming,hotel,hotel_cat,jaws,litter_box,meat,mouse,no_artificial,paw,pharmacy,scissors,smell,snake,stomach,sun,surgery,vaccinations,vet_clinic,virus,wart" %}
+    {% assign icon_list = icon_list | split: ',' %}
+    {%- for icon_name in icon_list -%}
+    {%- assign icon_name_small = icon_name | append: '_sm' -%}  
+    <div class="icons__item" title="copy">
+      <div class="icons__item__icon">
+        {%- render "icons-list" icon_name:icon_name -%}
+      </div>
+      <span class="body2">{{ icon_name }}</span>
+    </div>
+    <div class="icons__item" title="copy">
+      <div class="icons__item__icon">
+        {%- render "icons-list" icon_name:icon_name_small -%}
+      </div>
+      <span class="body2">{{ icon_name_small }}</span>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+<div class="page-width top-spacing-medium">
+  <h2 class="mt0 mb60 text-center">Electronics</h2>
+  <div class="icons__container">
+    {% assign icon_list = "5g,battery,cable,camera,camera_system,charging,chip,drone,face_id,fitness_tracker,gaming,gyro_scooter,headphones,home_appliances,keyboard,laptop,memory,memory_ssd,monitor,network,pc,pc_mouse,pendrive,photo_camera,portable_speakers,power,powerbank,printer,road,scooter,smart_watch,smartphone,speakers,speed,tablet,tv,wireless_headphones" %}
+    {% assign icon_list = icon_list | split: ',' %}
+    {%- for icon_name in icon_list -%}
+    {%- assign icon_name_small = icon_name | append: '_sm' -%}  
+    <div class="icons__item" title="copy">
+      <div class="icons__item__icon">
+        {%- render "icons-list" icon_name:icon_name -%}
+      </div>
+      <span class="body2">{{ icon_name }}</span>
+    </div>
+    <div class="icons__item" title="copy">
+      <div class="icons__item__icon">
+        {%- render "icons-list" icon_name:icon_name_small -%}
+      </div>
+      <span class="body2">{{ icon_name_small }}</span>
+    </div>
+    {%- endfor -%}
+  </div>
+</div>
+<script>
+  var icons = document.querySelectorAll('.icons__item');
+  icons.forEach(icon => {
+    icon.addEventListener("click", copy_password);
+  })
+  function copy_password() {
+    var copyText = this.querySelector('span'),
+    	textArea = document.createElement("textarea"),
+    	item = this;
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
+    
+    item.classList.add('icons__item--progress');
+    setTimeout(function(){item.classList.remove('icons__item--progress');}, 500);
+  }
+</script>

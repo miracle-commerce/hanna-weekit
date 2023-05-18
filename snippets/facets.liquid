@@ -1,0 +1,207 @@
+<facet-filters-form>
+  <form id="FacetFiltersForm" class="facets__form">
+
+    {%- if results.terms -%}
+    <input type="hidden" name="q" value="{{ results.terms | escape }}">
+    <input name="options[prefix]" type="hidden" value="last">
+    {%- endif -%}
+    {%- if enable_sorting -%}
+    {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+    {%- for option in results.sort_options -%}
+    {%- if option.value == sort_by -%}
+    <input type="hidden" name="sort_by" id="SortBy" value="{{ option.value | escape }}">
+    {%- break -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endif -%}
+
+    {%- if enable_sorting -%}
+    <noscript class="facets__disclosure-no-js facets__disclosure-no-js__container">
+      <div class="field facets__disclosure__select">
+        {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+        <select name="sort_by" class="field__input" id="SortBy">
+          {%- for option in results.sort_options -%}
+          <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+          {%- endfor -%}
+        </select>
+        <div class="field__icon field__icon--select">
+          {% render 'icon-arrow-down-small' %}
+        </div>
+        <label class="field__label" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+      </div>
+      <button type="submit" class="btn btn--secondary btn_zoom">
+        <span>
+          {{ 'products.facets.sort_button' | t }}
+        </span>
+      </button>
+    </noscript>
+    {%- endif -%}
+    <toggle-component id="FacetsWrapperDesktop"{% if request.design_mode %} class="admin-panel--no-js"{% endif %}>
+      {%- for filter in results.filters -%}
+      {%- assign total_active_values = total_active_values | plus: filter.active_values.size -%}
+      {% case filter.type %}
+      {% when 'list' %}
+      
+      <details class="chm-toggle toggle-opening" open>
+        <summary class="chm-toggle__button">
+          <span class="h5">{{ filter.label | escape }}</span>
+          {%- render "icon-arrow-down-small" -%}
+        </summary>
+        <div class="mt0 chm-toggle__content mt--first-child-0 js-filter" data-index="{{ forloop.index }}">
+          <div class="facets__header">
+            <span class="facets__selected no-js-hidden">{{ 'products.facets.filters_selected' | t: count: filter.active_values.size }}</span>
+            <facet-remove>
+              <a href="{{ filter.url_to_remove }}" class="btn-small color-accent-to-base">
+                {{ 'products.facets.reset' | t }}
+              </a>
+            </facet-remove>
+          </div>
+          <div class="facets__display__content">
+            <ul class="unstyle-ul" role="list">
+              {%- for value in filter.values -%}
+              {%- if forloop.index <= 10 -%}
+              <li class="facets__item{% if forloop.index == 10 %} facets__items--hide-latest{% endif %}">
+                <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
+                  <input type="checkbox"
+                         name="{{ value.param_name }}"
+                         value="{{ value.value }}"
+                         id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                         {% if value.active %}checked{% endif %}
+                         {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                         >
+                  
+                  <div class="facet-checkbox__checkmark">
+                    <div class="facet-checkbox__flip btn--secondary">
+                      <div class="facet-checkbox__front"></div>
+                      <div class="facet-checkbox__back">
+                        {%- render "icon-checkmark" -%}
+                      </div>
+                    </div>
+                  </div>
+
+                  <span>{{ value.label | escape }}</span>
+                  {% if enable_products_count %}<span class="facet-checkbox__count">{{ value.count }}</span>{% endif %}
+                </label>
+              </li>
+              {%- else -%}
+              <li class="facets__item">
+                <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}">
+                  <input type="checkbox"
+                         name="{{ value.param_name }}"
+                         value="{{ value.value }}"
+                         id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                         {% if value.active %}checked{% endif %}
+                         {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                         >
+                  <div class="facet-checkbox__checkmark">
+                    <div class="facet-checkbox__flip btn--secondary">
+                      <div class="facet-checkbox__front"></div>
+                      <div class="facet-checkbox__back">
+                        {%- render "icon-checkmark" -%}
+                      </div>
+                    </div>
+                  </div>
+                  <span>{{ value.label | escape }}</span>
+                  {% if enable_products_count %}<span class="facet-checkbox__count">{{ value.count }}</span>{% endif %}
+                </label>
+              </li>
+              {%- endif -%}
+              {%- endfor -%}
+              {%- if filter.values.size > 10 -%}
+              <li class="facets__item facets__button-show-all">
+                <show-all-facets class="btn-small color-accent-to-base"
+                                 data-show="{{ 'products.facets.show_all' | t }}"
+                                 data-hide="{{ 'products.facets.hide' | t }}">
+                </show-all-facets>
+              </li>
+              {%- endif -%}
+            </ul>
+            <noscript class="facets__disclosure-no-js">
+              <button type="submit" class="btn btn--secondary btn_zoom">
+                <span>
+                  {{ 'products.facets.filter_button' | t }}
+                </span>
+              </button>
+            </noscript>
+          </div>
+        </div>
+      </details>
+      
+      {% when 'price_range' %}
+      {% liquid
+         assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+         assign uses_comma_decimals = false
+         if currencies_using_comma_decimals contains cart.currency.iso_code
+           assign uses_comma_decimals = true
+         endif
+      %}
+
+      <details class="chm-toggle toggle-opening" open>
+        <summary class="chm-toggle__button">
+          <span class="h5">{{ filter.label | escape }}</span>
+          {%- render "icon-arrow-down-small" -%}
+        </summary>
+        <div class="mt0 chm-toggle__content mt--first-child-0 js-filter" data-index="{{ forloop.index }}">
+          <div class="facets__header">
+            {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
+            <span class="facets__selected">{{ "products.facets.max_price" | t: price: max_price_amount }}</span>
+            <facet-remove>
+              <a href="{{ filter.url_to_remove }}" class="btn-small color-accent-to-base">
+                {{ 'products.facets.reset' | t }}
+              </a>
+            </facet-remove>
+          </div>
+          <price-range class="facets__price">
+            <div class="facets__price__item">
+              <div class="field">
+                <input class="field__input"
+                       name="{{ filter.min_value.param_name }}"
+                       id="Filter-{{ filter.label | escape }}-GTE"
+                       {%- if filter.min_value.value -%}
+                       {%- if uses_comma_decimals -%}value="{{ filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"{% endif %}
+                       {%- endif -%}
+                       type="number"
+                       placeholder="0"
+                       min="0"
+                       {%- if uses_comma_decimals -%}max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"{% endif %}
+                       >
+                <label class="field__label" for="Filter-{{ filter.label | escape }}-GTE">{{ cart.currency.symbol }} {{ 'products.facets.from' | t }}</label>
+              </div>
+            </div>
+            <div class="facets__price__item">
+              <div class="field">
+                <input class="field__input"
+                       name="{{ filter.max_value.param_name }}"
+                       id="Filter-{{ filter.label | escape }}-LTE"
+                       {%- if filter.max_value.value -%}{%- if uses_comma_decimals -%}value="{{ filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.' }}"{%- else -%}value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"{% endif %}
+                       {%- endif -%}
+                       type="number"
+                       min="0"
+                       {%- if uses_comma_decimals -%}
+                       placeholder="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                       max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' }}"
+                       {%- else -%}
+                       placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                       max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                       {% endif %}
+                       >
+                <label class="field__label" for="Filter-{{ filter.label | escape }}-LTE">{{ cart.currency.symbol }} {{ 'products.facets.to' | t }}</label>
+              </div>
+            </div>
+          </price-range>
+          <noscript class="facets__disclosure-no-js">
+            <button type="submit" class="btn btn--secondary btn_zoom">
+              <span>
+                {{ 'products.facets.filter_button' | t }}
+              </span>
+            </button>
+          </noscript>
+        </div>
+      </details>
+      
+      {% endcase %}
+      {%- endfor -%}
+
+    </toggle-component>
+  </form>
+</facet-filters-form>

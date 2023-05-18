@@ -1,0 +1,38 @@
+<nav class="list-menu {{ animation }} list-menu--classic">
+  <ul class="unstyle-ul list-menu--inline">
+
+    {%- for link in linklist -%}
+    {%- if link.links != blank -%}
+    
+    {%- assign megamenu_item = '|' | append: link.title | append: '%%' -%}
+    {%- if mega_menu_index contains megamenu_item -%}
+    {%- assign megamenu_item = mega_menu_index | split: megamenu_item | last | split: '|' | first | plus: 0 -%}
+    {%- else -%}
+    {%- assign megamenu_item = '' -%}
+    {%- endif -%}
+    
+    <li class="list-menu--hover submenu-container{% if megamenu_item != '' %} submenu--megamenu{% endif %} submenu--no-radius-top submenu--to-left">
+      <a href="{{ link.url }}" class="{{ menu_font_weight }} list-menu__item{% if link.current %} list-menu__item--active{% endif %}">
+        <span>{{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}{%- render "icon-arrow-down-small" -%}</span>
+      </a>
+
+      {%- liquid
+          if megamenu_item == ''
+          render "menu-submenu", link:link
+          else
+          render "menu-megamenu", link:link, megamenu_item:megamenu_item, fullwidth_menu:true
+          endif
+       -%}
+
+    </li>
+    {%- else -%}
+    <li class="list-menu--hover">
+      <a href="{{ link.url }}" class="{{ menu_font_weight }} list-menu__item{% if link.current %} list-menu__item--active{% endif %}">
+        <span>{{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}</span>
+      </a>
+    </li>
+    {%- endif -%}
+    {%- endfor -%}
+    
+  </ul>
+</nav>

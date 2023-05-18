@@ -1,0 +1,95 @@
+<nav class="menu-drawer__navigation">
+  <ul class="unstyle-ul">   
+    {%- for link in linklist -%}
+    {%- if link.links != blank -%}
+    <li>
+      <details>
+        <summary>
+           
+          <div class="menu-drawer__menu-item {{ menu_font_weight }}{% if link.current or link.child_active %} menu-drawer__menu-item--active{% endif %}">
+            {%- if desktop_menu_type != 'header-layout-classic' -%}
+            {%- render 'get-menu-icon-code', icons:icons, forloop_index:forloop.index -%}
+            {%- endif -%}
+            <span>{{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}</span>
+            {%- render 'icon-arrow-right-small' -%}
+          </div>
+        </summary>
+        
+        <div class="menu-drawer__submenu">
+          <div class="menu-drawer__inner-submenu">
+
+            <ul class="unstyle-ul menu-drawer__submenu-content">
+              <li>
+                <button class="menu-drawer__back-button menu-drawer__menu-item link">
+                  {%- render "icon-arrow-left" -%}
+                </button>
+              </li>
+              <li>
+                <a href="{{ link.url }}" class="menu-drawer__menu-item h5{% if link.current or link.child_active %} menu-drawer__menu-item--active{% endif %}">
+                  {{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}
+                </a>
+              </li>
+
+              {%- for childlink in link.links -%}
+              {%- if childlink.links != blank -%}
+              <li>
+                <details>
+                  <summary>
+                    <div class="menu-drawer__menu-item body2{% if childlink.current or childlink.child_active %} menu-drawer__menu-item--active{% endif %}">
+                    	<span>{{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}</span> {%- render 'icon-arrow-right-small' -%}
+                    </div>
+                  </summary>
+
+                  <div class="menu-drawer__submenu">
+                    <div class="menu-drawer__inner-submenu">
+                      <ul class="unstyle-ul menu-drawer__submenu-content">
+                        <li>
+                          <button class="menu-drawer__back-button menu-drawer__menu-item link">
+                            {%- render "icon-arrow-left" -%}
+                          </button>
+                        </li>
+                        <li>
+                          <a href="{{ childlink.url }}" class="menu-drawer__menu-item h5{% if childlink.current or childlink.child_active %} menu-drawer__menu-item--active{% endif %}">
+                            {{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}
+                          </a>
+                        </li>
+                        {%- for grandchildlink in childlink.links -%}
+                        <li>
+                          <a href="{{ grandchildlink.url }}" class="menu-drawer__menu-item body2{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}">
+                            {{ grandchildlink.title | escape }}{%- render "menu-badge" item_name:grandchildlink.title -%}
+                          </a>
+                        </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                  </div>
+
+                </details>
+              </li>
+              {%- else -%}
+              <li>
+                <a href="{{ childlink.url }}" class="menu-drawer__menu-item body2{% if childlink.current %} menu-drawer__menu-item--active{% endif %}">
+                  {{ childlink.title | escape }}{%- render "menu-badge" item_name:childlink.title -%}
+                </a>
+              </li>
+              {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+
+      </details>
+    </li>
+    {%- else -%}
+    <li>
+      <a href="{{ link.url }}" class="menu-drawer__menu-item {{ menu_font_weight }}{% if link.current %} menu-drawer__menu-item--active{% endif %}">
+        {%- if desktop_menu_type != 'header-layout-classic' -%}
+        {%- render 'get-menu-icon-code', icons:icons, forloop_index:forloop.index -%}
+        {%- endif -%}
+        <span>{{ link.title | escape }}{%- render "menu-badge" item_name:link.title -%}</span>
+      </a>
+    </li>
+    {%- endif -%}
+	{%- endfor -%}
+  </ul>
+</nav>

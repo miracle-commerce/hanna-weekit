@@ -1,0 +1,75 @@
+.image-with-text-bg .placehoder__svg--bg{
+  --color-secondary-background: rgba(0,0,0,0);
+}
+.image-with-text-bg{
+  --background-bp: 80%;
+}
+.image-with-text-bg__image-container{
+  width: 100%;
+}
+.image-with-text-bg--reverse{
+  flex-direction: column-reverse;
+}
+.image-with-text-bg.section-background,
+.image-with-text-bg .section-background{
+  padding-bottom: 0;
+  background: transparent;
+  position: relative;
+}
+.image-with-text-bg.section-background:before,
+.image-with-text-bg .section-background:before{
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--background-bp);
+  background: var(--color-section-background);
+}
+.image-with-text-bg .section-background:before{
+  border-radius: var(--radius);
+}
+.image-with-text-bg .deferred-media iframe{
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+@media (max-width: 576px){
+  .image-with-text-bg .deferred-media{
+	margin-left: var(--section-sides,0);
+	margin-right: var(--section-sides,0);
+  }
+  .image-with-text-bg__image-container{
+	padding-left: var(--section-sides,0);
+	padding-right: var(--section-sides,0);
+  }
+  [class*="page-"] .section-background .image-with-text-bg--reverse .image-with-text-bg__container{
+	padding-left: calc(var(--section-sides,0) + var(--page-padding) / 2);
+	padding-right: calc(var(--section-sides,0) + var(--page-padding) / 2);
+  }
+  .image-with-text-bg .deferred-media .image-with-text-bg__image-container,
+  .image-with-text-bg .section-background {
+	padding-left: 0;
+	padding-right: 0;
+  }
+}
+@media (min-width: 577px){
+  .image-with-text-bg.section-background,
+  .image-with-text-bg .section-background{
+	padding-left: 0;
+	padding-right: 0;
+  }
+}
+.image-with-text-bg .grid.image-with-text-bg--reverse > *:first-child:not(:last-child){
+  margin-top: var(--padding5);
+}
+@media (min-width: 993px){
+  .image-with-text-bg .grid:not(.image-with-text-bg--reverse) > *:last-child:not(:first-child){
+	margin-top: var(--padding5);
+  }
+}
+@media (max-width: 992px){
+  .image-with-text-bg .grid:not(.image-with-text-bg--reverse) > *:last-child:not(:first-child){
+	margin-top: var(--padding4);
+  }
+}

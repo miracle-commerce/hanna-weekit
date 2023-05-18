@@ -1,0 +1,64 @@
+{% comment %}
+    Renders a product card placeholder
+
+    Accepts:
+    - settings_image_ratio: {String} Size of the product image card. Values are "auto", "portrait", "landscape", "square" and "round". Default is "auto" (optional)
+    - show_vendor: {Boolean} Show the product vendor. Default: false
+    - show_type: {Boolean} Show the product type. Default: false
+    - product_name_size: {String} Size of the product name. Values are "normal" and "body2". Default is "body2" (optional)
+    - hover_underline: {Boolean} The product name hover underline. Default: false (optional)
+    - truncate_product_name: {Boolean} Truncate the product name. Value is 48. Default: false (optional)
+    - show_price: {Boolean} Show the product price. Default: true
+    - button_type_product: {String} Size of the product image card. Values are "hide", "show", "show only text" and "show only icon". Default is "show"
+	- placeholder_name: {String}  {{ placeholder_name | placeholder_svg_tag: 'placeholder-svg' }}
+
+    Usage:
+    {% render 'product-card-placeholder', show_vendor: section.settings.show_vendor %}
+{% endcomment %}
+
+<div class="product-card{% if settings.enable_zoom_animation %} image-hover-scaling-up{% endif %} hover-area">
+  {%- liquid
+  if settings_image_ratio != 'auto'
+  capture image_ratio
+  if settings_image_ratio == '1, round-image'
+  echo settings_image_ratio | split: ',' | first
+  else
+  echo settings_image_ratio
+  endif
+  endcapture
+  endif
+  -%}
+  
+  <div class="image-hover-scaling__image placeholder__svg--bg border__radius mb15 position-relative{% if settings_image_ratio == '1, round-image' %} border__radius--circle{% endif %}"{% if settings_image_ratio != 'auto' %} style="--aspect-ratio: {{ image_ratio }};"{% endif %}>
+    {%- render "icons-placeholder-product", icon_name:placeholder_name -%}
+  </div>
+  <div class="product-card__container mt--first-child-0">
+    {%- if show_vendor -%}
+    <div class="body3 product-card__meta">VENDOR</div>
+    {%- endif -%}
+    {%- if show_type -%}
+    <div class="body3 product-card__meta mt5">TYPE</div>
+    {%- endif -%}
+    <div class="mt5{% if product_name_size == "body2" %} body2{% endif %}{% if hover_underline %} animation-underline animation-underline--thin{% endif %}">
+      {%- if truncate_product_name -%}
+      {{ "Product name" | escape | truncate: 48,'...' }}
+      {%- else -%}
+      {{ "Product name" | escape }}
+      {%- endif -%}
+    </div>
+    {%- if show_price -%}
+    <div class="price mt5">
+      <div class="price__regular body2">$12.18{% if settings.currency_code_enabled %} USD{% endif %}</div>
+      <div class="price__sale h5">From $8.66{% if settings.currency_code_enabled %} USD{% endif %}</div>
+    </div>
+    {%- endif -%}
+    {%- if button_type_product != "hide" -%}
+    <form>
+      <div class="btn btn_zoom btn--add-to-cart">
+        {%- if button_type_product != "only_text" -%}{%- render "icon-cart" -%}{%- endif -%}
+        {%- if button_type_product != "only_icon" -%}<span>{{ 'products.product.add_to_cart' | t }}</span>{%- endif -%}
+      </div>
+    </form>
+    {%- endif -%}
+  </div>
+</div>

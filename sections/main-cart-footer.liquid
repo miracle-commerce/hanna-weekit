@@ -1,0 +1,209 @@
+{{ 'component-inputs.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+
+<div class="top-spacing-{{ section.settings.top_spacing }} cart__footer{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+  <div class="{{ section.settings.width }}">
+    <div class="grid el_mt_60">
+      <div class="col-sp-12 col-6">
+        {%- if section.settings.show_cart_note -%}
+        <cart-note class="field field--text-area">
+          <textarea class="text-area field__input"
+                    id="Cart-note"
+                    name="note"
+                    placeholder="{{ 'sections.cart.note' | t }}"
+                    >{{ cart.note }}</textarea>         
+          <label class="field__label" for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+        </cart-note>
+        {%- endif -%}
+      </div>
+      <div class="col-sp-12 col-6">
+        
+        <div class="cart__footer__content js-contents body3">
+          <div class="totals">
+            <h3 class="mt0 mb0 totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3>&nbsp;
+            <p class="mt0 h3 totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+          </div>
+
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+          <div class="mt10">
+            <ul class="discounts unstyle-ul" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+              {%- for discount in cart.cart_level_discount_applications -%}
+              <li class="discounts__discount">
+                {%- render 'icon-discount' -%}
+                {{ discount.title }}
+                (-{{ discount.total_allocated_amount | money }})
+              </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+          {%- endif -%}
+
+          <div class="tax-note">
+            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+            {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+            {%- elsif cart.taxes_included -%}
+            {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+            {%- elsif shop.shipping_policy.body != blank -%}
+            {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+            {%- else -%}
+            {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if settings.terms_and_condition_checkbox -%}
+        <terms_and_condition-checkbox>
+          <label for="product-terms_and_condition_checkbox-{{ section.id }}" class="checkbox-input body2">
+            <input id="product-terms_and_condition_checkbox-{{ section.id }}"
+                   type="checkbox">
+            <div class="checkbox-input__checkmark">
+              <div class="checkbox-input__flip btn--secondary">
+                <div class="checkbox-input__front"></div>
+                <div class="checkbox-input__back">
+                  {%- render "icon-checkmark" -%}
+                </div>
+              </div>
+            </div>
+            <span>{{ 'general.accept_terms_checkbox_html' | t }}</span>
+          </label>
+        </terms_and_condition-checkbox>
+        {%- endif -%}
+        
+        {%- if section.settings.show_checkout_button -%}
+        <div class="cart__footer__content">
+          <noscript>
+            <button type="submit" class="btn btn_zoom btn--secondary w-full-sp" form="cart">
+              <span>{{ 'sections.cart.update' | t }}</span>
+            </button>
+          </noscript>
+          <button type="submit" id="checkout" class="btn btn_zoom w-full-sp" name="checkout" form="cart">
+            <span>{{ 'sections.cart.checkout' | t }}</span>
+          </button>
+        </div>
+		{%- endif -%}
+
+        {%- if additional_checkout_buttons -%}
+        <div class="cart__dynamic-checkout-buttons additional-checkout-buttons mt30">
+          {{ content_for_additional_checkout_buttons }}
+        </div>
+        {%- endif -%}
+        
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+          {%- endcase -%}
+        {%- endfor -%}
+        
+        <div id="cart-errors" class="body3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
+      }, 300))
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+{% endjavascript %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function(event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.general.settings.header_layout.content"
+    },
+    {
+      "type": "select",
+      "id": "top_spacing",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.general.settings.top_spacing.options__none.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.general.settings.top_spacing.options__small.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.general.settings.top_spacing.options__medium.label"
+        },
+        {
+          "value": "normal",
+          "label": "t:sections.general.settings.top_spacing.options__normal.label"
+        }
+      ],
+      "default": "normal",
+      "label": "t:sections.general.settings.top_spacing.label"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:sections.general.settings.width.options__boxed.label"
+        },
+        {
+          "value": "page-wide",
+          "label": "t:sections.general.settings.width.options__wide.label"
+        }
+      ],
+      "default": "page-width",
+      "label": "t:sections.general.settings.width.label",
+	  "info": "t:sections.general.settings.width.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_note",
+      "default": true,
+      "label": "t:sections.main-cart-footer.settings.show_cart_note.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_checkout_button",
+      "default": true,
+	  "label": "t:sections.main-cart-footer.settings.show_checkout_button.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,462 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "top_spacing": "none",
+        "width": "page-width",
+        "show_heading": true,
+        "heading_aligment": "text-center"
+      }
+    },
+    "1654077391cbc4d1c4": {
+      "type": "slideshow",
+      "blocks": {
+        "b586aadd-8bd9-4b4a-81c4-a5002ff68872": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "b586aadd-8bd9-4b4a-81c4-a5002ff68872"
+      ],
+      "settings": {
+        "top_spacing": "none",
+        "bottom_spacing": "normal",
+        "width": "page-width",
+        "image_size": "fullscreen",
+        "desktop_image_height": 440,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    },
+    "16540890413ee61417": {
+      "type": "icon-banners",
+      "blocks": {
+        "16540890413a2fd1cd-0": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "16540890413a2fd1cd-1": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "16540890413a2fd1cd-2": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "8b236a71-ddb4-454e-9cd4-14a68d0f6179": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "abc5d0f5-e92e-4d0c-865a-21cbafaf2f81": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "cb08c1d1-b681-457a-a5b7-994d8e3e2484": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "fb5f85b5-e7be-4ea4-89d2-7edc98227c54": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        },
+        "bd1be297-7c65-4b16-86a1-78200c064b51": {
+          "type": "banner",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "Heading",
+            "description": "Short content about your store",
+            "button_name": "Learn more"
+          }
+        }
+      },
+      "block_order": [
+        "16540890413a2fd1cd-0",
+        "16540890413a2fd1cd-1",
+        "16540890413a2fd1cd-2",
+        "8b236a71-ddb4-454e-9cd4-14a68d0f6179",
+        "abc5d0f5-e92e-4d0c-865a-21cbafaf2f81",
+        "cb08c1d1-b681-457a-a5b7-994d8e3e2484",
+        "fb5f85b5-e7be-4ea4-89d2-7edc98227c54",
+        "bd1be297-7c65-4b16-86a1-78200c064b51"
+      ],
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Icon banners",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "grid": "grid-columns-4",
+        "swipe_on_mobile": false,
+        "texts_aligment": "text-center",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_heading_banner": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)"
+      }
+    },
+    "165407778035a997bf": {
+      "type": "text",
+      "settings": {
+        "subheading": "SUBHEADING",
+        "heading": "Text",
+        "description": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>",
+        "button_name": "Button",
+        "button_url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "texts_aligment": "text-center",
+        "heading_tag": "h2",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "content_width",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "1654435654616dbd9f": {
+      "type": "image-with-text",
+      "blocks": {
+        "16544356545fbed05c-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "video",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "16544356545fbed05c-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Media with text"
+          }
+        },
+        "16544356545fbed05c-2": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "16544356545fbed05c-4": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "16544356545fbed05c-0",
+        "16544356545fbed05c-1",
+        "16544356545fbed05c-2",
+        "16544356545fbed05c-4"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "row_reverse": true,
+        "heading_aligment": "text-center",
+        "content_aligment": "align-self-center",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "16544356311229759e": {
+      "type": "image-with-text",
+      "blocks": {
+        "165443563118791ecc-0": {
+          "type": "image",
+          "settings": {
+            "content_type": "image",
+            "image_ratio": "1.333333",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "description": ""
+          }
+        },
+        "165443563118791ecc-1": {
+          "type": "heading",
+          "settings": {
+            "subheading": "SUBHEADING",
+            "heading": "Media with text"
+          }
+        },
+        "165443563118791ecc-2": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "165443563118791ecc-3": {
+          "type": "text",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "text": "<p>Some descriptive text for your store. For better alignment, it is better to use text in several lines<\/p>"
+          }
+        },
+        "165443563118791ecc-4": {
+          "type": "button",
+          "settings": {
+            "button_name": "Button"
+          }
+        }
+      },
+      "block_order": [
+        "165443563118791ecc-0",
+        "165443563118791ecc-1",
+        "165443563118791ecc-2",
+        "165443563118791ecc-3",
+        "165443563118791ecc-4"
+      ],
+      "settings": {
+        "url": "",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "row_reverse": false,
+        "heading_aligment": "text-center",
+        "content_aligment": "align-self-center",
+        "texts_aligment": "text-left",
+        "heading_tag": "h2",
+        "text_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "1654077942191deb02": {
+      "type": "accordion",
+      "blocks": {
+        "16540779429952a0de-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "16540779429952a0de-1": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "16540779429952a0de-2": {
+          "type": "text",
+          "settings": {
+            "heading": "Frequently asked question",
+            "description": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16540779429952a0de-0",
+        "16540779429952a0de-1",
+        "16540779429952a0de-2"
+      ],
+      "settings": {
+        "show_all_text_in_admin": false,
+        "subheading": "SUBHEADING",
+        "heading": "Accordion",
+        "heading_aligment": "text-center",
+        "top_spacing": "normal",
+        "width": "page-width",
+        "disable_accordion": false,
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_heading_accordion": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_lines": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "content_width",
+        "background_spacing": "normal",
+        "remove_bottom_spacing": false
+      }
+    },
+    "16540782121b6cf775": {
+      "type": "slideshow",
+      "blocks": {
+        "9a57b661-148a-4990-9ad0-f5944fa1389a": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image_overlay_opacity": 0,
+            "subheading": "SUBHEADING",
+            "heading": "Slide",
+            "description": "Some descriptive text for your slide. For better alignment, it is better to use text in several lines.",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "9a57b661-148a-4990-9ad0-f5944fa1389a"
+      ],
+      "settings": {
+        "top_spacing": "normal",
+        "bottom_spacing": "none",
+        "width": "page-width",
+        "image_size": "fullscreen",
+        "desktop_image_height": 440,
+        "texts_aligment_mobile": "text-center-mobile",
+        "desktop_navigation": "dots_arrows",
+        "mobile_navigation": "dots_arrows",
+        "dots_desktop_position": "center",
+        "autoplay_enabled": true,
+        "autoplay_time": 5,
+        "video_slide_mode": "autoplay_muted",
+        "play_button_enabled": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1654077391cbc4d1c4",
+    "16540890413ee61417",
+    "165407778035a997bf",
+    "1654435654616dbd9f",
+    "16544356311229759e",
+    "1654077942191deb02",
+    "16540782121b6cf775"
+  ]
+}

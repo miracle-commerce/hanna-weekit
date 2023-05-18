@@ -1,0 +1,73 @@
+.collection-list-type2{
+  display: block;
+  position: relative;
+  color: var(--color-base);
+  --color-icon-arrow: var(--color-base);
+  --color-icon-arrow-hover: var(--auto-text-color-button-dark);
+  text-decoration: none;
+}
+.collection-list-type2__icon{
+  display: none;
+}
+@media (min-width: 577px){
+  .collection-list-type2-pad{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    overflow: hidden;
+  }
+  .collection-list-type2__icon{
+    display: flex;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+  .text-center .collection-list-type2__icon{
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .collection-list-type2__icon svg{
+    z-index: 1;
+  }
+  .collection-list-type2__icon:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--color-accent);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 0;
+    transition: all var(--duration-medium) var(--animation-type);
+  }
+  .collection-list-type2__icon svg path{
+    fill: var(--color-icon-arrow);
+  }
+  .collection-list-type2:hover .collection-list-type2__icon:before{
+    background: var(--color-base);
+  }
+  .collection-list-type2:hover .collection-list-type2__icon svg path{
+    fill: var(--color-icon-arrow-hover);
+  }
+  .collection-list-type2__icon:hover:before{
+    transform: scale(1.2);
+  }
+}  
+@media (max-width: 576px){
+  .collection-list-type2-pad{
+    padding-top: 14px;
+  }
+  .collection-list-type2 .text-center-mobile{
+    text-align: center;
+  }
+}

@@ -1,0 +1,57 @@
+{% comment %}
+    Renders cart notification
+
+    Usage:
+    {% render 'cart-notification' %}
+{% endcomment %}
+
+<cart-notification class="popup-modal">
+  <div class="popup-modal__content" aria-label="{{ block.settings.text }}" aria-label="{{ 'general.cart.item_added' | t }}" aria-modal="true" role="dialog" tabindex="-1">
+    <button id="ModalClose-notification" type="button" class="popup-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">
+      {% render 'icon-close' %}
+    </button>
+    <div id="cart-notification" class="mt--first-child-0 cart-notification">
+      
+      <h3 class="cart-notification__heading">{%- render 'icon-check' -%} {{ 'general.cart.item_added' | t }}</h3>
+
+      <div id="cart-notification-product" class="cart-notification-product"></div>
+
+      {%- if settings.show_free_delivery -%}
+      <div id="cart-free-delivery" class="free-delivery-bar"></div>
+      {%- endif -%}
+    
+      <div class="cart-notification__links">
+        <a href="{{ routes.cart_url }}" class="btn btn--secondary btn_zoom w-full">
+          <span id="cart-notification-button"></span>
+        </a>
+        {%- if settings.terms_and_condition_checkbox -%}
+        <terms_and_condition-checkbox>
+          <label for="cart-notification-terms_and_condition_checkbox" class="checkbox-input body2">
+            <input id="cart-notification-terms_and_condition_checkbox"
+                   type="checkbox">
+            <div class="checkbox-input__checkmark">
+              <div class="checkbox-input__flip btn--secondary">
+                <div class="checkbox-input__front"></div>
+                <div class="checkbox-input__back">
+                  {%- render "icon-checkmark" -%}
+                </div>
+              </div>
+            </div>
+            <span>{{ 'general.accept_terms_checkbox_html' | t }}</span>
+          </label>
+        </terms_and_condition-checkbox>
+        {%- endif -%}
+        <form action="{{ routes.cart_url }}" method="post" id="cart-notification-form">
+          <button class="btn btn_zoom w-full" name="checkout">
+            <span>{{ 'sections.cart.checkout' | t }}</span>
+          </button>
+        </form>
+        <button type="button" class="link btn-medium btn-medium--icon color-accent-to-base cart-notification__links__continue">
+          {% render 'icon-arrow-left' %}
+          <span>{{ 'general.continue_shopping' | t }}</span>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</cart-notification>

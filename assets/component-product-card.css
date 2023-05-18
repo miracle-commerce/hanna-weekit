@@ -1,0 +1,159 @@
+.product-card__heading{
+  display: inline-block;
+  position: relative;
+  color: var(--color-base);
+  text-decoration: none;
+  word-break: break-word;
+}
+.product-card__meta{
+  color: var(--color-base);
+  text-transform: uppercase;
+  word-break: break-word;
+}
+.btn--add-to-cart[disabled]{
+  pointer-events: none;
+}
+.btn--add-to-cart{
+  margin-top: 17px;
+  min-height: 50px;
+  height: auto;
+  padding-top: 14px;
+  padding-bottom: 15px;
+}
+.btn--add-to-cart[disabled] svg{
+  display: none;
+}
+.product-card__image>*:not(:only-child){
+  transition: opacity var(--duration-large) var(--animation-bezier);
+}
+.product-card__image:>*:not(:only-child):first-child{
+  opacity:1;
+}
+.product-card__image>*:not(:only-child):last-child{
+  opacity:0;
+}
+@media (min-width:993px){
+  .product-card__image-holder:hover .product-card__image>*:not(:only-child):first-child{
+    opacity:0;
+  }
+  .product-card__image-holder:hover .product-card__image>*:not(:only-child):last-child{
+    opacity:1;
+  }
+}
+.product-card-image--contain [style*="--aspect-ratio"] img,
+.product-card-image--contain [style*="--aspect-ratio"].placehoder__svg--bg svg{
+  object-fit: contain;
+}
+.quick-add__submit.loading > *:not(.loading-overlay__spinner){
+  opacity: 0;
+  visibility: hidden;
+}
+.product-card .loading-overlay__spinner{
+  position: absolute;
+}
+.product-card .product-form__error-message-wrapper:not([hidden]){
+  display: inline-flex;
+  align-items: flex-start;
+  color: var(--color-error);
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 10px;
+}
+.product-card .product-form__error-message-wrapper svg{
+  position: relative;
+  top: 1px;
+  flex: 0 0 auto;
+  margin-right: 5px;
+}
+.product-card .product-form__error-message-wrapper svg path{
+  fill: var(--color-error);
+}
+
+.product-card__no-image{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  text-decoration: none;
+  padding: 50px 20px;
+}
+.product-card__no-image:before{
+  content: "";
+  position: absolute;
+  border: 1px solid var(--color-lines-borders);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+}
+.product-card__no-image.border__radius--circle:before{
+  border-radius: 50%;
+}
+.product-card__no-image[style*="--product-card-aspect-ratio"]{
+  padding: calc(100%/(0 + var(--product-card-aspect-ratio, 1 / 1))) 0 0;
+}
+.product-card__no-image[style*="--product-card-aspect-ratio"] span{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 20px;
+}
+@media (min-width: 993px){
+  .product-card__no-image.scale-border-hover:before{
+    transform: translate3d(0,0,0);
+    transition: all var(--duration-medium) var(--zoom-animation-bezier);
+  }
+  .product-card__no-image.scale-border-hover:hover:before{
+    --scale-on: 20px;
+    --move-x: calc(var(--scale-on) / 2 * -1);
+    --move-y: calc(var(--scale-on) / 2 * -1);
+    transform: translate3d(var(--move-x),var(--move-y),0);
+    width: calc(100% + var(--scale-on));
+    height: calc(100% + var(--scale-on));
+  }
+}
+.product-card__image-holder{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.product-card__image-holder modal-opener{
+  position: absolute;
+  transform: translate3d(0,30px,0);
+  opacity: 0;
+  transition: transform var(--duration-large) var(--zoom-animation-bezier),
+              opacity var(--duration-large) var(--zoom-animation-bezier);
+}
+.btn-quickview-hover:hover modal-opener,
+.product-card__image-holder:hover modal-opener{
+  transform: translate3d(0,0,0);
+  opacity: 1;
+}
+.btn-quickview{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  --background: var(--color-body-background);
+  --radius-button: 50%;
+  padding: 0;
+}
+.btn.btn-quickview svg:not(:last-child){
+  margin-right: 0;
+}
+.btn-quickview .path{
+  stroke: var(--color-base);
+}
+.btn-quickview svg path{
+  fill: var(--color-base);
+}
+@media (max-width:992px){
+  .product-card__image-holder modal-opener{
+    display: none;
+  }
+}
+

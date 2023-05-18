@@ -1,0 +1,479 @@
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a:empty,
+ul:empty,
+dl:empty,
+div:empty,
+section:empty,
+article:empty,
+p:empty,
+h1:empty,
+h2:empty,
+h3:empty,
+h4:empty,
+h5:empty,
+h6:empty {
+  display: none;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-line-height);
+  color: var(--color-base);
+  background: var(--color-body-background);
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  flex: 1 0 auto;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+}
+
+@media only screen and (min-width: 750px) {
+  body {
+    padding: 0 5rem;
+  }
+}
+
+::selection {
+  background-color: rgba(var(--color-base), 0.2);
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  color: var(--color-base);
+  --font-heading-line-height: 130%;
+  line-height: var(--font-heading-line-height);
+}
+.h1,.h2,.h3,.h4,.h5,.h6{
+  margin: 0;
+}
+h1>a,h2>a,h3>a,h4>a,h5>a,h6>a{
+  color: var(--color-base);
+}
+h1,.h1{
+  font-size: calc(36px * var(--font-heading-scale));
+}
+h2,.h2{
+  font-size: calc(30px * var(--font-heading-scale));
+}
+h3,.h3{
+  font-size: calc(24px * var(--font-heading-scale));
+}
+h4,.h4{
+  font-size: calc(20px * var(--font-heading-scale));
+}
+h5,.h5{
+  font-size: calc(16px * var(--font-heading-scale));
+}
+h6,.h6{
+  font-size: calc(14px * var(--font-heading-scale));
+}
+
+.skip-to-content-link:focus {
+  z-index: 9999;
+  position: inherit;
+  overflow: auto;
+  width: auto;
+  height: auto;
+  clip: auto;
+}
+
+.link {
+  cursor: pointer;
+  display: inline-block;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0.4rem;
+}
+
+.button {
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 1.5rem 3rem;
+  text-decoration: none;
+  background-color: rgb(var(--color-base-accent-1));
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-accent-1));
+  color: rgb(var(--color-base-solid-button-labels));
+  min-width: 12rem;
+  height: auto;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+}
+
+.button::selection {
+  background-color: rgba(var(--color-base-solid-button-labels), 0.3);
+}
+
+.button:hover {
+  box-shadow: 0 0 0 0.2rem rgb(var(--color-base-accent-1));
+}
+
+.button--secondary {
+  color: rgb(var(--color-base-outline-button-labels));
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels));
+  background-color: transparent;
+}
+
+.button--secondary::selection {
+  background-color: rgba(var(--color-base-outline-button-labels), 0.3);
+}
+
+.button--secondary:hover {
+  box-shadow: 0 0 0 0.2rem rgb(var(--color-base-outline-button-labels));
+}
+
+.gift-card {
+  padding-bottom: 3.4rem;
+}
+
+.gift-card__title {
+  text-align: center;
+  word-break: break-word;
+  padding: 4rem 0 1.7rem;
+}
+
+@media only screen and (min-width: 990px) {
+  .gift-card__title {
+    padding: 6rem 0 2.6rem;
+  }
+}
+
+.gift-card__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgb(var(--color-base-background-1));
+  margin-bottom: 0.8rem;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 750px) {
+  .gift-card__image-wrapper {
+    margin-bottom: 0;
+    width: 40rem;
+  }
+}
+
+.gift-card__image {
+  max-width: 100%;
+  padding: 0 2rem;
+  height: auto;
+}
+
+@media only screen and (min-width: 750px) {
+  .gift-card__image {
+    padding: 0;
+  }
+}
+
+.gift-card__heading {
+  margin: 2.5rem 0 1rem;
+}
+
+.gift-card__price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gift-card__price > p:first-child {
+  margin-bottom: 1rem;
+}
+.gift-card__price {
+  font-size: calc(16px * var(--font-heading-scale));
+}
+
+.gift-card__label:not(.badge) {
+  font-weight: 400;
+}
+
+.gift-card__number {
+  background-color: transparent;
+  border: none;
+  color: rgb(var(--color-base-text));
+  font-size: calc(1.8rem * var(--font-body-size));
+  font-weight: var(--font-body-weight);
+  line-height: 1.6;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .gift-card__number {
+    font-size: calc(1.8rem * var(--font-body-size));
+  }
+}
+
+.gift-card__text {
+  margin-bottom: 4rem;
+}
+
+.gift-card__information {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.gift-card__label {
+  font-size: calc(1.3rem * var(--font-body-size));
+  letter-spacing: 0.05rem;
+  font-weight: var(--font-body-bold-weight);
+  display: inline;
+  margin-left: 1rem;
+}
+
+.badge {
+  border: 1px solid transparent;
+  margin: 1.7rem 0 1rem 1rem;
+  border-radius: 4rem;
+  display: inline-block;
+  font-size: calc(1.2rem * var(--font-body-size));
+  font-weight: var(--font-body-bold-weight);
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  padding: 0.6rem 1.3rem;
+  text-align: center;
+  background-color: rgb(var(--color-base-background-1));
+  border-color: rgba(var(--color-base-text), 0.04);
+  color: rgb(var(--color-base-text));
+}
+
+.badge--inverse {
+  background-color: rgb(var(--color-base-text));
+  border-color: rgb(var(--color-base-text));
+  color: rgb(var(--color-base-background-1));
+}
+
+.caption-large {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: 0.04rem;
+}
+
+.gift-card__copy-code {
+  margin-bottom: 2.2rem;
+}
+
+.gift-card__qr-code {
+  margin-top: 3rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .gift-card__qr-code {
+    margin-top: 5rem;
+  }
+}
+
+.gift-card__qr-code img {
+  margin: 0 auto;
+}
+
+.gift_card__apple-wallet {
+  line-height: 0;
+  display: block;
+  margin-bottom: 5rem;
+}
+
+.gift-card__buttons {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.gift-card__buttons > .button:first-child {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+/*
+  Focus ring - default (with offset)
+*/
+
+/* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
+*:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+*:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-base-text), 0.5);
+  outline-offset: 0.3rem;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
+
+/* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
+.focused, .no-js *:focus {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0.3rem;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-accent-1)),
+    0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
+
+/* Negate the fallback side-effect for browsers that support :focus-visible */
+.no-js *:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-accent-1)),
+    0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
+
+.button--secondary:focus-visible {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels)),
+    0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
+
+.button--secondary:focus {
+  box-shadow: 0 0 0 0.1rem rgb(var(--color-base-outline-button-labels)),
+    0 0 0 0.3rem rgb(var(--color-base-background-1)),
+    0 0 0.5rem 0.4rem rgba(var(--color-base-text), 0.3);
+}
+
+.form__message {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.form__message .icon {
+  flex-shrink: 0;
+  height: 1.3rem;
+  margin-right: 0.5rem;
+  width: 1.3rem;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}
+
+.btn-small{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-base);
+  font-weight: var(--font-body-bold-weight);
+  text-decoration: none;
+}
+.btn-small{
+  --height: 1px;
+  font-size: var(--font-body2-size);
+  line-height: var(--font-body2-line-height);
+}
+.btn-small:before{
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: var(--height);
+  background: var(--color-base);
+  transition: width var(--duration-medium) var(--animation-bezier);
+}
+.btn-small:hover{
+  text-decoration: none;
+}
+.btn{
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-bold-weight);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-line-height);
+  height: 50px;
+  background: var(--background);
+  color: var(--color);
+  border-radius: var(--radius-button);
+  border: unset;
+  padding: 0 25px;
+  width: auto;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn svg path{
+ fill: var(--fill);
+}
+.btn:hover{
+  text-decoration: none;
+}
+.gift-card__copy-code svg path{
+  fill: var(--color-base);
+}
+@media (min-width: 993px){
+  .btn-small:hover:before{
+    width: 0;
+  }
+  .btn_zoom{
+    position: relative;
+  }
+  .btn_zoom>*{
+    z-index: 1;
+  }
+  .btn_zoom:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-button);
+    border: var(--border, unset);
+    background: var(--background);
+    z-index: 0;
+    transform: translate3d(0,0,0);
+    transition: transform var(--duration-short) var(--zoom-animation-bezier),
+      			width var(--duration-short) var(--zoom-animation-bezier),
+                height var(--duration-short) var(--zoom-animation-bezier);
+  }
+  .btn_zoom:hover:before{
+    --scale-button-on: 6px;
+    transform: translate3d(-3px,-3px,0);
+    width: calc(100% + var(--scale-button-on));
+    height: calc(100% + var(--scale-button-on));
+  }
+}
