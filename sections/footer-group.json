@@ -44,15 +44,15 @@
       "settings": {
         "subheading": "",
         "heading": "What we're reading right now:",
-        "heading_aligment": "text-left",
+        "heading_aligment": "text-center",
         "button_name": "",
         "button_url": "",
-        "top_spacing": "none",
+        "top_spacing": "normal",
         "width": "page-width",
         "grid": "col-4",
         "swipe_on_mobile": false,
         "image_ratio": "auto",
-        "texts_aligment": "text-left",
+        "texts_aligment": "text-center",
         "heading_tag": "h4",
         "description_size": "normal",
         "hover_underline": false,
@@ -64,7 +64,7 @@
         "color_description": "rgba(0,0,0,0)",
         "color_svg": "rgba(0,0,0,0)",
         "background": "color",
-        "color_background": "rgba(0,0,0,0)",
+        "color_background": "#F8F0E6",
         "gradient": "",
         "background_width": "fullwidth",
         "background_spacing": "medium",
@@ -106,7 +106,7 @@
         "359796ef-2c18-41e5-baf4-b897ea8ba40b"
       ],
       "settings": {
-        "top_spacing": "normal",
+        "top_spacing": "none",
         "width": "page-width",
         "show_top_line": true,
         "heading_tag": "h5",
@@ -125,31 +125,10 @@
         "color_background": "rgba(0,0,0,0)",
         "gradient": ""
       }
-    },
-    "56335795-2801-4d09-9982-e47dc6a6351c": {
-      "type": "ticker",
-      "settings": {
-        "top_spacing": "none",
-        "ticker_time": 10,
-        "direction": "ticker-to-left",
-        "text_size": "ticker-text-5",
-        "url": "shopify:\/\/collections",
-        "text": "<p><strong>ANNOUNCEMENT <\/strong>— Use this section to include scrolling announcement text<\/p>",
-        "show_icon": "svg",
-        "icon_name": "advertising_sm",
-        "color_svg": "rgba(0,0,0,0)",
-        "color_text": "rgba(0,0,0,0)",
-        "background": "color",
-        "color_background": "rgba(0,0,0,0)",
-        "gradient": "",
-        "background_spacing": "xsmall",
-        "remove_bottom_spacing": false
-      }
     }
   },
   "order": [
     "3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85",
-    "footer",
-    "56335795-2801-4d09-9982-e47dc6a6351c"
+    "footer"
   ]
 }
