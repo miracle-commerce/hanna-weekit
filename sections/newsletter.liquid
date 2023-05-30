@@ -66,6 +66,11 @@
   {%- endif -%}
 }
 {%- endif -%}
+{%- if section.settings.color_links != "rgba(0,0,0,0)" -%}
+#newsletter-{{ section.id }} a{
+  --color-text-link: {{ section.settings.color_links }};
+}
+{%- endif -%}
 {%- endcapture -%}
 {%- if section_styles != blank -%}
 <style>{{ section_styles }}</style>
@@ -134,7 +139,7 @@
           </button>
         </div>
 
-        {%- if section.settings.newsletter_terms != blank -%}<div class="body3 newsletter-terms {{ section.settings.heading_aligment }}">{{ section.settings.newsletter_terms }}</div>{%- endif -%}
+        {%- if section.settings.newsletter_terms != blank -%}<div{{ color_text }} class="body3 newsletter-terms {{ section.settings.heading_aligment }}">{{ section.settings.newsletter_terms }}</div>{%- endif -%}
         
         {%- if form.posted_successfully? -%}
         <p class="form__message h5 mt40 {{ section.settings.heading_aligment }}" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
@@ -152,6 +157,9 @@
   {
     "name": "t:sections.newsletter.name",
   	"tag": "section",
+    "disabled_on": {
+      "groups": ["header"]
+    },
     "settings": [
 	  {
 		"type": "text",
@@ -280,6 +288,12 @@
         "default": "rgba(0,0,0,0)",
         "label": "t:sections.general.settings.description.label"
       },
+      {
+        "type": "color",
+        "id": "color_links",
+        "default": "rgba(0,0,0,0)",
+        "label": "t:sections.general.settings.links.label"
+      },      
       {
         "type": "header",
         "content": "t:sections.newsletter.settings.header_form_colors.content"

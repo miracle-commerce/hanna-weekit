@@ -260,19 +260,29 @@
   },
   "templates": {
     "search": {
-      "no_results": "の結果が見つかりませんでした“{{ terms }}”。 スペルを確認するか、別の語句を使用してください。",
-      "page": "ページ",
+      "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
+      "page": "Page",
+      "products": "PRODUCTS",
       "results_with_count": {
-        "one": "{{ count }} 結果",
-        "other": "{{ count }} 結果"
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
       },
-      "title": "の検索結果",
-      "products": "製品",
-      "search_for": "検索する “{{ terms }}”",
+      "results_suggestions_with_count": {
+        "one": "{{ count }} suggestion",
+        "other": "{{ count }} suggestions"
+      },
+      "results_products_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
       "results_with_count_and_term": {
-        "one": "{{ count }} で見つかった結果 “{{ terms }}”",
-        "other": "{{ count }} で見つかった結果 “{{ terms }}”"
-      }
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
+      "title": "Search results",
+      "search_for": "Search for “{{ terms }}”",
+      "suggestions": "SUGGESTIONS",
+      "pages": "PAGES"
     },
     "cart": {
       "cart": "カート"

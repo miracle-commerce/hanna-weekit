@@ -1,23 +1,23 @@
 {
   "current": {
-    "color_base": "#142c73",
-    "color_accent": "#f46800",
+    "color_base": "#44413e",
+    "color_accent": "#f09070",
     "color_background": "#ffffff",
     "color_secondary_background": "#f6f7fa",
-    "color_price": "#142c73",
-    "color_save_price": "#d20404",
+    "color_price": "#f09079",
+    "color_save_price": "#f09079",
     "color_save_badge": "#d20404",
     "color_featured_badge": "#ef6c00",
-    "color_soldout_badge": "#142c73",
+    "color_soldout_badge": "#5c7680",
     "color_input_background": "#f6f7fa",
-    "color_input_text": "#142c73",
+    "color_input_text": "#44413e",
     "icon_opacity": 40,
     "image_overlay_color": "#142c73",
     "color_alert": "#d20404",
     "color_text_link": "#0568d6",
-    "type_header_font": "avenir_next_n6",
+    "type_header_font": "roboto_n7",
     "heading_scale": 100,
-    "type_body_font": "avenir_next_n3",
+    "type_body_font": "montserrat_n4",
     "body_scale": 100,
     "buttons_font_weight": "strong",
     "enable_breadcrumb": false,
@@ -32,9 +32,9 @@
     "external_links_in_new_tab": false,
     "page_width": 1300,
     "spacing_grid_horizontal": 20,
-    "swatches_design": "none",
+    "swatches_design": "color",
     "variants_names": "Color",
-    "css_colors": "black:#000000,\nwhite:#FFFFFF,\nbeige:#CFB695,\nred:#F44336,\npink:#E91E63,\npurple:#9C27B0,\ndeep purple:#673AB7,\nviolet:#C11FDD,\nindigo:#3F51B5,\nblue:#2196F3,\nlight blue:#03A9F4,\ncyan:#00BCD4,\nteal:#009688,\ngreen:#4CAF50,\nlight green:#8BC34A,\nlime:#CDDC39,\nyellow:#FFEB3B,\namber:#FFC107,\nAorange:#FF9800,\ndeep orange:#FF5722,\nbrown:#795548,\ngrey:#9E9E9E,\nblue grey:#607D8B",
+    "css_colors": "black:#000000,\nwhite:#FFFFFF,\nbeige:#CFB695,\nred:#F44336,\npink:#E91E63,\npurple:#9C27B0,\ndeep purple:#673AB7,\nviolet:#C11FDD,\nindigo:#3F51B5,\nblue:#2196F3,\nlight blue:#03A9F4,\ncyan:#00BCD4,\nteal:#009688,\ngreen:#4CAF50,\nlight green:#8BC34A,\nlime:#CDDC39,\nyellow:#FFEB3B,\namber:#FFC107,\nAorange:#FF9800,\ndeep orange:#FF5722,\nbrown:#795548,\ngrey:#9E9E9E,\nblue grey:#607D8B,\nalmond: #e8d3c2",
     "enable_color_swatches": true,
     "cart_icon": "basket",
     "cart_type": "drawer",
@@ -50,8 +50,9 @@
     "show_age_verification_popup": false,
     "age_verification_popup_redirect_link": "",
     "enable_recently_viewed_products": true,
-    "social_media_1": "",
-    "social_media_2": "",
+    "social_media_1": "http:\/\/facebook.com\/weekitsco",
+    "social_media_2": "http:\/\/instagram.com\/weekitsco",
+    "social_media_3": "http:\/\/tiktok.com\/weekitsco",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": true,
     "predictive_search_show_price": true,
@@ -77,7 +78,7 @@
             "settings": {
               "text": "Welcome to WeeKits!",
               "link_name": "Learn more",
-              "link_url": "",
+              "link_url": "shopify:\/\/pages\/about-us",
               "color_background": "rgba(0,0,0,0)",
               "color_text": "rgba(0,0,0,0)",
               "color_link": "rgba(0,0,0,0)"
@@ -137,10 +138,11 @@
           "show_color_line": true,
           "menu_font_weight": "strong",
           "icons_color": "rgba(0,0,0,0)",
-          "logo": "shopify:\/\/shop_images\/Screen_Shot_2023-02-01_at_2.51.44_PM.png",
+          "logo": "shopify:\/\/shop_images\/WK01_Logo_CozyBlue.png",
           "logo_svg": "",
-          "logo_max_width": 250,
+          "logo_max_width": 200,
           "logo_position": "left",
+          "logo_mobile": "shopify:\/\/shop_images\/WK01_Logo_CozyBlue.png",
           "logo_svg_mobile": "",
           "logo_max_width_mobile": 50,
           "logo_position_mobile": "left",
@@ -238,7 +240,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "5918445685253060206": {
+        "type": "shopify:\/\/apps\/bundler-product-bundles\/blocks\/bundler-script-append\/7a6ae1b8-3b16-449b-8429-8bb89a62c664",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Vertical": {

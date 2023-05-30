@@ -434,7 +434,7 @@ class HeaderDrawer extends MenuDrawer {
   }
 
   openMenuDrawer(summaryElement) {
-    this.header = this.header || document.getElementById('shopify-section-header');
+    this.header = this.header || document.querySelector('.section-header');
     this.borderOffset = 0;
     document.documentElement.style.setProperty('--header-bottom-position', `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`);
     this.header.classList.add('menu-open');
@@ -1756,6 +1756,47 @@ class drawerInner extends HTMLElement {
   }
 }
 customElements.define('drawer-inner', drawerInner);
+
+class AnnouncementBar extends HTMLElement {
+  constructor() {
+    super();
+    this.delay = Number(this.getAttribute('data-delay'))*1000;
+    this.start();
+    this.addEventListener('mouseover', this.over.bind(this));
+    this.addEventListener('mouseleave', this.leave.bind(this));
+  }
+  over(){
+    this.stop();
+  }
+  leave(){
+    this.start();
+  }  
+  start(){
+      this.intervalID = setInterval(this.startSlider.bind(this), this.delay);
+  }
+  stop(){
+      clearInterval(this.intervalID);
+  }
+  startSlider(){
+    var item = this.querySelector('.active'),
+        parent = item.parentElement,
+        length = this.querySelectorAll('.announcement-bar-js').length-1,
+        index = Number(Array.prototype.indexOf.call(parent.children, item)),
+        el = false;
+    item.classList.remove('active');
+    item.classList.remove('active-show');
+    if(index >= length){
+      el = this.querySelectorAll('.announcement-bar-js')[0];
+    }
+    else{
+      el = item.nextElementSibling;
+      
+    }
+    el.classList.add('active');
+    setTimeout(function(){el.classList.add('active-show');}, 50)
+  }
+}
+customElements.define('announcement-bar', AnnouncementBar);
 
 const isIOS = [
   'iPad Simulator',

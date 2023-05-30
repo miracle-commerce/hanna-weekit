@@ -71,9 +71,6 @@ predictive-search[loading] .predictive-search__results-list:first-child {
   transition: background var(--duration-medium) var(--zoom-animation-bezier);
   text-decoration: none;
 }
-.predictive-search__item {
-  padding: 10px 20px;
-}
 .predictive-search__list-item[aria-selected="true"] .predictive-search__item,
 .predictive-search__list-item:hover .predictive-search__item {
   background: var(--color-secondary-background);
@@ -91,9 +88,6 @@ predictive-search[loading] .predictive-search__results-list:first-child {
 }
 .predictive-search__item-heading {
   margin: 0;
-}
-#predictive-search-option-search-keywords:not(:only-child){
-  margin-top: 20px;
 }
 #predictive-search-option-search-keywords{
   padding: 0 20px;
@@ -128,8 +122,192 @@ predictive-search[loading] .predictive-search__results-list:first-child {
   line-height: 18px;
 }
 .predictive-search__image {
-  grid-area: product-image;
+  /*grid-area: product-image;
   object-fit: contain;
   font-family: 'object-fit: contain';
-  border-radius: var(--radius);
+  border-radius: var(--radius);*/
+}
+
+.predictive-search__results-groups-wrapper {
+  display: flex;
+}
+*:not(.predictive-search__two-columns)>predictive-search .predictive-search__results-groups-wrapper{
+  flex-direction: column;
+  gap:20px;
+}
+@media (min-width: 993px){
+  .predictive-search__two-columns .predictive-search__result-group:first-child {
+    flex: 0 0 50%;
+  }
+}
+.predictive-search__result-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 20px;
+}
+*:not(.predictive-search__two-columns)>predictive-search .predictive-search__result-group:first-child .predictive-search__pages-wrapper{
+  display: none;
+}
+*:not(.predictive-search__two-columns)>predictive-search .predictive-search__results-groups-wrapper--no-products .predictive-search__result-group:nth-child(2),
+*:not(.predictive-search__two-columns)>predictive-search .predictive-search__result-group:last-child .predictive-search__pages-wrapper {
+  display: block;
+}
+
+.predictive-search__item-query-result mark {
+  background-color: transparent;
+}
+.predictive-search__item-query-result span {
+  font-weight: var(--font-body-bold-weight);
+}
+#predictive-search-results-queries-list.predictive-search__results-list:not(:first-child),
+[id*="predictive-search-results-pages-list-"].predictive-search__results-list:not(:first-child) {
+    margin-top: 3px;
+}
+.predictive-search__results-groups-wrapper+#predictive-search-option-search-keywords{
+  margin-top: 20px;
+}
+.predictive-search__item .predictive-search__item_link{
+  display: inline-flex;
+  position: relative;
+  text-decoration: none;
+}
+.predictive-search__item .predictive-search__item_link:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  left: 0;
+  top: 100%;
+  background: var(--color-base);
+  transition: width var(--duration-medium) var(--animation-bezier);
+}
+@media (min-width: 993px){
+  #predictive-search-results-queries-list .predictive-search__item,
+  [id*="predictive-search-results-pages-list-"] .predictive-search__list-item .predictive-search__item {
+    padding: 7px 20px 0 0;
+    background: transparent;
+  }
+  .predictive-search__results-groups-wrapper--no-products .predictive-search__result-group:nth-child(2),
+  .predictive-search__result-group:last-child .predictive-search__pages-wrapper {
+    display: none;
+  }
+  /**:not(.predictive-search__two-columns)>predictive-search .predictive-search__results-list:not(:first-child) {
+    margin-top: 0;
+  }*/
+  *:not(.predictive-search__two-columns)>predictive-search .predictive-search__item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .predictive-search__item:hover .predictive-search__item_link:before{
+    text-decoration: none;
+    width: 100%;
+  }  
+  .predictive-search__heading {
+    margin: 0;
+  }
+  .predictive-search{
+    padding: 20px;
+  }
+  .predictive-search__item{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .predictive-search__list-item[aria-selected=true] .predictive-search__item,
+  .predictive-search__list-item:hover .predictive-search__item {
+    background: transparent;
+  }  
+  #predictive-search-option-search-keywords {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .predictive-search__two-columns .predictive-search__results-groups-wrapper--no-products .predictive-search__result-group:first-child,
+  .predictive-search__two-columns .predictive-search__result-group:only-child {
+    flex-grow: 1;
+  }
+}
+@media (max-width: 993px){
+  .predictive-search{
+    padding: 40px 0;
+  }
+  .predictive-search__result-group:first-child .predictive-search__pages-wrapper {
+    display: none;
+  }
+  .predictive-search__results-list:not(:first-child) {
+    margin-top: 10px;
+  }
+  #predictive-search-results-queries-list.predictive-search__results-list:not(:first-child),
+  [id*="predictive-search-results-pages-list-"].predictive-search__results-list:not(:first-child) {
+    margin-top: 13px;
+  }
+  .predictive-search__results-groups-wrapper {
+    flex-direction: column;
+    gap:40px;
+  }
+  .predictive-search__result-group{
+    gap:40px;
+  }
+  #predictive-search-results-queries-list .predictive-search__item,
+  [id*="predictive-search-results-pages-list-"] .predictive-search__item {
+    padding: 13px 20px;
+  }  
+  .predictive-search__results-groups-wrapper+#predictive-search-option-search-keywords {
+    margin-top: 40px;
+  }
+  .predictive-search__item {
+    padding: 10px 20px;
+  }
+}
+@media (min-width: 577px) and (max-width: 992px){
+  .predictive-search__two-columns__tablet .predictive-search__result-group:first-child {
+    flex: 0 0 50%;
+  }
+  .predictive-search__two-columns__tablet .predictive-search{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .predictive-search__two-columns__tablet:not(.empty-class)>predictive-search .predictive-search__result-group:first-child .predictive-search__pages-wrapper {
+    display: block;
+  }
+  .predictive-search__two-columns__tablet:not(.empty-class)>predictive-search .predictive-search__results-groups-wrapper--no-products .predictive-search__result-group:nth-child(2),
+  .predictive-search__two-columns__tablet:not(.empty-class)>predictive-search .predictive-search__result-group:last-child .predictive-search__pages-wrapper {
+    display: none;
+  }  
+  .predictive-search__two-columns__tablet .predictive-search__results-list:not(:first-child) {
+    margin-top: 10px;
+  }
+  .predictive-search__two-columns__tablet #predictive-search-results-queries-list.predictive-search__results-list:not(:first-child),
+  .predictive-search__two-columns__tablet [id*="predictive-search-results-pages-list-"].predictive-search__results-list:not(:first-child) {
+    margin-top: 13px;
+  }
+  .predictive-search__two-columns__tablet:not(.empty-class)>predictive-search .predictive-search__results-groups-wrapper {
+    flex-direction: row;
+    gap:0;
+  }
+  .predictive-search__two-columns__tablet #predictive-search-results-queries-list .predictive-search__item,
+  .predictive-search__two-columns__tablet [id*="predictive-search-results-pages-list-"] .predictive-search__item {
+    padding: 13px 10px 13px;
+  }  
+  .predictive-search__two-columns__tablet .predictive-search__item {
+    padding: 10px 20px;
+  }
+  .predictive-search__two-columns__tablet .predictive-search__heading {
+    margin: 0 0 0 10px;
+  }
+  .predictive-search__two-columns__tablet .predictive-search__item{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .predictive-search__two-columns__tablet .predictive-search__list-item[aria-selected=true] .predictive-search__item,
+  .predictive-search__two-columns__tablet .predictive-search__list-item:hover .predictive-search__item {
+    border-radius: var(--radius-button);
+  }
+  .predictive-search__two-columns__tablet #predictive-search-option-search-keywords {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .predictive-search__two-columns__tablet .predictive-search__results-groups-wrapper--no-products .predictive-search__result-group:first-child,
+  .predictive-search__two-columns__tablet .predictive-search__result-group:only-child {
+    flex-grow: 1;
+  }
 }

@@ -175,7 +175,7 @@ menu-drawer .disclosure-has-popup[open] > summary::before {
   background: var(--color-base);
   opacity: 0;
   visibility: hidden;
-  z-index: 9;
+  z-index: 11;
 }
 menu-drawer .disclosure-has-popup > summary::before {
   display: none;
@@ -207,7 +207,7 @@ menu-drawer > details[open] > summary::before {
   left: 0;
   bottom: 0;
   background: var(--color-body-background);
-  z-index: 10;
+  z-index: 12;
   overflow: hidden;
   transform: translateX(-100%);
 }

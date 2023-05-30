@@ -377,6 +377,29 @@
   "sections": {
     "announcement-bar": {
       "name": "Announcement bar",
+      "settings": {
+        "slider_mode": {
+          "label": "Slider"
+        },
+        "bar_time": {
+          "label": "Slider time"
+        },
+        "text_size": {
+          "label": "Text size",
+          "options__1": {
+            "label": "Big"
+          },
+          "options__2": {
+            "label": "Normal"
+          },
+          "options__3": {
+            "label": "Medium"
+          },
+          "options__4": {
+            "label": "Small"
+          }
+        }
+      },
       "blocks": {
         "announcement": {
           "name": "Announcement",
@@ -401,6 +424,9 @@
             }
           }
         }
+      },
+      "presets": {
+        "name": "Announcement bar"
       }
     },
     "general": {
@@ -611,6 +637,9 @@
           "label": "Top, bottom spacing",
           "options__none": {
             "label": "None"
+          },
+          "options__xsmall": {
+            "label": "Extra small"
           },
           "options__small": {
             "label": "Small"
@@ -1885,13 +1914,38 @@
           "label": "Ticker time"
         },
         "text_size": {
-          "label": "Text size"
+          "label": "Text size",
+          "options__1": {
+            "label": "Big"
+          },
+          "options__2": {
+            "label": "Normal"
+          },
+          "options__3": {
+            "label": "Medium"
+          },
+          "options__4": {
+            "label": "Small"
+          }
         },
         "text": {
           "label": "Text"
         },
         "color_svg": {
           "label": "Preset icon"
+        },
+        "direction": {
+          "label": "Direction",
+          "options__1": {
+            "label": "Left"
+          },
+          "options__2": {
+            "label": "Right"
+          }
+        },
+        "url": {
+          "label": "Link",
+          "info": "Leave empty if you will add a link in a text field below"
         }
       },
       "presets": {

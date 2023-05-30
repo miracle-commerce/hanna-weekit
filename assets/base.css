@@ -414,27 +414,6 @@ a.image-hover-scaling__image{
   }
 }
   
-.announcement-bar{
-  opacity: 1;
-  color: var(--color-announcement-bar-text);
-  background: var(--color-announcement-bar);
-  min-height: 40px;
-  padding: 9px 0 10px;
-  font-family: var(--font-heading-family);
-  font-style: var(--font-heading-style);
-  font-weight: var(--font-heading-weight);
-}
-.announcement-bar .btn-small:before{
-  top: calc(100% - 2px);
-}
-.announcement-bar .btn-small{
-  font-family: var(--font-body-family);
-  font-style: var(--font-body-style);
-  font-size: var(--font-body-size);
-  line-height: var(--font-body-line-height);
-  font-weight: var(--font-button-weight);
-}
-  
 .header__color-line{
   width: 100%;
   height: 5px;
@@ -829,6 +808,11 @@ svg > *{
 .section-background--none{
   --section-background-spacing: 0;
 }
+.section-background--xsmall{
+  --section-background-spacing: 10px;
+  --section-background-spacing-mobile: 10px;
+  min-height: 40px;
+}
 .section-background--small{
   --section-background-spacing: var(--sections-top-spacing--small);
   --section-background-spacing-mobile: var(--sections-top-spacing--small-mobile);
@@ -840,7 +824,8 @@ svg > *{
 .section-background--normal{
   --section-background-spacing: var(--sections-top-spacing);
   --section-background-spacing-mobile: var(--sections-top-spacing-mobile);
-}
+}  
+
 .section-background{
   padding-top: var(--section-background-spacing, 100);
   padding-bottom: var(--section-background-spacing, 100);
@@ -1128,6 +1113,10 @@ a:empty, ul:empty, dl:empty, p:empty{
     box-shadow: none!important;
   }
 }
+#cart-icon-bubble:focus-visible,drawer-inner.drawer__inner:focus-visible{
+  outline: unset;
+}
+
 .btn:focus,
 .btn:focus-visible,
 .btn.focused,

@@ -292,7 +292,7 @@
       {%- endif -%}
     </div>
     {%- if section.settings.open_search and section.settings.show_search -%}
-    <div class="opened-search">
+    <div class="opened-search predictive-search__two-columns__tablet">
     {%- render "header-search" show_search:section.settings.show_search, fullwidth: true, mobile: true -%}
     </div>
     {%- endif -%}
@@ -417,7 +417,7 @@
               menu_font_weight:section.settings.menu_font_weight
           -%}
         </div>
-        <div class="col-four_fifth">
+        <div class="col-four_fifth predictive-search__two-columns">
           {%- render "header-search" show_search:section.settings.show_search, fullwidth: true -%}
         </div>
         {%- else -%}
@@ -538,7 +538,7 @@
     }
 
     connectedCallback() {
-      this.header = document.getElementById('shopify-section-header');
+      this.header = document.querySelector('.section-header');
       this.headerBounds = {};
       this.currentScrollTop = 0;
       this.preventReveal = false;
@@ -677,6 +677,7 @@
 {% schema %}
 {
   "name": "t:sections.header.name",
+  "class": "section-header",
   "settings": [
 	{
       "type": "select",

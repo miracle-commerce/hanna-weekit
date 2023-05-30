@@ -1,0 +1,75 @@
+.announcement-text-2{
+--font-size: calc(30px * var(--font-heading-scale));
+}
+.announcement-text-3{
+  --font-size: calc(24px * var(--font-heading-scale));
+}
+.announcement-text-4{
+  --font-size: calc(20px * var(--font-heading-scale));
+}
+.announcement-text-5{
+  --font-size: calc(16px * var(--font-heading-scale));
+}  
+.announcement-bar-container{
+  display: block;
+  position: relative;
+  overflow: hidden;  
+  min-height: 40px;
+  font-size: var(--font-size);
+}
+.announcement-bar{
+  opacity: 1;
+  color: var(--color-announcement-bar-text);
+  background: var(--color-announcement-bar);
+  min-height: 40px;
+  padding: var(--section-background-spacing, 10) 0 var(--section-background-spacing, 10);
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+}
+@media(max-width: 992px){
+  .announcement-bar{
+    padding-top: var(--section-background-spacing-mobile, 10);
+    padding-bottom: var(--section-background-spacing-mobile, 10);
+  }
+}
+.announcement-bar .btn-small:before{
+  top: calc(100% - 2px);
+}
+.announcement-bar .btn-small{
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-size: var(--font-size);
+  line-height: var(--font-body-line-height);
+  font-weight: var(--font-button-weight);
+}
+html.js .announcement-bar__slider .announcement-bar:not(.announcement-bar--biggest){
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+html.js .announcement-bar__slider .announcement-bar-js{
+  top: -100%;
+  transition: top var(--duration-large) 70ms var(--animation-bezier);
+}
+html.js .announcement-bar__slider .announcement-bar-js.active{
+  top: 100%;
+  transition: top 0 var(--animation-bezier);
+  z-index: 1;
+}
+html.js .announcement-bar__slider .announcement-bar-js.active.active-show{
+  top: 0;
+  transition: top var(--duration-large) var(--animation-bezier);
+}
+html.js .announcement-bar__slider .announcement-bar--biggest {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+html.no-js .announcement-bar__slider .announcement-bar--biggest {
+  display: none;
+}
+[class*="page-"].announcement--page-width{
+  padding: 0 20px;
+}

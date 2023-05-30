@@ -1,0 +1,209 @@
+{%- if section.blocks.size > 0 -%}
+
+{{ 'section-announcement-bar.css' | asset_url | stylesheet_tag }}
+
+{%- assign max_text_size = 0 -%}
+{%- assign max_size_index = 0 -%}
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+    {%- assign text_size = block.settings.text | size -%}
+    {%- if text_size > max_text_size -%}
+    {%- assign max_text_size = text_size -%}
+    {%- assign max_size_index = forloop.index -%}
+    {%- endif -%}
+  {%- endcase -%}
+{%- endfor -%}
+
+<div class="{{ section.settings.width }} {% if section.settings.slider_mode %} announcement-bar__slider{% endif %} {{ section.settings.text_size }}">
+  <{% if section.settings.slider_mode and section.blocks.size > 1 %}announcement-bar{% else %}div{% endif %} class="announcement-bar-container{% if section.settings.width != "page-fullwidth" %} border__radius{% endif %} section-background--xsmall"
+    data-delay="{{ section.settings.bar_time }}">
+
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+      {%- capture item -%}
+      {%- if block.settings.link_url != blank -%}
+      {%- assign html_tag_open = '<a' | append: ' href="' | append: block.settings.link_url | append:'"' -%}
+      {%- assign html_tag_close = '</a>' -%}
+      {%- else -%}
+      {%- assign html_tag_open = '<div' -%}
+      {%- assign html_tag_close = '</div>' -%}
+      {%- endif -%}
+      {{ html_tag_open }} class="announcement-bar announcement-bar-js display-flex align-items-center clear-underline{% if max_size_index == forloop.index %} announcement-bar--biggest{% endif %}{% if forloop.index == 1 %} active active-show{% endif %}"
+           style="--color-announcement-bar:{% if block.settings.color_background != 'rgba(0,0,0,0)' %}{{ block.settings.color_background }}{% else %}{{ settings.color_secondary_background }}{% endif %};
+                --color-announcement-bar-text:{% if block.settings.color_text != 'rgba(0,0,0,0)' %}{{ block.settings.color_text }}{% else %}{{ settings.color_base }}{% endif %};"
+           data-section-name="announcement-bar"
+           {{ block.shopify_attributes }}>
+        <div class="page-width">
+          <div class="grid justify-content-center text-center">
+            <div class="col-12 announcement-bar__item align-items-center">
+              <p class="nomargin">{{ block.settings.text | escape }}
+              {%- if block.settings.text != blank -%}
+                &nbsp;&nbsp;
+              {%- endif -%}
+              {%- if block.settings.link_name != blank -%}
+              {%- assign color_link = '' -%}
+              {%- if block.settings.color_link != "rgba(0,0,0,0)" -%}
+              {%- assign color_link = ' style="--color-accent:' | append: block.settings.color_link | append: ';"' -%}
+              {%- endif -%}
+              <span class="btn-small strong"
+                 {% if block.settings.link_url == blank %} aria-disabled="true"{% endif %}{{ color_link }}
+                 >{{ block.settings.link_name }}</span>
+              {%- endif -%}
+              </p>
+            </div>
+          </div>
+        </div>
+      {{ html_tag_close }}
+      {%- endcapture -%}
+      {{ item | replace: 'announcement-bar--biggest', '' }}
+      {%- if max_size_index == forloop.index -%}{%- capture last_item -%}{{ item | replace: 'announcement-bar-js', '' }}{%- endcapture -%}{%- endif -%}
+  {%- endcase -%}
+  {%- endfor -%}
+  {%- if section.settings.slider_mode -%}{{ last_item }}{%- endif -%}
+
+</{% if section.settings.slider_mode and section.blocks.size > 1 %}announcement-bar{% else %}div{% endif %}>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "enabled_on": {
+    "groups": ["header"]
+  },  
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.general.settings.header_layout.content"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:sections.general.settings.width.options__boxed.label"
+        },
+        {
+          "value": "page-wide",
+          "label": "t:sections.general.settings.width.options__wide.label"
+        },
+        {
+          "value": "page-fullwidth",
+          "label": "t:sections.general.settings.width.options__fullwidth.label"
+        }
+      ],
+      "default": "page-fullwidth",
+      "label": "t:sections.general.settings.width.label"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "options": [
+        {
+          "value": "announcement-text-2",
+          "label": "t:sections.announcement-bar.settings.text_size.options__1.label"
+        },
+        {
+          "value": "announcement-text-3",
+          "label": "t:sections.announcement-bar.settings.text_size.options__2.label"
+        },
+        {
+          "value": "announcement-text-4",
+          "label": "t:sections.announcement-bar.settings.text_size.options__3.label"
+        },
+        {
+          "value": "announcement-text-5",
+          "label": "t:sections.announcement-bar.settings.text_size.options__4.label"
+        }          
+      ],
+      "default": "announcement-text-5",
+      "label": "t:sections.announcement-bar.settings.text_size.label"
+    },     
+    {
+      "type": "checkbox",
+      "id": "slider_mode",
+      "default": true,
+      "label": "t:sections.announcement-bar.settings.slider_mode.label"
+    },
+    {
+      "type": "range",
+      "id": "bar_time",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.bar_time.label",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "default": "ANNOUNCE something here",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.general.settings.name_link.label"
+        },
+        {
+          "type": "text",
+          "id": "link_name",
+          "default": "Learn more",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link_name.label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link_url.label"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.general.settings.header_colors.content"
+        },
+        {
+          "type": "color",
+          "id": "color_background",
+          "default": "rgba(0,0,0,0)",
+		  "label": "t:sections.announcement-bar.blocks.announcement.settings.color_background.label"
+        },
+        {
+          "type": "color",
+          "id": "color_text",
+          "default": "rgba(0,0,0,0)",
+		  "label": "t:sections.announcement-bar.blocks.announcement.settings.color_text.label"
+        },
+        {
+          "type": "color",
+          "id": "color_link",
+          "default": "rgba(0,0,0,0)",
+		  "label": "t:sections.announcement-bar.blocks.announcement.settings.color_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.presets.name",
+      "blocks": [
+        {
+          "type": "announcement"
+        },
+        {
+          "type": "announcement"
+        }        
+      ]
+    }
+  ]
+}
+{% endschema %}

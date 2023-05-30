@@ -181,8 +181,14 @@ endif
       this.elements.button.innerHTML = event.target.dataset.name;
       event.target.closest('ul').querySelector('.animation-underline--active').classList.remove("animation-underline--active");
       event.target.classList.add("animation-underline--active");
-      document.getElementById('SortBy').value = event.target.dataset.value;
-      document.getElementById('FacetFiltersForm').dispatchEvent(new Event('input'));
+      if(document.getElementById('SortBy')){
+        document.getElementById('SortBy').value = event.target.dataset.value;
+        document.getElementById('FacetFiltersForm').dispatchEvent(new Event('input'));
+      }
+      else{
+        document.getElementById('SortBy-mobile').value = event.target.dataset.value;
+        document.getElementById('FacetFiltersFormMobile').dispatchEvent(new Event('input'));
+      }
     }
 
     openSelector() {

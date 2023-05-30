@@ -260,19 +260,29 @@
   },
   "templates": {
     "search": {
-      "no_results": ".בדוק את האיות או השתמש במילה או ביטוי אחר .“{{ terms }}” לא נמצאו תוצאות עבור",
-      "page": "עמוד",
+      "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
+      "page": "Page",
+      "products": "PRODUCTS",
       "results_with_count": {
-        "one": "תוֹצָאָה {{ count }}",
-        "other": "תוצאות {{ count }}"
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
       },
-      "title": "תוצאות חיפוש",
-      "products": "מוצרים",
-      "search_for": "“{{ terms }}” לחפש אחר",
+      "results_suggestions_with_count": {
+        "one": "{{ count }} suggestion",
+        "other": "{{ count }} suggestions"
+      },
+      "results_products_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
       "results_with_count_and_term": {
-        "one": "“{{ terms }}” נמצאה תוצאה עבור {{ count }}",
-        "other": "“{{ terms }}” נמצאו תוצאות עבור {{ count }}"
-      }
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
+      "title": "Search results",
+      "search_for": "Search for “{{ terms }}”",
+      "suggestions": "SUGGESTIONS",
+      "pages": "PAGES"
     },
     "cart": {
       "cart": "עֲגָלָה"

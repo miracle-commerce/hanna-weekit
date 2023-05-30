@@ -351,12 +351,10 @@
     {%- if request.design_mode -%}
     {%-  section 'documentation' -%}
     {%- endif -%}
-    
-    {% section 'announcement-bar' %}
-   
+
     {%- liquid
      	capture header
-    	section 'header'
+    	sections 'header-group'
     	endcapture
         echo header
     -%}
@@ -370,7 +368,7 @@
       {{ content_for_layout }}
     </main>
 
-    {% section 'footer' %}
+    {% sections 'footer-group' %}
 
     {%- if settings.show_age_verification_popup -%}
     {%- render "age-verification-popup" -%}

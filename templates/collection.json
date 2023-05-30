@@ -92,12 +92,31 @@
         "color_heading": "rgba(0,0,0,0)",
         "color_meta": "rgba(0,0,0,0)"
       }
+    },
+    "16854677249d8f71d6": {
+      "type": "apps",
+      "blocks": {
+        "001c5efa-88fb-4c0a-a554-54c9b87f2d27": {
+          "type": "shopify:\/\/apps\/bundler\/blocks\/custom-bundle\/7a6ae1b8-3b16-449b-8429-8bb89a62c664",
+          "settings": {
+            "shortcode": ""
+          }
+        }
+      },
+      "block_order": [
+        "001c5efa-88fb-4c0a-a554-54c9b87f2d27"
+      ],
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width"
+      }
     }
   },
   "order": [
     "heading",
     "description",
     "product-grid",
-    "172f76e6-ca14-490c-8834-23d69db8e6d7"
+    "172f76e6-ca14-490c-8834-23d69db8e6d7",
+    "16854677249d8f71d6"
   ]
 }

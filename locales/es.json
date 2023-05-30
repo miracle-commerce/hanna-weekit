@@ -210,19 +210,29 @@
   },
   "templates": {
     "search": {
-      "no_results": "No se encontraron resultados para “{{ terms }}” Revisa la ortografía o usa una palabra o frase diferente.",
-      "page": "Página",
+      "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
+      "page": "Page",
+      "products": "PRODUCTS",
       "results_with_count": {
-        "one": "{{ count }} resultado",
-        "other": "{{ count }} resultados"
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
       },
-      "title": "Resultados de búsqueda",
-      "products": "Productos",
-      "search_for": "Buscar “{{ terms }}”",
+      "results_suggestions_with_count": {
+        "one": "{{ count }} suggestion",
+        "other": "{{ count }} suggestions"
+      },
+      "results_products_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      },
       "results_with_count_and_term": {
-        "one": "Se ha encontrado {{ count }} resultado para \"{{ terms }}\"",
-        "other": "Se han encontrado {{ count }} resultados para \"{{ terms }}\""
-      }
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
+      "title": "Search results",
+      "search_for": "Search for “{{ terms }}”",
+      "suggestions": "SUGGESTIONS",
+      "pages": "PAGES"
     },
     "cart": {
       "cart": "Carrito"

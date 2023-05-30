@@ -1,0 +1,155 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "sections--16680435548401__3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85-167525906351a93439-0": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "What to Expect the First Year",
+            "description": "<p>by Heidi Murkoff<\/p>"
+          }
+        },
+        "sections--16680435548401__3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85-167525906351a93439-1": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "Check",
+            "url": "",
+            "heading": "The Happiest Baby on the Block",
+            "description": "<p>by Harvey Karp<\/p>"
+          }
+        },
+        "sections--16680435548401__3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85-167525906351a93439-2": {
+          "type": "blurb_icon",
+          "settings": {
+            "show_icon": "svg",
+            "icon_name": "check",
+            "url": "",
+            "heading": "The Baby Book",
+            "description": "<p>by William Sears<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "sections--16680435548401__3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85-167525906351a93439-0",
+        "sections--16680435548401__3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85-167525906351a93439-1",
+        "sections--16680435548401__3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85-167525906351a93439-2"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "What we're reading right now:",
+        "heading_aligment": "text-left",
+        "button_name": "",
+        "button_url": "",
+        "top_spacing": "none",
+        "width": "page-width",
+        "grid": "col-4",
+        "swipe_on_mobile": false,
+        "image_ratio": "auto",
+        "texts_aligment": "text-left",
+        "heading_tag": "h4",
+        "description_size": "normal",
+        "hover_underline": false,
+        "color_subheading": "rgba(0,0,0,0)",
+        "color_heading": "rgba(0,0,0,0)",
+        "color_button": "rgba(0,0,0,0)",
+        "color_swipe_buttons": "rgba(0,0,0,0)",
+        "color_heading_blurb": "rgba(0,0,0,0)",
+        "color_description": "rgba(0,0,0,0)",
+        "color_svg": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_width": "fullwidth",
+        "background_spacing": "medium",
+        "remove_bottom_spacing": false
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "c103923d-e013-41a1-b43e-151a87948e30": {
+          "type": "link_list",
+          "settings": {
+            "heading": "QUICK LINKS",
+            "menu": "footer"
+          }
+        },
+        "a02006d6-62ca-4b97-83cf-132b52a8a539": {
+          "type": "text",
+          "settings": {
+            "heading": "DESCRIPTION HEADING",
+            "subtext": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme settings.<\/p>"
+          }
+        },
+        "359796ef-2c18-41e5-baf4-b897ea8ba40b": {
+          "type": "newsletter",
+          "settings": {
+            "show_newsletter": true,
+            "heading": "NEWSLETTER",
+            "subtext": "<p>Sign up for our e-mail and be the first who knows our special offers!<\/p>",
+            "newsletter_terms": "<p>By clicking the button you agree to the <a href=\"\/\"><strong>Privacy Policy<\/strong><\/a> and <a href=\"\/\"><strong>Terms and Conditions<\/strong><\/a>.<\/p>",
+            "show_social": true,
+            "heading_social": "FOLLOW US:"
+          }
+        }
+      },
+      "block_order": [
+        "c103923d-e013-41a1-b43e-151a87948e30",
+        "a02006d6-62ca-4b97-83cf-132b52a8a539",
+        "359796ef-2c18-41e5-baf4-b897ea8ba40b"
+      ],
+      "settings": {
+        "top_spacing": "normal",
+        "width": "page-width",
+        "show_top_line": true,
+        "heading_tag": "h5",
+        "description_size": "body2",
+        "show_all_text_in_admin": true,
+        "enable_accordion": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "color_heading": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_links": "rgba(0,0,0,0)",
+        "color_input_bg": "rgba(0,0,0,0)",
+        "color_input_bg_active": "rgba(0,0,0,0)",
+        "background": "hide",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": ""
+      }
+    },
+    "56335795-2801-4d09-9982-e47dc6a6351c": {
+      "type": "ticker",
+      "settings": {
+        "top_spacing": "none",
+        "ticker_time": 10,
+        "direction": "ticker-to-left",
+        "text_size": "ticker-text-5",
+        "url": "shopify:\/\/collections",
+        "text": "<p><strong>ANNOUNCEMENT <\/strong>— Use this section to include scrolling announcement text<\/p>",
+        "show_icon": "svg",
+        "icon_name": "advertising_sm",
+        "color_svg": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "background": "color",
+        "color_background": "rgba(0,0,0,0)",
+        "gradient": "",
+        "background_spacing": "xsmall",
+        "remove_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "3ae345e7-2b04-4d0d-8e16-ad8d7eed8f85",
+    "footer",
+    "56335795-2801-4d09-9982-e47dc6a6351c"
+  ]
+}
