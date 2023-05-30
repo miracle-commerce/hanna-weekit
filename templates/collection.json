@@ -42,7 +42,7 @@
         "width": "page-width",
         "grid": "col-st-6 col-3",
         "mobile_grid": "6",
-        "enable_filtering": "enable",
+        "enable_filtering": "horizontal",
         "enable_sorting": true,
         "enable_sticky_filter_button": true,
         "enable_products_count": true,

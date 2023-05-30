@@ -233,31 +233,20 @@
     	text-size-adjust: none;
     	overflow-x: hidden;
       }
-       
-      {%- assign accent_brightness = settings.color_accent | color_extract: 'lightness' -%}
+      
+
       .btn{
-        --background: var(--color-accent);
-        {%- if accent_brightness < 50 -%}
-    	--color: var(--auto-text-color-button-light);
-    	--fill: var(--auto-text-color-button-light);
-    	{%- else -%}
-    	--color: var(--auto-text-color-button-dark);
-    	--fill: var(--auto-text-color-button-dark);
-        {%- endif -%}
+        --background: {{settings.color_primary_btn_bg}}; 
+        --color: {{settings.color_primary_btn}}; 
+        --fill: {{settings.color_primary_btn}};
       }
 
-      {%- assign accent_brightness = settings.color_base | color_extract: 'lightness' -%}
       .btn--secondary{
-        --background: var(--color-base);
-        {%- if accent_brightness < 50 -%}
-    	--color: var(--auto-text-color-button-light);
-    	--fill: var(--auto-text-color-button-light);
-    	{%- else -%}
-    	--color: var(--auto-text-color-button-dark);
-    	--fill: var(--auto-text-color-button-dark);
-        {%- endif -%}
+        --background: {{settings.color_secondary_btn_bg}}; 
+        --color: {{settings.color_secondary_btn}};
+        --fill: {{settings.color_secondary_btn}};
       }
-    
+          
     .visually-hidden {
       position: absolute!important;
       overflow: hidden;

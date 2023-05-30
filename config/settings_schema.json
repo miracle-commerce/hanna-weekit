@@ -39,6 +39,34 @@
         "label": "t:settings_schema.colors.settings.color_secondary_background.label"
       },
       {
+        "type":"header", 
+        "content":"Buttons"
+      },
+      {
+        "type":"color", 
+        "id":"color_primary_btn", 
+        "label":"Primary Button Color",
+        "default":"#F8F0E6"
+      },
+      {
+        "type":"color", 
+        "id":"color_primary_btn_bg", 
+        "label":"Primary Button Background",
+        "default":"#F09079"
+      },
+      {
+        "type":"color", 
+        "id":"color_secondary_btn", 
+        "label":"Secondary Button Color",
+        "default":"#F8F0E6"
+      },
+      {
+        "type":"color", 
+        "id":"color_secondary_btn_bg", 
+        "label":"Secondary Button Background",
+        "default":"#F6C4B3"
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.colors.settings.header_2.content"
       },

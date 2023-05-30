@@ -22,14 +22,14 @@
             "heading_tag": "h1",
             "description_size": "normal",
             "content_aligment": "align-items-center justify-content-center",
-            "show_background": false,
+            "show_background": true,
             "hover_underline": false,
             "color_subheading": "rgba(0,0,0,0)",
             "color_heading": "rgba(0,0,0,0)",
             "color_description": "rgba(0,0,0,0)",
             "button_primary_bg": "rgba(0,0,0,0)",
             "button_secondary_bg": "rgba(0,0,0,0)",
-            "color_background": "rgba(0,0,0,0)"
+            "color_background": "#f8f0e6"
           }
         }
       },
@@ -99,16 +99,16 @@
         "grid": "col-4",
         "mobile_grid": "12",
         "swipe_on_mobile": true,
-        "design_type": "text-over-image",
-        "image_ratio": "auto",
+        "design_type": "text-below-image",
+        "image_ratio": "1",
         "texts_aligment": "text-center",
         "hover_underline": false,
-        "show_products_count": true,
+        "show_products_count": false,
         "texts_aligment_mobile": "text-center-mobile",
         "color_subheading": "rgba(0,0,0,0)",
         "color_heading": "rgba(0,0,0,0)",
-        "color_link": "rgba(0,0,0,0)",
-        "color_texts": "rgba(0,0,0,0)",
+        "color_link": "#ffffff",
+        "color_texts": "#f6f7fa",
         "color_button": "rgba(0,0,0,0)",
         "color_button_hover": "rgba(0,0,0,0)"
       }
