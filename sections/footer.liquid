@@ -358,7 +358,7 @@ footer .field{
         {%- unless left_column_with_content -%}
         <div class="footer__copyright body3 mt--first-child-0">
           <span class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</span>
-          <span class="powered_by_link">{{ powered_by_link }}</span>
+          
         </div>
         {%- endunless -%}
       </div>
@@ -380,7 +380,7 @@ footer .field{
         {%- if left_column_with_content -%}
         <div class="footer__copyright body3 mt--first-child-0">
           <span class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</span>
-          <span class="powered_by_link">{{ powered_by_link }}</span>
+          
         </div>
         {%- endif -%}
       </div>
