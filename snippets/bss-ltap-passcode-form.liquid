@@ -1,0 +1,685 @@
+{% if is_pc_request == "true" %}
+<style>
+.bss-passcode-request:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.modal-dialog__container {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  pointer-events: none;
+  justify-content: center;
+}
+
+.modal-dialog__modal {
+  pointer-events: auto;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - 3.75rem);
+  background: #fff;
+  box-shadow: 0 1.625rem 5rem rgba(0, 0, 0, 0.2), 0 0 0.0625rem rgba(0, 0, 0, 0.2);
+}
+
+.modal-dialog__modal {
+  animation: blowUpModal 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* modal heading */
+.modal_heading {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(32, 34, 35, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.modal_heading__text {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.modal_icon__close {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  opacity: 0.6;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal_icon__close-svg {
+  position: relative;
+  display: block;
+  width: 20px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* modal body */
+.modal__body {
+  width: 100%;
+}
+
+.modal__section {
+  padding: 20px;
+}
+
+.modal__stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__stack-item {
+  margin-top: 12px;
+  position: relative;
+}
+
+.modal__field-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 4px;
+  position: relative;
+  display: inline-block;
+}
+
+.require {
+  color: red;
+  font-size: 16px;
+}
+
+.modal__field-input {
+  margin-bottom: 4px;
+  width: 100%;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid #898f94;
+  padding: 8px;
+  font-family: inherit;
+}
+
+.modal__field-input:focus {
+  padding: 2px;
+  outline: 2px solid #458fff;
+}
+
+.modal__field-input.disabled {
+  cursor: not-allowed;
+  color: #8C9196;
+}
+
+.modal__field-textarea {
+  min-height: 80px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.modal__field-desc,
+.modal__field-message {
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 12px;
+}
+
+.modal__field-desc {
+  color: #6d7175 !important;
+}
+.modal__field-message.message-error {
+  color: red;
+  display: none;
+}
+
+/* modal footer */
+.modal__footer {
+  padding: 16px;
+  border-top: 1px solid rgba(32, 34, 35, 0.2);
+}
+
+.modal__footer-action {
+  display: flex;
+  justify-content: end;
+}
+
+.modal__button {
+  padding: 8px 16px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #babfc3;
+  margin: 0 4px;
+  font-weight: 500;
+  line-height: 18px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+}
+.modal__button--primary {
+  background-color: #008060;
+  color: #fff;
+}
+@keyframes blowUpModal {
+  0% {
+      transform: scale(0);
+  }
+
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* responsive */
+@media only screen and (min-width: 769px) {
+  .modal-dialog__modal {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ .modal-dialog__modal {
+    width: 90%;
+    position:relative;
+  }
+}
+</style>
+{% endif %}
+{% if passcode_case_sensitive == 0 %}
+  {% assign entered_password_up_case = entered_password | upcase%}
+  {% assign entered_password_down_case = entered_password | downcase%}
+{% else %}
+  {% assign entered_password_up_case = entered_password %}
+  {% assign entered_password_down_case = entered_password %}
+{% endif %}
+{%- if form_style_type == '0' -%}
+<div class="page-width bsscommerce-passcode-container bsscommerce-passcode-form-style-{{ form_style_type }}">
+  <div class="bss-commerce-passcode-container-1" style="max-width: 420px;">
+    <div class="bss-commerce-passcode-container-2" style="width: 100%;">
+      <div id="BsscommercePasswordForm">
+      <span class="bss-commerce-passcode-message">{{ passcode_message }}</span>
+        <div class="bss-commerce-password-form-vertical">
+          <span class="bss-commerce-passcode-input-label"><b>{{ passcode_input_label }}</b></span>
+          <form id="bsscommerce-ltap-password" class="cart" novalidate style="display: flex">
+              <div class="bss-password-form-wrapper" style="display: flex; flex: 1; align-items: center; border: 1px solid #ccc; border-radius: 5px; margin-right: 6px; background-color: #fff">
+                  <input
+                          type="password"
+                          value=""
+                          name="attributes[{{ passAttrName }}]"
+                          id="bsscommerce-password"
+                          class="input-full"
+                          style="
+                              width: 100%;
+                              padding: 8px 0 8px 10px;
+                              font-size: 14px;
+                              border-radius: 5px;
+                              border: none;
+                              margin-right: 5px;
+                              box-shadow: none;
+                              outline: none;"
+                          placeholder="
+                                      {%- if input_placeholder_form_submit == "" -%}
+                                          {{ 'general.password_page.login_form_password_placeholder' | t }}
+                                      {%- else -%}
+                                          {{ input_placeholder_form_submit }}
+                                      {%- endif -%}
+                                  "
+                  />
+                  <button class="toggle-passcode-input" type="button" style="background-color: transparent; border: none; line-height: 0; padding: 8px; cursor: pointer; fill: #BABEC3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>
+                  </button>
+              </div>
+                  <input id="bsscommerce-password-submit"
+                      style="
+                          background-color: #fff;
+                          color: #333;
+                          border: 1px solid #ccc;
+                          padding: 0 15px;
+                          border-radius: 5px;
+                          cursor: pointer;
+                          font-size: 14px;
+                          font-weight: bold;"
+                      type="submit"
+                      class="btn"
+                      value="
+                          {%- if button_text_form_submit == "" -%}
+                              {{ 'general.password_page.login_form_submit' | t }}
+                          {%- else -%}
+                              {{ button_text_form_submit }}
+                          {%- endif -%}
+                      "
+                  />
+          </form>
+          {% if entered_password %}
+            {%- if entered_password_up_case != password or entered_password_down_case != password -%}
+              <div class="form-message form-message--error" style="text-align: left; font-size: 16px; color: red;">
+                <div style="display: flex; align-items: center">
+                  {% capture snippet-error-icon %}{% render 'icon-error' %}{% endcapture %}
+                  {% unless snippet-error-icon contains "Liquid error" %}
+                    <span style="width: 18px; margin-right: 6px; display: inherit;">
+                      {% render 'icon-error' %}
+                    </span>
+                  {% endunless %}
+                  {{ message_passcode_incorrect }}
+                </div>
+              </div>
+            {%- endif -%}
+          {% endif %}
+          {% if is_pc_request == "true" %}
+            <div class="bss-passcode-request bss-btn">Request passcode</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- else -%}
+  <div class="page-width bsscommerce-passcode-container bsscommerce-passcode-form-style-{{ form_style_type }}">
+    <div class="bss-commerce-passcode-container-1" style="width: 100%;">
+        <div class="bss-commerce-passcode-container-2" style="width: 100%;">
+            <div id="BsscommercePasswordForm">
+                <div class="form-vertical">
+                  {% if entered_password %}
+                    {%- if entered_password_up_case != password or entered_password_down_case != password -%}
+                        <div class="form-message form-message--error" style="text-align: center">
+                            {{ message_passcode_incorrect }}
+                        </div>
+                    {%- endif -%}
+                  {% endif %}
+                    <div class="bsscommerce-password-message-container">
+
+                        <div style="display: flex; flex-direction: column">{{ passcode_message }}
+                        </div>
+                    </div>
+                    <br/>
+                    <span class="bss-commerce-passcode-input-label"><b>{{ passcode_input_label }}</b></span>
+                    <br/>
+                    <form id="bsscommerce-ltap-password" class="cart" novalidate>
+                        <input type="password" value="" name="attributes[{{ passAttrName }}]" id="bsscommerce-password" class="input-full" placeholder="
+                                            {%- if input_placeholder_form_submit == " " -%}
+                                                    {{ 'general.password_page.login_form_password_placeholder' | t }}
+                                            {%- else -%}
+                                                {{ input_placeholder_form_submit }}
+                                            {%- endif -%}
+                                        "/>
+                        <div class="text-center">
+                            <p>
+                                <input id="bsscommerce-password-submit" type="submit" class="btn" value="
+                                                        {%- if button_text_form_submit == " " -%}
+                                                        {{ 'general.password_page.login_form_submit' | t }}
+                                                    {%- else -%}
+                                                        {{ button_text_form_submit }}
+                                                    {%- endif -%}
+                                                "/>
+                            </p>
+                        </div>
+                    </form>
+                    {% if is_pc_request == "true" %}
+                      <div class="bss-passcode-request bss-btn">Request passcode</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{%- endif -%}
+
+{% if is_pc_request == "true" %}
+<div class="modal-dialog__container">
+  <form class="form-passcode-request">
+    <div class="modal-dialog">
+        <div class="modal-dialog__modal">
+            <div class="modal_heading">
+                <h2 class="modal_heading__text">Request passcode</h2>
+                <span class="modal_icon__close">
+                    <svg viewBox="0 0 20 20" class="modal_icon__close-svg" focusable="false"
+                        aria-hidden="true">
+                        <path
+                            d="m11.414 10 6.293-6.293a1 1 0 1 0-1.414-1.414l-6.293 6.293-6.293-6.293a1 1 0 0 0-1.414 1.414l6.293 6.293-6.293 6.293a1 1 0 1 0 1.414 1.414l6.293-6.293 6.293 6.293a.998.998 0 0 0 1.707-.707.999.999 0 0 0-.293-.707l-6.293-6.293z">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+            <div class="modal__body">
+                <section class="modal__section">
+                    <div class="modal__stack">
+                        <div class="modal__stack-item">
+                            <h3 class="modal__field-name">
+                                Email 
+                                <span class="require">*</span>
+                            </h3>
+                            <input 
+                              class="modal__field-input field-email {% if customer %}disabled{% endif %}"
+                              value="{% if customer %}{{ customer.email }}{% endif %}"
+                              type="text"
+                              {% if customer %}readonly{% endif %}
+                            >
+                            <p class="modal__field-message message-email message-error"></p>
+                            <p class="modal__field-desc">Passcode will be sent to this email</p>
+                        </div>
+                        <div class="modal__stack-item">
+                            <h3 class="modal__field-name">
+                              Name
+                            </h3>
+                            <input 
+                              class="modal__field-input field-name {% if customer %}disabled{% endif %}"
+                              value="{% if customer %}{{ customer.name }}{% endif %}"
+                              type="text"
+                              {% if customer %}readonly{% endif %}
+                            >
+                        </div>
+                        <div class="modal__stack-item">
+                            <h3 class="modal__field-name">Message</h3>
+                            <textarea
+                                class="modal__field-input modal__field-textarea field-message"></textarea>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modal__footer">
+                <div class="modal__footer-action">
+                    <div class="modal__button modal__btn-cancel">Cancel</div>
+                    <button class="modal__button modal__button--primary" type="submit">Send request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+<div class="modal-dialog__container success">
+  <div class="modal-dialog">
+      <div class="modal-dialog__modal">
+          <div class="modal__body">
+              <section
+                  class="modal__section"
+                  style="display: flex; flex-direction: column; align-items: center"
+              >
+                  <div style="width: 60px">
+                      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              fill-rule="evenodd"
+                              d="M0 10a10 10 0 1020 0 10 10 0 00-20 0zm15.2-1.8a1 1 0 00-1.4-1.4L9 11.6 6.7 9.3a1 1 0 00-1.4 1.4l3 3c.4.4 1 .4 1.4 0l5.5-5.5z"
+                              fill="#007B5C"
+                          />
+                      </svg>
+                  </div>
+                  <h4>Request sent, please wait for approval</h4>
+                  <p style="text-align: center;" class="bss-passcode-sent-to">Passcode will be sent to {% if customer %}{{ customer.email }}{% endif %}</p>
+                  <button class="modal__button bss-btn ok">OK</button>
+              </section>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal-dialog__container error">
+    <div class="modal-dialog">
+        <div class="modal-dialog__modal">
+            <div class="modal__body">
+                <section
+                    class="modal__section"
+                    style="display: flex; flex-direction: column; align-items: center"
+                >
+                    <div style="width: 60px">
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 10C0 4.486 4.486 0 10 0s10 4.486 10 10-4.486 10-10 10S0 15.514 0 10zm7.707-3.707a1 1 0 00-1.414 1.414L8.586 10l-2.293 2.293a1 1 0 101.414 1.414L10 11.414l2.293 2.293a1 1 0 001.414-1.414L11.414 10l2.293-2.293a1 1 0 00-1.414-1.414L10 8.586 7.707 6.293z" fill="red"/></svg>
+                    </div>
+                    <h4 style="text-align:center;">You are only allowed to send 1 request in 10 minutes!</h4>
+                    <button class="modal__button bss-btn ok">OK</button>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<script type="text/javascript">
+  {% if is_pc_request == "true" %}
+  function isValidEmail(email) {
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    return emailRegex.test(email);
+  }
+  // button of form
+  let modal = document.querySelector('.modal-dialog__container');
+  let modalSuccess = document.querySelector(".modal-dialog__container.success");
+  let modalError = document.querySelector(".modal-dialog__container.error");
+  let btn = document.querySelector(".bss-btn.bss-passcode-request");
+  let btnsOk = document.querySelectorAll(".bss-btn.ok");
+  let iconCancel = document.querySelector(".modal_icon__close");
+  let btnCancel = document.querySelector(".modal__btn-cancel");
+  let formPasscodeReq = document.querySelector(".form-passcode-request");
+
+  // field of form
+  let email = document.querySelector(".field-email");
+  let name = document.querySelector(".field-name");
+  let message = document.querySelector(".field-message");
+  let emailError = document.querySelector('.message-email');
+  
+  btn.onclick = function () {
+      modal.style.display = "flex";
+  }
+  
+  iconCancel.onclick = function () {
+    emailError.style.display = "none";
+    modal.style.display = "none";
+  }
+  
+  btnCancel.onclick = function () {
+    emailError.style.display = "none";
+    modal.style.display = "none";
+  }
+  btnsOk.forEach(btn => {
+    btn.addEventListener('click', function() {
+      modalSuccess.style.display = "none";
+      modalError.style.display = "none";
+    })
+  });
+  
+  email.addEventListener('change', function() { 
+    emailError.style.display = 'none';
+  });
+  
+  formPasscodeReq.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      if (!email.value) {
+        emailError.textContent = "Email is required";
+        emailError.style.display = 'block';
+        return;
+      }
+      if (!isValidEmail(email.value)) {
+        emailError.textContent = "Invalid email format";
+        emailError.style.display = 'block';
+        return;
+      }
+
+      let data = JSON.stringify({
+          domain: `${window.Shopify.shop}`,
+          email: email.value,
+          name: name.value,
+          page: `${window.location.href}`,
+          message: message.value,
+          ruleId: "{{ origin_rule_id }}",
+      });
+  
+      let url = "{{ create_request_api }}"
+      try {
+        let res = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: data
+        });
+        res = await res.json();
+        if(res.success) {
+          modalSuccess.style.display = "flex";
+          message.value = "";
+          {% unless customer %}
+            let passcodeSendTo = document.querySelector('.bss-passcode-sent-to');
+            passcodeSendTo.innerHTML = `Passcode will be sent to ${email.value}`
+          {% endunless %}
+        }
+        modal.style.display = "none";
+        emailError.style.display = "none";
+
+        if (res.success === false) {
+          modalError.style.display = "flex";
+          modal.style.display = "none";  
+        }
+      } catch(e) {
+        console.log("ERROR: ", e);
+        modalError.style.display = "flex";
+        modal.style.display = "none";
+      }
+  });
+  {% endif %}
+
+  let passcodeElement = document.getElementById("bsscommerce-password");
+  let formData = new FormData();
+  formData.append(passcodeElement.name, passcodeElement.value);
+
+
+  if(passcodeElement){
+    let togglePasscodeBtn = document.querySelector(".toggle-passcode-input");
+    if(togglePasscodeBtn){
+      togglePasscodeBtn.addEventListener("click", function (e) {
+        let inputPasscode = document.getElementById("bsscommerce-password");
+        if (inputPasscode.type === "password") {
+          inputPasscode.type = "text";
+          e.target.closest(".toggle-passcode-input").style.fill = "#5C5F62";
+        }
+        else {
+          inputPasscode.type = "password";
+          e.target.closest(".toggle-passcode-input").style.fill = "#BABEC3";
+        }
+      });
+    }
+  }
+
+  let xmlHttp = new XMLHttpRequest();
+
+  // fix for sergio-987 by Xuan Hoang
+  let skipDomains = ["sergio-987.myshopify.com"];
+  if (skipDomains.indexOf(window.Shopify.shop) === -1) {
+    xmlHttp.open("post", "/cart/update.js");
+    xmlHttp.send(formData);
+  }
+
+  document.getElementById('bsscommerce-ltap-password').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let passcodeElement = document.getElementById("bsscommerce-password");
+
+    let passcodeCaseSensitive = {{ passcode_case_sensitive }};
+    const customerId = window.__st.hasOwnProperty('cid') ? window.__st.cid : ""; 
+    {% if is_call_api == "true" %}
+      // handle call API save passcode actions
+      if(customerId) {
+        let bssPw = "{{ password }}" || "";
+        if(passcodeCaseSensitive == 0){
+          bssPw = bssPw.toLowerCase()
+        }
+        let bssPwList = bssPw.split("*bss*").filter(item => !!item);
+        let passcodeValue = passcodeCaseSensitive == 0 ? passcodeElement.value.toLowerCase() : passcodeElement.value
+        
+        if(bssPwList.includes(passcodeValue)) {
+          let url = "{{ save_action_api }}"
+          let xmlHttp = new XMLHttpRequest();
+
+          let data = JSON.stringify({
+            domain: `${window.Shopify.shop}`,
+            customerId: customerId,
+            passcode: passcodeElement.value,
+            ruleId: "{{ rule_id }}",
+          });
+
+          xmlHttp.open("POST", url);
+          xmlHttp.setRequestHeader("Content-Type", "application/json");
+          xmlHttp.send(data);
+        }
+      }
+    {% endif %}
+
+    passcodeElement.addEventListener("input", function() {
+      passcodeElement.classList.remove("input--error");
+    });
+
+    const pageUrl = window.location.href;
+    let url = "{{ save_usage_history }}";
+    let password = "{{ password }}";
+    let bssPwList = password.split("*bss*").filter(item => !!item);
+    if(passcodeCaseSensitive === 0){
+      bssPwList = bssPwList.toString().toLowerCase();
+    }
+    let ruleId = "{{ rule_id }}";
+    if(ruleId.indexOf("-") !== -1){
+      ruleId = ruleId.slice(0, ruleId.indexOf("-"))
+    }
+
+    if (passcodeElement.value && passcodeElement.value !== "") {
+      let dataUsage = JSON.stringify({
+        domain: window.Shopify.shop,
+        passcode: passcodeElement.value,
+        pageUrl: pageUrl,
+        customerId: customerId,
+        ruleId: ruleId,
+        status: bssPwList.includes(passcodeCaseSensitive === 0 ? passcodeElement.value.toLowerCase() : passcodeElement.value) ? "Success" : "Fail"
+      });
+  
+      fetch(url, {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: dataUsage
+      }).then((dataReq) =>{
+        return dataReq.json()
+      }).then((data) =>{
+          console.log(data.message)
+      })
+      .catch((e) =>{ console.log("create usage history failure")});
+      let formData = new FormData();
+      formData.append(passcodeElement.name, passcodeElement.value);
+      let xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+          // fix for sergio-987 by Xuan Hoang
+          if (skipDomains.indexOf(window.Shopify.shop) === -1) {
+            window.location.reload();
+          }
+        }
+      };
+
+      xmlHttp.open("post", "/cart/update.js");
+      xmlHttp.send(formData);
+
+      // fix for sergio-987 by Xuan Hoang
+      if (skipDomains.indexOf(window.Shopify.shop) !== -1) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      }
+
+    } else {
+      passcodeElement.classList.add("input--error");
+    }
+  });
+
+</script>

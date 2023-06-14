@@ -1,0 +1,82 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign page_url = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |   replace:'\\/','/' |    replace:'%20',' ' |    replace:'\u0026','&'  -%}
+{% assign page_url =  "https://" | append: page_url  %}
+{% assign pageUrlWithParams = page_url | remove: shop.url %}
+{% assign isApplyForceLogin = false %}
+{% assign bssLtapCurrentPage = canonical_url | remove: shop.url %}
+{% assign old_content_for_layout = content_for_layout %}
+
+{% unless content_for_header contains "Shopify.designMode" or content_for_header contains "previewBarInjector.init()" %}
+    {% if  template != "customers/reset_password" and template != "customers/register" and template != "customers/activate_account" and request.path != "/challenge" %}
+        {% assign bss_login_to_day_date = 'now' | date: '%s' %}
+        {% assign bsscommerce-password = "" %}
+        {% include 'bss-ltap-sntap-rules' %}
+    {% else %}
+        {% capture content_for_layout %}
+            {% assign isApplyForceLogin = false %}
+            {{ old_content_for_layout }}
+            {% capture login_require_custom_style %}
+                {% render 'login_require_custom_style' %}
+            {% endcapture %}
+            {% unless login_require_custom_style contains "Liquid error" %}
+                {{ login_require_custom_style }}
+            {% endunless %}
+        {% endcapture %}
+    {% endif %}
+
+    {% assign old_content_for_layout = content_for_layout %}
+    {% if  template != "customers/reset_password" and template != "customers/register" and template != "customers/activate_account" and request.path != "/challenge" %}
+        {% assign bss_login_to_day_date = 'now' | date: '%s' %}
+        {% assign bsscommerce-password = "" %}
+        {% include 'bss-ltap-fl-rules' %}
+    {% else %}
+        {% capture content_for_layout %}
+            {% assign isApplyForceLogin = false %}
+                {{old_content_for_layout}}
+            {% capture login_require_custom_style %}
+                {% render 'login_require_custom_style' %}
+            {% endcapture %}
+            {% unless login_require_custom_style contains "Liquid error" %}
+                {{ login_require_custom_style }}
+            {% endunless %}
+        {% endcapture %}
+    {% endif %}
+
+    {% assign old_content_for_layout = content_for_layout %}
+    {% if  template != "customers/reset_password" and template != "customers/register" and template != "customers/activate_account" and request.path != "/challenge" %}
+        {% assign bss_login_to_day_date = 'now' | date: '%s' %}
+        {% assign bsscommerce-password = "" %}
+        {% include 'bss-ltap-pc-rules' %}
+    {% else %}
+        {% capture content_for_layout %}
+            {% assign isApplyForceLogin = false %}
+            {{old_content_for_layout}}
+            {% capture login_require_custom_style %}
+                {% render 'login_require_custom_style' %}
+            {% endcapture %}
+            {% unless login_require_custom_style contains "Liquid error" %}
+                {{ login_require_custom_style }}
+            {% endunless %}
+        {% endcapture %}
+    {% endif %}
+
+    {% assign old_content_for_layout = content_for_layout %}
+    {% if  template != "customers/reset_password" and template != "customers/register" and template != "customers/activate_account" and request.path != "/challenge" %}
+        {% assign bss_login_to_day_date = 'now' | date: '%s' %}
+        {% assign bsscommerce-password = "" %}
+        {% include 'bss-ltap-sl-rules' %}
+    {% else %}
+        {% capture content_for_layout %}
+            {% assign isApplyForceLogin = false %}
+            {{ old_content_for_layout }}
+            {% capture login_require_custom_style %}
+                {% render 'login_require_custom_style' %}
+            {% endcapture %}
+            {% unless login_require_custom_style contains "Liquid error" %}
+                {{ login_require_custom_style }}
+            {% endunless %}
+        {% endcapture %}
+    {% endif %}
+{% endunless %}
+
+{% include "bss-ltap-disable-registration-page" %}

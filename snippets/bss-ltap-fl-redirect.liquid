@@ -1,0 +1,106 @@
+<script id="bss-ltap-fl-redirect" type="text/javascript">
+const skipDomains = ['minimo-skin-essentials-wholesale.myshopify.com'];
+function runInLoginPage() {
+  function insertElement(id) {
+    const BSS = JSON.parse(localStorage.getItem("BSS")) || "";
+    let createCustomer = document.getElementById(id);
+    if (BSS && BSS.redirect_url && createCustomer) {
+      const returnToInput = document.createElement('input');
+      returnToInput.type = 'hidden';
+      returnToInput.name = 'return_to';
+      returnToInput.value = BSS.redirect_url;
+      createCustomer.appendChild(returnToInput);
+    }
+  }
+
+  insertElement("customer_login");
+}
+
+function runInRegisterPage() {
+  if(skipDomains.includes(window.Shopify.shop)) {
+    return;
+  }
+  const BSS = JSON.parse(localStorage.getItem("BSS")) || "";
+  let formCreate = document.getElementById('create_customer');
+  if (BSS && BSS.redirect_url && formCreate) {
+    let firstName = document.getElementById('RegisterForm-FirstName');
+    let lastName = document.getElementById('RegisterForm-LastName');
+    let email = document.getElementById('RegisterForm-email');
+    let password = document.getElementById('RegisterForm-password');
+    formCreate.addEventListener('submit', async function (e) {
+      if(BSS_B2B && BSS_B2B.RF) {
+        return;
+      }
+      e.preventDefault();
+      let isError = false;
+
+      if (
+        !email.value ||
+        !password.value ||
+        !validateEmail(email.value) ||
+        password.value.length < 5) {
+        isError = true;
+      }
+
+      if (isError) {
+        formCreate.submit();
+      } else {
+        let data = {
+          "form_type": "create_customer",
+          "utf8": "✓",
+          "customer[first_name]": `${firstName.value}`,
+          "customer[last_name]": `${lastName.value}`,
+          "customer[email]": `${email.value}`,
+          "customer[password]": `${password.value}`,
+        }
+        var formBody = [];
+        for (var property in data) {
+          var encodedKey = encodeURIComponent(property);
+          var encodedValue = encodeURIComponent(data[property]);
+          formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+
+        try {
+          let res = await fetch("/account", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formBody,
+          });
+          let resUrl = res.url;
+          if (res.status === 200) {
+            if (resUrl.includes("/account/register")) {
+              formCreate.submit();
+            } else {
+              let url = BSS.redirect_url;
+              localStorage.removeItem("BSS");
+              window.location.href = url;
+            }
+          } else {
+            formCreate.submit();
+          }
+
+        } catch (error) {
+          console.log('error: ', error);
+        }
+      }
+
+    })
+
+    function validateEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+  }
+}
+
+if (window.location.pathname === "/account/login") {
+  runInLoginPage();
+}
+
+if (window.location.pathname === "/account/register") {
+  runInRegisterPage();
+}
+</script>

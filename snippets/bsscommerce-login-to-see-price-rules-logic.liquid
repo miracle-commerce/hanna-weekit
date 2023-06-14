@@ -1,0 +1,36 @@
+{% assign ptvpRulesIsExist = false %}{% assign price_content = old_price %}
+{% assign bss_login_to_day_date = 'now' | date: '%s' %}
+{% assign bss_product_collection = "" | split: ',' %}
+{% assign isHideProductPrice = false %}
+{% assign isApplyProduct = false %}
+
+{% unless content_for_header contains "Shopify.designMode" or content_for_header contains "previewBarInjector.init()" %}
+    {% for collection in product.collections %}
+        {% assign collection_id = collection.id | split: ',' %}
+        {% assign delimeter = "|" | split: ',' %}
+        {% assign bss_product_collection = bss_product_collection | concat: delimeter %}
+        {% assign bss_product_collection = bss_product_collection | concat: collection_id %}
+    {% endfor %}
+
+    {% assign isApplyPasscodeToViewPrice = false %}
+
+    {% capture price_content_after_ltsp %}
+        {% render 'bss-ltap-ltsp-rules', price_content_ltsp: price_content, old_price_ltsp: old_price, bss_login_to_day_date: bss_login_to_day_date, bss_product_collection: bss_product_collection, product: product %}
+    {% endcapture %}
+    {% assign price_content = price_content_after_ltsp %}
+
+    {% if ptvpRulesIsExist %}
+        {% assign isApplyPasscodeToViewPrice = true %}
+        {% capture price_content_after_ptvp %}
+            {% render 'bss-ltap-ptvp-rules', price_content_ptvp: price_content, old_price_ptvp: old_price, bss_login_to_day_date: bss_login_to_day_date, bss_product_collection: bss_product_collection, product: product %}
+        {% endcapture %}
+
+        {% assign price_content = price_content_after_ptvp %}
+    {% endif %}
+{% endunless %}
+
+{% if old_price contains "comparePrice" or old_price contains "current_price" or old_price contains 'class="money"' or old_price contains 'class="price sale"' or old_price contains 'class="price {% if' or old_price contains "productPrice-" or old_price contains "unit-price-container" or old_price contains "product__price--reg" or old_price contains "data-sale-price" or old_price contains "data-regular-price" or old_price contains "product-item-caption-price-current" or old_price contains "gt_flex gt_product_price" or old_price contains "gt_flex gt_product_price" or old_price contains "gt_product-price--compare gt_compare_price" or old_price contains "gt_curent_price gt_product-price--number" or old_price contains "gt_product-price--number" or old_price contains "gt_product-price--compare" or old_price contains "gt_product-price" or old_price contains 'class="price-product"' or old_price contains 'class="price-box"' or old_price contains 'class="price price--compare"' or old_price contains 'class="price price--highlight"' or old_price contains 'class="product-item__price-list price-list"' or old_price contains 'class="money product-item__price-list price-list"' or old_price contains 'class="money price-list"' or old_price contains 'class="actual-price"' or old_price contains 'class="price-list"' or old_price contains 'class="price"' or old_price contains 'class="price-regular"' or old_price contains 'class="gf_product-price money"' or old_price contains 'class="product-form--price"' or old_price contains 'class="product-form--compare-price"' or old_price contains 'class="product-price"' or old_price contains 'data-price' or old_price contains 'class="tt-price"' or old_price contains 'v-html="variant ? money(variant.price)' or old_price contains 'class="product-single__price"' or old_price contains 'id="ProductPrice"' or old_price contains 'class="h2 product__price-current js-prod-price' or old_price contains 'data-product-id' or old_price contains 'data-single-option-selector' or old_price contains 'product-price' %}
+    {{ old_price }}
+{% else %}
+    {{ price_content }}
+{% endif %}

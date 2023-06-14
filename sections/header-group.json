@@ -8,12 +8,12 @@
         "a09f6cc1-7be6-4132-816c-cc67060d5f8e": {
           "type": "main_menu_icons",
           "settings": {
-            "icon1": "dog",
-            "icon2": "cat_sm",
-            "icon3": "fish_sm",
-            "icon4": "mouse_sm",
-            "icon5": "snake_sm",
-            "icon6": "bird_sm",
+            "icon1": "belly",
+            "icon2": "nursing",
+            "icon3": "",
+            "icon4": "",
+            "icon5": "",
+            "icon6": "",
             "icon7": "brand_sm",
             "icon8": "pharmacy_sm",
             "icon9": "grooming_sm",

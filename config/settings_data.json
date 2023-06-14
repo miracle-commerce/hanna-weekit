@@ -56,8 +56,9 @@
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": true,
     "predictive_search_show_price": true,
-    "favicon": "shopify:\/\/shop_images\/Fav_2.png",
+    "favicon": "shopify:\/\/shop_images\/WK01_Logo_CozyBlue.png",
     "currency_code_enabled": false,
+    "checkout_logo_image": "shopify:\/\/shop_images\/WK01_Logo_CozyBlue.png",
     "catalog_mode": false,
     "mobile_grid": "6",
     "color_icons": "#fff",
@@ -214,8 +215,9 @@
         "settings": {
           "show_color_line": true,
           "width": "page-width",
+          "logo": "shopify:\/\/shop_images\/WK01_Logo_CozyBlue.png",
           "logo_svg": "",
-          "logo_max_width": 160
+          "logo_max_width": 250
         }
       },
       "main-password-footer": {

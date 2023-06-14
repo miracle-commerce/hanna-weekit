@@ -1,0 +1,125 @@
+<span
+  id="BsscommercePasswordForm"
+  class="bsscommerce-password-form"
+  style="display: none;">
+  {% if hide_price == false %}
+    <span class="bss-ltsp-price-wrapper">{{ old_price }}</span>
+  {% else %}
+    <span class="bss-ltsp-price-wrapper"></span>
+  {% endif %}
+  <span class="">
+    <div class="bsscommerce-password-message-container">
+      <span style="all: initial;">{{ passcode_message }}</span>
+    </div>
+    <form
+      class="bsscommerce-ltap-password"
+      class="cart"
+      novalidate
+      style="display: flex; margin-bottom: 4px">
+      <div style="background-color: #fff; display: flex; flex: 1; align-items: center; border: 1px solid #ccc; border-radius: 5px; margin-right: 6px">
+        <input
+          type="password"
+          value=""
+          name="attributes[bsscommerce-password-{{ rule_id }}]"
+          id="bsscommerce-password"
+          class="input-full"
+          style="
+                        width: 100%;
+                        padding: 8px 0 8px 10px;
+                        font-size: 14px;
+                        border-radius: 5px;
+                        border: none;
+                        margin-right: 5px;
+                        box-shadow: none;
+                        outline: none;"
+          placeholder='
+        {%- if input_placeholder_form_submit == "" -%}
+          {{ 'general.password_page.login_form_password_placeholder' | t }}
+        {%- else -%}
+          {{ input_placeholder_form_submit }}
+        {%- endif -%}'>
+        <button
+          class="toggle-passcode-input"
+          type="button"
+          style="background-color: transparent; border: none; line-height: 0; cursor: pointer; padding: 8px; fill: #BABEC3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z" /></svg>
+        </button>
+      </div>
+      <input
+        id="bsscommerce-password-submit"
+        style="
+                    background-color: #fff;
+                    color: #333;
+                    border: 1px solid #ccc;
+                    padding: 0 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: bold;"
+        type="submit"
+        onclick="handleSubmit()"
+        class="btn"
+        value='
+      {%- if button_text_form_submit == "" -%}
+        {{ 'general.password_page.login_form_submit' | t }}
+      {%- else -%}
+        {{ button_text_form_submit }}
+      {%- endif -%}'>
+    </form>
+    {%- if entered_password != password and entered_password -%}
+      <div class="form-message form-message--error" style="text-align: left; font-size: 16px; color: red;">
+        <div style="display: flex; align-items: center">
+          {% capture snippet-error-icon %}
+            {% render 'icon-error' %}{% endcapture %}
+          {% unless snippet-error-icon contains "Liquid error" %}
+            <span style="width: 18px; margin-right: 6px; display: inherit;">
+              {% render 'icon-error' %}
+            </span>
+          {% endunless %}
+          {%- if message_passcode_incorrect == '' -%}
+            Incorrect password !
+          {% else %}
+            {{ message_passcode_incorrect }}
+          {% endif %}
+        </div>
+      </div>
+    {%- endif -%}
+  </span>
+</span>
+<script type="text/javascript">
+  function handleSubmit(){
+  let passcodeElement = document.querySelector("input[name='attributes[bsscommerce-password-{{ rule_id }}]']");
+  const customerId = window.__st.hasOwnProperty('cid') ? window.__st.cid : "";
+    const pageUrl = window.location.href;
+    let url = "{{ save_usage_history }}";
+  let password = "{{ password }}";
+  let product = "{{ product.title }}";
+  let bssPwList = password.split("*bss*").filter(item => !!item);
+    let ruleId = "{{ rule_id }}";
+  if(ruleId.indexOf("-") !== -1){
+        ruleId = ruleId.slice(0, ruleId.indexOf("-"));
+    }
+    let dataUsage = JSON.stringify({
+        domain: window.Shopify.shop,
+        passcode: passcodeElement.value,
+        pageUrl: pageUrl,
+        customerId: customerId,
+        ruleId: ruleId,
+        product: product,
+        status: bssPwList.includes(passcodeElement.value) ? "Success" : "Fail"
+    });
+    fetch(url,{
+      method:"POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: dataUsage
+    })
+    .then((response) => response.json())
+    .then((data) => console.log(data.message))
+    .catch((e) => console.log(e))
+        }</script>

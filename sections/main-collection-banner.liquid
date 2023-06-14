@@ -1,4 +1,4 @@
-{%- if settings.animate_content_show -%}
+{% capture redirectScript %}{% render 'bsscommerce-redirect-product-page-logic', product: product, collection: collection %}{% endcapture %}{% assign redirectScript = redirectScript | strip %}{% unless redirectScript contains "Liquid error" %}{% if redirectScript != "" %}<script id="bss-redirect" type="text/javascript">window.location.replace("{{ redirectScript }}")</script>{% endif %}{% endunless %}{%- if settings.animate_content_show -%}
 <link rel="stylesheet" href="{{ 'section-main-collection-banner.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'section-main-collection-banner.css' | asset_url | stylesheet_tag }}</noscript>
 {%- else -%}

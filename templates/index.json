@@ -31,10 +31,40 @@
             "button_secondary_bg": "rgba(0,0,0,0)",
             "color_background": "#f8f0e6"
           }
+        },
+        "57ad2fc9-610c-47be-839d-9859f963d146": {
+          "type": "slide",
+          "settings": {
+            "content_type": "image",
+            "video_url": "",
+            "image": "shopify:\/\/shop_images\/WeeKits_Bottle-Feeding-Too.jpg",
+            "image_overlay_opacity": 0,
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "call_to_action": "one_link_banner",
+            "button_primary_name": "Button",
+            "url": "",
+            "button_secondary_name": "Button",
+            "button_secondary_url": "",
+            "texts_aligment": "text-center",
+            "heading_tag": "h1",
+            "description_size": "normal",
+            "content_aligment": "align-items-center justify-content-center",
+            "show_background": false,
+            "hover_underline": false,
+            "color_subheading": "rgba(0,0,0,0)",
+            "color_heading": "rgba(0,0,0,0)",
+            "color_description": "rgba(0,0,0,0)",
+            "button_primary_bg": "rgba(0,0,0,0)",
+            "button_secondary_bg": "rgba(0,0,0,0)",
+            "color_background": "rgba(0,0,0,0)"
+          }
         }
       },
       "block_order": [
-        "166264093577412f3d-0"
+        "166264093577412f3d-0",
+        "57ad2fc9-610c-47be-839d-9859f963d146"
       ],
       "settings": {
         "top_spacing": "none",
@@ -81,12 +111,22 @@
             "collection_name": "",
             "custom_link": ""
           }
+        },
+        "f58aa87f-3ca8-4f32-a48c-eda28f0da8e1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify:\/\/shop_images\/Kudos_Bundle.webp",
+            "collection_name": "Diapering",
+            "custom_link": ""
+          }
         }
       },
       "block_order": [
         "1654073565bebd9f10-0",
         "1654073565bebd9f10-1",
-        "1654073565bebd9f10-2"
+        "1654073565bebd9f10-2",
+        "f58aa87f-3ca8-4f32-a48c-eda28f0da8e1"
       ],
       "settings": {
         "subheading": "",
@@ -154,6 +194,7 @@
         "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-0": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/fridababy-llc-logo-vector.png",
             "url": "#",
             "heading": "Optional heading"
           }
@@ -161,6 +202,7 @@
         "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-1": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Lollaland-Logo.jpg",
             "url": "",
             "heading": "Optional heading"
           }
@@ -168,27 +210,7 @@
         "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-2": {
           "type": "image",
           "settings": {
-            "url": "",
-            "heading": "Optional heading"
-          }
-        },
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-3": {
-          "type": "image",
-          "settings": {
-            "url": "",
-            "heading": "Optional heading"
-          }
-        },
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-4": {
-          "type": "image",
-          "settings": {
-            "url": "",
-            "heading": "Optional heading"
-          }
-        },
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-5": {
-          "type": "image",
-          "settings": {
+            "image": "shopify:\/\/shop_images\/EarthMamaOrganicsLogo_transparent2x1_864e7bb9-8d02-425d-869d-c870345c3770.png",
             "url": "",
             "heading": "Optional heading"
           }
@@ -197,14 +219,11 @@
       "block_order": [
         "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-0",
         "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-1",
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-2",
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-3",
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-4",
-        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-5"
+        "template--19157406777663__ae32bd6d-8dca-4211-afa6-18af00df4078-1685040884ef50534f-2"
       ],
       "settings": {
-        "subheading": "SUBHEADING",
-        "heading": "Brands",
+        "subheading": "Our team of experts has partnered with the best in industry",
+        "heading": "WeeKits Brand Partners",
         "heading_aligment": "text-center",
         "link_name": "Show All",
         "link_url": "",

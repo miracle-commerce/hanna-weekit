@@ -1,0 +1,18 @@
+{% assign bss_product_is_hide = false %}
+{% assign bss_hide_product_redirect_page = "/" %}
+{% assign bss_hide_product_redirect_type = 0 %}
+{% assign bss_hide_product_on_pages = "" %}
+{% assign bss_login_to_day_date = 'now' | date: '%s' %}
+{% assign bss_product_collection = "" | split: ',' %}
+{% for collection in product.collections %}
+    {% assign collection_id = collection.id | split:',' %}
+    {% assign delimeter = "|" | split:',' %}
+    {% assign bss_product_collection = bss_product_collection | concat:delimeter %}
+    {% assign bss_product_collection = bss_product_collection | concat:collection_id %}
+{% endfor %}
+{% unless content_for_header contains "Shopify.designMode" or content_for_header contains "previewBarInjector.init()" %}
+    
+{% endunless %}
+{% if bss_product_is_hide == true or bss_product_is_hide contains "true" %}
+    {{ bss_hide_product_redirect_page }}
+{% endif %}

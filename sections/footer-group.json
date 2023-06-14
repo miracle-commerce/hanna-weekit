@@ -64,7 +64,7 @@
         "color_description": "rgba(0,0,0,0)",
         "color_svg": "rgba(0,0,0,0)",
         "background": "color",
-        "color_background": "#F8F0E6",
+        "color_background": "#f8f0e6",
         "gradient": "",
         "background_width": "fullwidth",
         "background_spacing": "medium",
@@ -74,36 +74,20 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "c103923d-e013-41a1-b43e-151a87948e30": {
-          "type": "link_list",
-          "settings": {
-            "heading": "QUICK LINKS",
-            "menu": "footer"
-          }
-        },
-        "a02006d6-62ca-4b97-83cf-132b52a8a539": {
-          "type": "text",
-          "settings": {
-            "heading": "DESCRIPTION HEADING",
-            "subtext": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme settings.<\/p>"
-          }
-        },
-        "359796ef-2c18-41e5-baf4-b897ea8ba40b": {
+        "a5029021-f5fb-446c-99e2-684778a2c7fa": {
           "type": "newsletter",
           "settings": {
-            "show_newsletter": true,
-            "heading": "NEWSLETTER",
-            "subtext": "<p>Sign up for our e-mail and be the first who knows our special offers!<\/p>",
+            "show_newsletter": false,
+            "heading": "",
+            "subtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>",
             "newsletter_terms": "<p>By clicking the button you agree to the <a href=\"\/\"><strong>Privacy Policy<\/strong><\/a> and <a href=\"\/\"><strong>Terms and Conditions<\/strong><\/a>.<\/p>",
             "show_social": true,
-            "heading_social": "FOLLOW US:"
+            "heading_social": "Connect with WeeKits on social media"
           }
         }
       },
       "block_order": [
-        "c103923d-e013-41a1-b43e-151a87948e30",
-        "a02006d6-62ca-4b97-83cf-132b52a8a539",
-        "359796ef-2c18-41e5-baf4-b897ea8ba40b"
+        "a5029021-f5fb-446c-99e2-684778a2c7fa"
       ],
       "settings": {
         "top_spacing": "none",
