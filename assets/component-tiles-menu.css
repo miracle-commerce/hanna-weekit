@@ -110,3 +110,24 @@
 .tiles-menu > .submenu--to-left--js .submenu-container [class*="submenu-design__"] .submenu-container:hover [class*="submenu-design__"]{
   left: calc(-100% + 10px);
 }
+
+/* Custom styles to apply different color for each tiles menu */
+.tiles-menu .tiles-menu-item[data-menu-name="postpartum"]{
+  color: #F09079;
+}
+
+.tiles-menu .tiles-menu-item[data-menu-name="first-feeding"]{
+  color: #9BB087;
+}
+
+.tiles-menu .tiles-menu-item[data-menu-name="nursing"]{
+  color: #667D89;
+}
+
+.tiles-menu .tiles-menu-item[data-menu-name="bottle-feeding"]{
+  color: #F4BE76;
+}
+
+.tiles-menu .tiles-menu-item[data-menu-name="sleep"]{
+  color: #F6C4B3;
+}

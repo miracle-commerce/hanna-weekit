@@ -22,7 +22,8 @@
     {%- capture menu_item -%}
     <a href="{{ link.url }}"
        class="{{ menu_font_weight }} tiles-menu-item{% if link.current or link.child_active %} tiles-menu-item--active{% endif %}"
-       style="{{ svgwidth }}{{ svgheight }}">
+       style="{{ svgwidth }}{{ svgheight }}"
+      data-menu-name="{{link.title | handle}}">
       {{ icon_code }}
       <span>{{ link.title | escape }}</span>
       {%- render "menu-badge" item_name:link.title fixed:true -%}
