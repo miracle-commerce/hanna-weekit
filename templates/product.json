@@ -39,7 +39,7 @@
         "22f92dfa-de40-4d8a-b823-e2ce09e7b494": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
+            "picker_type": "dropdown",
             "variant_name_1": "",
             "content_1": "",
             "page_1": "",
