@@ -1179,3 +1179,15 @@ terms_and_condition-checkbox .checkbox-input:hover span{
   margin-right: auto; 
   margin-bottom: 60px;
 }
+
+.bss-passcode-request.bss-btn{
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.bss-commerce-passcode-input-label{
+  margin-bottom: 15px;
+  display: inline-block; 
+}
