@@ -1170,3 +1170,12 @@ terms_and_condition-checkbox .checkbox-input:hover span{
   cursor: default;
   font-weight: var(--font-body-weight);
 }
+
+
+/* Styles for BSS passcode form */
+.bsscommerce-passcode-container.bsscommerce-passcode-form-style-1{
+  max-width: 600px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-bottom: 60px;
+}
