@@ -113,21 +113,35 @@
 
 /* Custom styles to apply different color for each tiles menu */
 .tiles-menu .tiles-menu-item[data-menu-name="postpartum"]{
-  color: #F09079;
+  background-color: #F09079;
+}
+
+.tiles-menu>*:hover>.tiles-menu-item[data-menu-name="postpartum"]:before{
+  background-color: #F09079;
 }
 
 .tiles-menu .tiles-menu-item[data-menu-name="first-feeding"]{
-  color: #9BB087;
+  background-color: #9BB087;
+}
+.tiles-menu>*:hover>.tiles-menu-item[data-menu-name="first-feeding"]:before{
+  background-color: #9BB087;
 }
 
 .tiles-menu .tiles-menu-item[data-menu-name="nursing"]{
-  color: #667D89;
+  background-color: #667D89;
 }
-
+.tiles-menu>*:hover>.tiles-menu-item[data-menu-name="nursing"]:before{
+  background-color: #667D89;
+}
 .tiles-menu .tiles-menu-item[data-menu-name="bottle-feeding"]{
-  color: #F4BE76;
+  background-color: #F4BE76;
 }
-
+.tiles-menu>*:hover>.tiles-menu-item[data-menu-name="bottle-feeding"]:before{
+  background-color: #F4BE76;
+}
 .tiles-menu .tiles-menu-item[data-menu-name="sleep"]{
-  color: #F6C4B3;
+  background-color: #F6C4B3;
+}
+.tiles-menu>*:hover>.tiles-menu-item[data-menu-name="sleep"]:before{
+  background-color: #F6C4B3;
 }
