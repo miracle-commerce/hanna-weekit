@@ -1180,6 +1180,22 @@ terms_and_condition-checkbox .checkbox-input:hover span{
   margin-bottom: 60px;
 }
 
+.bsscommerce-passcode-container #bsscommerce-password{
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-left: 15px;
+  border: none;
+  width: 100%;
+  height: var(--form_field-height);
+  background: var(--color-input-background);
+  border-radius: var(--radius-input);
+  backface-visibility: hidden;
+  color: var(--component-color-input-text, var(--color-input-text));
+  box-shadow: inset 0 0 0 0 var(--component-color-lines-borders, var(--color-lines-borders));
+  transition: box-shadow var(--duration-medium) ease, background var(--duration-medium) ease;
+}
+
 .bss-passcode-request.bss-btn{
   cursor: pointer;
   margin-top: 20px;

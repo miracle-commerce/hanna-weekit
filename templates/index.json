@@ -111,22 +111,12 @@
             "collection_name": "",
             "custom_link": ""
           }
-        },
-        "f58aa87f-3ca8-4f32-a48c-eda28f0da8e1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "",
-            "image": "shopify:\/\/shop_images\/Kudos_Bundle.webp",
-            "collection_name": "Diapering",
-            "custom_link": ""
-          }
         }
       },
       "block_order": [
         "1654073565bebd9f10-0",
         "1654073565bebd9f10-1",
-        "1654073565bebd9f10-2",
-        "f58aa87f-3ca8-4f32-a48c-eda28f0da8e1"
+        "1654073565bebd9f10-2"
       ],
       "settings": {
         "subheading": "",
@@ -229,9 +219,9 @@
         "link_url": "",
         "top_spacing": "normal",
         "width": "page-width",
-        "grid": "col-st-4 col-2",
-        "mobile_grid": "6",
-        "swipe_on_mobile": false,
+        "grid": "col-4",
+        "mobile_grid": "12",
+        "swipe_on_mobile": true,
         "text_aligment": "text-center",
         "hide_text": true,
         "hover_underline": false,
